@@ -1,0 +1,28 @@
+﻿<Page x:Class="CafeApplication.Pages.PageMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CafeApplication.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1920"
+      Title="PageMenu">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Меню" Style="{StaticResource Label}"/>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <Button Name="btnProducts" Content="Товары" Click="btnProducts_Click"/>
+            <Button Name="btnFoodStaff" Content="Продукты" Click="btnFoodStaff_Click"/>
+            <Button Name="btnOrders" Content="Заказы" Click="btnOrders_Click"/>
+            <Button Name="btnCombo" Content="Наборы" Click="btnCombo_Click"/>
+            <Button Name="btnStaff" Content="Сотрудники" Click="btnStaff_Click"/>
+        </StackPanel>
+        
+    </Grid>
+</Page>

@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CafeApplication" Height="1080" Width="1920" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0" Fill="AliceBlue"/>
+        <Rectangle Grid.Row="2" Fill="AliceBlue"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50, 0, 0, 0">
+            <Image Height="100" Width="100"/>
+            <Label Content="Кафе" VerticalAlignment="Center" FontSize="48"/>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Margin="0, 0, 80, 0">
+            <TextBlock Text="Здравствуйте,"/>
+            <TextBlock Name="tbName"/>
+        </StackPanel>
         
+        <Frame Name="windowFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+
+        <Button Name="btnBack" Content="Назад" Grid.Row="2" Click="btnBack_Click" HorizontalAlignment="Left" Margin="30, 5, 5, 5"/>
+        <Button Name="btnExit" Content="Выход" Grid.Row="2" Click="btnExit_Click" HorizontalAlignment="Right" Margin="5, 5, 30, 5"/>
     </Grid>
 </Window>

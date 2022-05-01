@@ -35,8 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +65,101 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Combo.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComboProduct.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Coupon.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FoodStaff.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelCafe.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCafe.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelCafe.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelCafe.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelCafe.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Combo.cs" />
+    <Compile Include="Model\DB.cs" />
+    <Compile Include="Model\FoodStaff.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductType.cs" />
+    <Compile Include="Model\Staff.cs" />
+    <Compile Include="Model\StaffRole.cs" />
+    <Compile Include="Order.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderCombo.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderProduct.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageAddEditCombo.xaml.cs">
+      <DependentUpon>PageAddEditCombo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageAddEditFoodStaff.xaml.cs">
+      <DependentUpon>PageAddEditFoodStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageAddEditProduct.xaml.cs">
+      <DependentUpon>PageAddEditProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageCombo.xaml.cs">
+      <DependentUpon>PageCombo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageFoodStaff.xaml.cs">
+      <DependentUpon>PageFoodStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageMenu.xaml.cs">
+      <DependentUpon>PageMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageOrders.xaml.cs">
+      <DependentUpon>PageOrders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageRegistration.xaml.cs">
+      <DependentUpon>PageRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageStaff.xaml.cs">
+      <DependentUpon>PageStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductFoodStuff.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductType.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staff.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StaffRole.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowAutorization.xaml.cs">
+      <DependentUpon>WindowAutorization.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,8 +172,56 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\PageAddEditCombo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageAddEditFoodStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageAddEditProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageCombo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageFoodStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageOrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageProducts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowAutorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Manager.cs" />
+    <Compile Include="Pages\PageProducts.xaml.cs">
+      <DependentUpon>PageProducts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -83,9 +236,17 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="ModelCafe.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelCafe.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelCafe.edmx.diagram">
+      <DependentUpon>ModelCafe.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +254,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\combo.png" />
+    <Resource Include="Resources\foodstaff.png" />
+    <Resource Include="Resources\product.png" />
+    <Resource Include="Resources\staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelCafe.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCafe.edmx</DependentUpon>
+      <LastGenOutput>ModelCafe.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModelCafe.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelCafe.edmx</DependentUpon>
+      <LastGenOutput>ModelCafe.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

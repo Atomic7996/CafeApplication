@@ -1,0 +1,51 @@
+﻿<Page x:Class="CafeApplication.Pages.PageRegistration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CafeApplication.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1920"
+      Title="PageRegistration">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.1*"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Регистрация" Grid.ColumnSpan="2" Style="{StaticResource Label}"/>
+        <TextBlock Text="Фамилия" Grid.Row="1"/>
+        <TextBlock Text="Имя" Grid.Row="2"/>
+        <TextBlock Text="Отчество" Grid.Row="3"/>
+        <TextBlock Text="Логин" Grid.Row="4"/>
+        <TextBlock Text="Пароль" Grid.Row="5"/>
+        <TextBlock Text="Роль" Grid.Row="6"/>
+        <TextBlock Text="Почта" Grid.Row="7"/>
+
+        <TextBox Name="tbFirstname" Text="{Binding FirstName}" Grid.Row="1" Grid.Column="1"/>
+        <TextBox Name="tbName" Text="{Binding LastName}" Grid.Row="2" Grid.Column="1" Margin="5"/>
+        <TextBox Name="tbPatronymic" Text="{Binding Patronymic}" Grid.Row="3" Grid.Column="1"/>
+        <TextBox Name="tbLogin" Text="{Binding Login}" Grid.Row="4" Grid.Column="1"/>
+        <TextBox Name="tbPassword" Text="{Binding Password}" Grid.Row="5" Grid.Column="1"/>
+        <ComboBox Name="cbRole" SelectedItem="{Binding StaffRole}" Grid.Column="1" Grid.Row="6"/>
+        <TextBox Name="tbEmail" Text="{Binding Email}" Grid.Row="7" Grid.Column="1"/>
+
+        <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="btnSave" Content="Сохранить" Click="btnSave_Click"/>
+            <Button Name="btnDel" Content="Удалить" Click="btnDel_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CafeApplication.Pages;
+using CafeApplication.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,27 @@ namespace CafeApplication
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(int roleID)
         {
             InitializeComponent();
+
+            Manager.mainFrame = windowFrame;
+            windowFrame.Navigate(new PageMenu(roleID));
+            //new WindowAutorization().Show();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            new WindowAutorization().Show();
+            this.Close();
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (Manager.mainFrame.CanGoBack)
+            {
+                Manager.mainFrame.GoBack();
+            }
         }
     }
 }

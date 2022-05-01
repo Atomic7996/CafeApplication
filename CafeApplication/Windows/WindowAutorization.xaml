@@ -1,0 +1,34 @@
+﻿<Window x:Class="CafeApplication.Windows.WindowAutorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CafeApplication.Windows"
+        mc:Ignorable="d"
+        Title="Вход" Height="600" Width="700" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="Авторизация" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource Label}"/>
+
+        <Border Background="#00CC76" CornerRadius="25" VerticalAlignment="Center" HorizontalAlignment="Center" Width="600" Height="270" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel VerticalAlignment="Center" >
+                    <TextBlock Text="Логин" Height="40" Margin="0, 0, 0, 50"/>
+                    <TextBlock Text="Пароль" Height="40"/>
+                </StackPanel>
+
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBox Name="tbLogin" Text="cash" Margin="0, 0, 0, 50"/>
+                    <PasswordBox Name="tbPass" Password="cash"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Button Name="btnEnter" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Click="btnEnter_Click"/>
+    </Grid>
+</Window>

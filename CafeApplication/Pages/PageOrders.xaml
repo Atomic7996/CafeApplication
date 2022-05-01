@@ -1,0 +1,76 @@
+﻿<Page x:Class="CafeApplication.Pages.PageOrders"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CafeApplication.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1920"
+      Title="PageOrders">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1.2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Заказы" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
+
+        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" TextChanged="tbFinder_TextChanged"/>
+        <ComboBox Name="cbStaff"  Grid.Row="1" Grid.Column="1"  SelectionChanged="cbStaff_SelectionChanged"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Записей: "/>
+            <TextBlock Name="tbRecordsCount"/>
+            <TextBlock Text=" из "/>
+            <TextBlock Name="tbRecordsCountAll"/>
+        </StackPanel>
+
+        <ListView Name="lvOrders" Grid.Row="2" Grid.ColumnSpan="4" IsVisibleChanged="lvOrders_IsVisibleChanged" MouseDoubleClick="lvOrders_MouseDoubleClick" ToolTip="Для просмотра нажмите дважды">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding Staff}"/>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Время заказа: "/>
+                                <TextBlock Text="{Binding OrderDateTime}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Состав: "/>
+                                <TextBlock Text="{Binding ValidList}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal">
+                            <TextBlock Text="Стоимость: "/>
+                            <TextBlock Text="{Binding SummaryCost}"/>
+                        </StackPanel>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Name="btnAdd" Content="Добавить заказ" Grid.Row="3" Grid.ColumnSpan="4" Click="btnAdd_Click"/>
+        <DatePicker Name="calendar" Grid.Row="1" Grid.Column="2" SelectedDateChanged="calendar_SelectedDateChanged" FirstDayOfWeek="Monday" SelectedDateFormat="Long" />
+    </Grid>
+</Page>

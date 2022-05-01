@@ -1,0 +1,71 @@
+﻿<Page x:Class="CafeApplication.Pages.PageCombo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CafeApplication.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1920"
+      Title="PageCombo">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="1.2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Наборы" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
+
+        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" TextChanged="tbFinder_TextChanged"/>
+        <ComboBox Name="cbSort"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" SelectionChanged="cbSort_SelectionChanged"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Записей: "/>
+            <TextBlock Name="tbRecordsCount"/>
+            <TextBlock Text=" из "/>
+            <TextBlock Name="tbRecordsCountAll"/>
+        </StackPanel>
+
+        <ListView Name="lvCombos" Grid.Row="2" Grid.ColumnSpan="4" IsVisibleChanged="lvCombos_IsVisibleChanged" MouseDoubleClick="lvCombos_MouseDoubleClick" ToolTip="Для просмотра нажмите дважды">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{Binding ValidImage}" Grid.Column="0"/>
+
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding Title}"/>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Состав: "/>
+                                <TextBlock Text="{Binding ProductList}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal">
+                            <TextBlock Text="Стоимость: "/>
+                            <TextBlock Text="{Binding Cost}"/>
+                            <TextBlock Text=" руб."/>
+                        </StackPanel>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Name="btnAdd" Content="Добавить набор" Grid.Row="3" Grid.ColumnSpan="4" Click="btnAdd_Click"/>
+    </Grid>
+</Page>
