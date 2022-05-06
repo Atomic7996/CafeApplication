@@ -17,7 +17,7 @@
         <Rectangle Grid.Row="2" Fill="AliceBlue"/>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50, 0, 0, 0">
-            <Image Height="100" Width="100"/>
+            <Image Height="180" Width="180" Source="/Resources/cafe.png"/>
             <Label Content="Кафе" VerticalAlignment="Center" FontSize="48"/>
         </StackPanel>
 

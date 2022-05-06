@@ -21,6 +21,7 @@ namespace CafeApplication.Pages
     public partial class PageAddEditProduct : Page
     {
         Product product = new Product();
+        ProductFoodStuff productFoodStuff = new ProductFoodStuff();
 
         public PageAddEditProduct(Product selectedProduct)
         {
@@ -39,6 +40,42 @@ namespace CafeApplication.Pages
             DataContext = product;
 
             cbTypes.ItemsSource = DB.db.ProductType.ToList();
+
+            lbFoodStaff.ItemsSource = DB.db.FoodStaff.ToList();
+            lbFoodStaff.SelectedValuePath = "Title";
+        }
+
+        private void AddProductFoodStaff()
+        {
+            //var innerListView = lvAlbums.ItemTemplate.FindName("lvTracks", lvAlbums) as ListView;
+            //var textBlock = lbFoodStaff.ItemTemplate.FindName("tbTitle", lbFoodStaff) as TextBlock;
+
+            int[] IDs = new int[lbFoodStaff.SelectedItems.Count];
+            int i = 0;
+            int j = 0;
+            List<string> foodStaff = new List<string>();
+            List<decimal?> count = new List<decimal?>();
+
+            foreach (var item in lbFoodStaff.SelectedItems)
+                foodStaff.Add(item.ToString());
+
+            foreach (var item in foodStaff)
+            {
+                string title = foodStaff[i];
+                IDs[i] = DB.db.FoodStaff.Where(x => x.Title.ToLower() == title.ToLower()).FirstOrDefault().FoodStuffID;
+                //count.Add();!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                i++;
+            }
+            
+            foreach (var id in IDs)
+            {
+                productFoodStuff.FoodStaffID = id;
+                productFoodStuff.ProductID = product.ProductID;
+                productFoodStuff.Count = count[j];
+                j++;
+                DB.db.ProductFoodStuff.Add(productFoodStuff);
+                DB.db.SaveChanges();
+            }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -56,8 +93,15 @@ namespace CafeApplication.Pages
                 return;
             }
 
+            foreach (var item in DB.db.ProductFoodStuff.Where(x => x.ProductID == product.ProductID))
+            {
+                DB.db.ProductFoodStuff.Remove(item);
+            }
+
             if (product.ProductID == 0)
                 DB.db.Product.Add(product);
+
+            AddProductFoodStaff();
 
             try
             {

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище CafeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище CafeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Combo">
           <Key>
             <PropertyRef Name="ComboID" />
@@ -15,16 +15,14 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Image" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Cafe.dbo.ComboProduct" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="ComboProduct">
           <Key>
-            <PropertyRef Name="ComboID" />
-            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="ComboProductID" />
           </Key>
           <Property Name="ComboID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="Count" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ComboProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Coupon">
           <Key>
@@ -57,29 +55,23 @@
           <Property Name="UserID" Type="int" />
           <Property Name="CouponID" Type="int" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Cafe.dbo.OrderCombo" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="OrderCombo">
           <Key>
-            <PropertyRef Name="OrderId" />
-            <PropertyRef Name="ComboID" />
-            <PropertyRef Name="Count" />
+            <PropertyRef Name="OrderComboID" />
           </Key>
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="ComboID" Type="int" Nullable="false" />
-          <Property Name="Count" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Count" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OrderComboID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Cafe.dbo.OrderProduct" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="OrderProduct">
           <Key>
-            <PropertyRef Name="OrderID" />
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="Count" />
+            <PropertyRef Name="OrderProductID" />
           </Key>
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="Count" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Count" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="OrderProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -92,17 +84,14 @@
           <Property Name="Image" Type="nvarchar" MaxLength="50" />
           <Property Name="ProductTypeID" Type="int" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "Cafe.dbo.ProductFoodStuff" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="ProductFoodStuff">
           <Key>
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="FoodStaffID" />
-            <PropertyRef Name="Count" />
+            <PropertyRef Name="ProductFoodStaffID" />
           </Key>
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="FoodStaffID" Type="int" Nullable="false" />
-          <Property Name="Count" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Count" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ProductFoodStaffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -326,43 +315,19 @@
         </Association>
         <EntityContainer Name="Хранилище CafeModelContainer">
           <EntitySet Name="Combo" EntityType="Self.Combo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComboProduct" EntityType="Self.ComboProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Coupon" EntityType="Self.Coupon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FoodStaff" EntityType="Self.FoodStaff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderCombo" EntityType="Self.OrderCombo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductFoodStuff" EntityType="Self.ProductFoodStuff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffRole" EntityType="Self.StaffRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ComboProduct" EntityType="Self.ComboProduct" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ComboProduct].[ComboID] AS [ComboID], 
-    [ComboProduct].[ProductID] AS [ProductID], 
-    [ComboProduct].[Count] AS [Count]
-    FROM [dbo].[ComboProduct] AS [ComboProduct]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="OrderCombo" EntityType="Self.OrderCombo" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [OrderCombo].[OrderId] AS [OrderId], 
-    [OrderCombo].[ComboID] AS [ComboID], 
-    [OrderCombo].[Count] AS [Count]
-    FROM [dbo].[OrderCombo] AS [OrderCombo]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [OrderProduct].[OrderID] AS [OrderID], 
-    [OrderProduct].[ProductID] AS [ProductID], 
-    [OrderProduct].[Count] AS [Count]
-    FROM [dbo].[OrderProduct] AS [OrderProduct]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ProductFoodStuff" EntityType="Self.ProductFoodStuff" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ProductFoodStuff].[ProductID] AS [ProductID], 
-    [ProductFoodStuff].[FoodStaffID] AS [FoodStaffID], 
-    [ProductFoodStuff].[Count] AS [Count]
-    FROM [dbo].[ProductFoodStuff] AS [ProductFoodStuff]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_ComboProduct_Combo" Association="Self.FK_ComboProduct_Combo">
             <End Role="Combo" EntitySet="Combo" />
             <End Role="ComboProduct" EntitySet="ComboProduct" />
@@ -420,7 +385,8 @@
             <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CafeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -435,6 +401,17 @@
           <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ComboProduct" Relationship="Self.FK_ComboProduct_Combo" FromRole="Combo" ToRole="ComboProduct" />
           <NavigationProperty Name="OrderCombo" Relationship="Self.FK_OrderCombo_Combo" FromRole="Combo" ToRole="OrderCombo" />
+        </EntityType>
+        <EntityType Name="ComboProduct">
+          <Key>
+            <PropertyRef Name="ComboProductID" />
+          </Key>
+          <Property Name="ComboID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ComboProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Combo" Relationship="Self.FK_ComboProduct_Combo" FromRole="ComboProduct" ToRole="Combo" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ComboProduct_Product" FromRole="ComboProduct" ToRole="Product" />
         </EntityType>
         <EntityType Name="Coupon">
           <Key>
@@ -475,6 +452,28 @@
           <NavigationProperty Name="OrderCombo" Relationship="Self.FK_OrderCombo_Order" FromRole="Order" ToRole="OrderCombo" />
           <NavigationProperty Name="OrderProduct" Relationship="Self.FK_OrderProduct_Order" FromRole="Order" ToRole="OrderProduct" />
         </EntityType>
+        <EntityType Name="OrderCombo">
+          <Key>
+            <PropertyRef Name="OrderComboID" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ComboID" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OrderComboID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Combo" Relationship="Self.FK_OrderCombo_Combo" FromRole="OrderCombo" ToRole="Combo" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderCombo_Order" FromRole="OrderCombo" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="OrderProductID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="OrderProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_OrderProduct_Order" FromRole="OrderProduct" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_OrderProduct_Product" FromRole="OrderProduct" ToRole="Product" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductID" />
@@ -489,6 +488,17 @@
           <NavigationProperty Name="OrderProduct" Relationship="Self.FK_OrderProduct_Product" FromRole="Product" ToRole="OrderProduct" />
           <NavigationProperty Name="ProductType" Relationship="Self.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
           <NavigationProperty Name="ProductFoodStuff" Relationship="Self.FK_ProductFoodStuff_Product" FromRole="Product" ToRole="ProductFoodStuff" />
+        </EntityType>
+        <EntityType Name="ProductFoodStuff">
+          <Key>
+            <PropertyRef Name="ProductFoodStaffID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="FoodStaffID" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ProductFoodStaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="FoodStaff" Relationship="Self.FK_ProductFoodStuff_FoodStaff" FromRole="ProductFoodStuff" ToRole="FoodStaff" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_ProductFoodStuff_Product" FromRole="ProductFoodStuff" ToRole="Product" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -548,53 +558,6 @@
           <Property Name="CardSale" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
         </EntityType>
-        <EntityType Name="ComboProduct">
-          <Key>
-            <PropertyRef Name="ComboID" />
-            <PropertyRef Name="ProductID" />
-          </Key>
-          <Property Name="ComboID" Type="Int32" Nullable="false" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Combo" Relationship="Self.FK_ComboProduct_Combo" FromRole="ComboProduct" ToRole="Combo" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ComboProduct_Product" FromRole="ComboProduct" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="OrderCombo">
-          <Key>
-            <PropertyRef Name="OrderId" />
-            <PropertyRef Name="ComboID" />
-            <PropertyRef Name="Count" />
-          </Key>
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
-          <Property Name="ComboID" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <NavigationProperty Name="Combo" Relationship="Self.FK_OrderCombo_Combo" FromRole="OrderCombo" ToRole="Combo" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_OrderCombo_Order" FromRole="OrderCombo" ToRole="Order" />
-        </EntityType>
-        <EntityType Name="OrderProduct">
-          <Key>
-            <PropertyRef Name="OrderID" />
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="Count" />
-          </Key>
-          <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_OrderProduct_Order" FromRole="OrderProduct" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_OrderProduct_Product" FromRole="OrderProduct" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="ProductFoodStuff">
-          <Key>
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="FoodStaffID" />
-            <PropertyRef Name="Count" />
-          </Key>
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="FoodStaffID" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <NavigationProperty Name="FoodStaff" Relationship="Self.FK_ProductFoodStuff_FoodStaff" FromRole="ProductFoodStuff" ToRole="FoodStaff" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_ProductFoodStuff_Product" FromRole="ProductFoodStuff" ToRole="Product" />
-        </EntityType>
         <Association Name="FK_ComboProduct_Combo">
           <End Role="Combo" Type="Self.Combo" Multiplicity="1" />
           <End Role="ComboProduct" Type="Self.ComboProduct" Multiplicity="*" />
@@ -616,6 +579,18 @@
             </Principal>
             <Dependent Role="OrderCombo">
               <PropertyRef Name="ComboID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComboProduct_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ComboProduct" Type="Self.ComboProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ComboProduct">
+              <PropertyRef Name="ProductID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -703,18 +678,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ComboProduct_Product">
-          <End Role="Product" Type="Self.Product" Multiplicity="1" />
-          <End Role="ComboProduct" Type="Self.ComboProduct" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="ComboProduct">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_OrderProduct_Product">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="OrderProduct" Type="Self.OrderProduct" Multiplicity="*" />
@@ -765,19 +728,19 @@
         </Association>
         <EntityContainer Name="CafeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Combo" EntityType="Self.Combo" />
+          <EntitySet Name="ComboProduct" EntityType="Self.ComboProduct" />
           <EntitySet Name="Coupon" EntityType="Self.Coupon" />
           <EntitySet Name="FoodStaff" EntityType="Self.FoodStaff" />
           <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="OrderCombo" EntityType="Self.OrderCombo" />
+          <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" />
           <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="ProductFoodStuff" EntityType="Self.ProductFoodStuff" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" />
           <EntitySet Name="Staff" EntityType="Self.Staff" />
           <EntitySet Name="StaffRole" EntityType="Self.StaffRole" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="ComboProduct" EntityType="Self.ComboProduct" />
-          <EntitySet Name="OrderCombo" EntityType="Self.OrderCombo" />
-          <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" />
-          <EntitySet Name="ProductFoodStuff" EntityType="Self.ProductFoodStuff" />
           <AssociationSet Name="FK_ComboProduct_Combo" Association="Self.FK_ComboProduct_Combo">
             <End Role="Combo" EntitySet="Combo" />
             <End Role="ComboProduct" EntitySet="ComboProduct" />
@@ -785,6 +748,10 @@
           <AssociationSet Name="FK_OrderCombo_Combo" Association="Self.FK_OrderCombo_Combo">
             <End Role="Combo" EntitySet="Combo" />
             <End Role="OrderCombo" EntitySet="OrderCombo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComboProduct_Product" Association="Self.FK_ComboProduct_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ComboProduct" EntitySet="ComboProduct" />
           </AssociationSet>
           <AssociationSet Name="FK_Coupon_ProductType" Association="Self.FK_Coupon_ProductType">
             <End Role="ProductType" EntitySet="ProductType" />
@@ -813,10 +780,6 @@
           <AssociationSet Name="FK_OrderProduct_Order" Association="Self.FK_OrderProduct_Order">
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderProduct" EntitySet="OrderProduct" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ComboProduct_Product" Association="Self.FK_ComboProduct_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="ComboProduct" EntitySet="ComboProduct" />
           </AssociationSet>
           <AssociationSet Name="FK_OrderProduct_Product" Association="Self.FK_OrderProduct_Product">
             <End Role="Product" EntitySet="Product" />
@@ -849,6 +812,16 @@
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComboProduct">
+            <EntityTypeMapping TypeName="CafeModel.ComboProduct">
+              <MappingFragment StoreEntitySet="ComboProduct">
+                <ScalarProperty Name="ComboID" ColumnName="ComboID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="ComboProductID" ColumnName="ComboProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -886,6 +859,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="OrderCombo">
+            <EntityTypeMapping TypeName="CafeModel.OrderCombo">
+              <MappingFragment StoreEntitySet="OrderCombo">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ComboID" ColumnName="ComboID" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="OrderComboID" ColumnName="OrderComboID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderProduct">
+            <EntityTypeMapping TypeName="CafeModel.OrderProduct">
+              <MappingFragment StoreEntitySet="OrderProduct">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="OrderProductID" ColumnName="OrderProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="CafeModel.Product">
               <MappingFragment StoreEntitySet="Product">
@@ -895,6 +888,16 @@
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductFoodStuff">
+            <EntityTypeMapping TypeName="CafeModel.ProductFoodStuff">
+              <MappingFragment StoreEntitySet="ProductFoodStuff">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="FoodStaffID" ColumnName="FoodStaffID" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="ProductFoodStaffID" ColumnName="ProductFoodStaffID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -952,42 +955,6 @@
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="UserCardID" ColumnName="UserCardID" />
                 <ScalarProperty Name="CardSale" ColumnName="CardSale" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ComboProduct">
-            <EntityTypeMapping TypeName="CafeModel.ComboProduct">
-              <MappingFragment StoreEntitySet="ComboProduct">
-                <ScalarProperty Name="ComboID" ColumnName="ComboID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderCombo">
-            <EntityTypeMapping TypeName="CafeModel.OrderCombo">
-              <MappingFragment StoreEntitySet="OrderCombo">
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="ComboID" ColumnName="ComboID" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderProduct">
-            <EntityTypeMapping TypeName="CafeModel.OrderProduct">
-              <MappingFragment StoreEntitySet="OrderProduct">
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductFoodStuff">
-            <EntityTypeMapping TypeName="CafeModel.ProductFoodStuff">
-              <MappingFragment StoreEntitySet="ProductFoodStuff">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="FoodStaffID" ColumnName="FoodStaffID" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

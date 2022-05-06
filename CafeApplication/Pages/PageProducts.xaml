@@ -40,14 +40,14 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition Width="350"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding ValidImage}" Grid.Column="0"/>
+                        <Image Source="{Binding ValidImage}" Grid.Column="0" Margin="10" Width="100" Height="100" Stretch="UniformToFill" />
 
-                        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Left">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding ProductType}"/>
                                 <TextBlock Text=" | "/>
@@ -55,11 +55,11 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Состав: "/>
-                                <TextBlock Text="{Binding FoodStaffList}"/>
+                                <TextBlock Name="tbFoodStaffList" Text="{Binding FoodStaffList}"/>
                             </StackPanel>
                         </StackPanel>
 
-                        <StackPanel Grid.Column="2" Orientation="Horizontal">
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Left">
                             <TextBlock Text="Стоимость: "/>
                             <TextBlock Text="{Binding Cost}"/>
                             <TextBlock Text=" руб."/>

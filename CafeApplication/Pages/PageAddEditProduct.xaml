@@ -27,6 +27,16 @@
         
         <TextBox Name="tbTitle" Text="{Binding Title}" Grid.Row="1" Grid.Column="1" />
         <ComboBox Name="cbTypes" SelectedItem="{Binding ProductType}" Grid.Row="2" Grid.Column="1"/>
+        <ListView Name="lbFoodStaff" SelectionMode="Multiple" Grid.Row="3" Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock Name="tbTitle" Text="{Binding Title}"/>
+                        <TextBox Name="tbCount" Text="{Binding Count}" Width="35" HorizontalAlignment="Right"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <TextBox Name="tbCost" Text="{Binding Cost}" Grid.Row="1" Grid.Column="3"/>
         <TextBox Name="tbDesc" Text="{Binding Description}" Grid.Row="3" Grid.Column="3" Height="80" TextWrapping="Wrap"/>
         <Image Name="imgLogo" Source="{Binding ValidImage}" Grid.Row="2" Grid.Column="3" Width="70" Height="70" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown"/>

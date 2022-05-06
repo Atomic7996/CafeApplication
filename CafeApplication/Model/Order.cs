@@ -42,11 +42,11 @@ namespace CafeApplication
             }
         }
 
-        public decimal SummaryCost
+        public decimal? SummaryCost
         {
             get
             {
-                decimal price = 0;
+                decimal? price = 0;
                 foreach (var item in OrderProduct)
                 {
                     price += item.Product.Cost * item.Count;

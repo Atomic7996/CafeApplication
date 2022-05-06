@@ -26,18 +26,18 @@ namespace CafeApplication
         }
     
         public virtual DbSet<Combo> Combo { get; set; }
+        public virtual DbSet<ComboProduct> ComboProduct { get; set; }
         public virtual DbSet<Coupon> Coupon { get; set; }
         public virtual DbSet<FoodStaff> FoodStaff { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderCombo> OrderCombo { get; set; }
+        public virtual DbSet<OrderProduct> OrderProduct { get; set; }
         public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<ProductFoodStuff> ProductFoodStuff { get; set; }
         public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<Staff> Staff { get; set; }
         public virtual DbSet<StaffRole> StaffRole { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<ComboProduct> ComboProduct { get; set; }
-        public virtual DbSet<OrderCombo> OrderCombo { get; set; }
-        public virtual DbSet<OrderProduct> OrderProduct { get; set; }
-        public virtual DbSet<ProductFoodStuff> ProductFoodStuff { get; set; }
     }
 }

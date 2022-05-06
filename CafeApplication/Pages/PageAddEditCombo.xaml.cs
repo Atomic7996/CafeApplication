@@ -21,6 +21,7 @@ namespace CafeApplication.Pages
     public partial class PageAddEditCombo : Page
     {
         Combo combo = new Combo();
+        ComboProduct comboProduct = new ComboProduct();
 
         public PageAddEditCombo(Combo selectedCombo)
         {
@@ -37,10 +38,38 @@ namespace CafeApplication.Pages
             }
 
             DataContext = combo;
+
+            lbProducts.ItemsSource = GetProducts();
         }
 
-        private void imgLogo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private string[] GetProducts()
         {
+            List<Product> prod = DB.db.Product.ToList();
+            string[] products = new string[prod.Count];
+            for (int i = 0; i < prod.Count; i++)
+            {
+                products[i] = prod[i].Title;
+            }
+            return products;
+        }
+
+        private void AddProductFoodStaff(string[] foodStaff)
+        {
+            int[] IDs = new int[lbProducts.SelectedItems.Count];
+            int i = 0;
+            foreach (var item in lbProducts.SelectedItems)
+            {
+                IDs[i] = DB.db.Product.Where(x => x.Title == item.ToString()).FirstOrDefault().ProductID;
+                i++;
+            }
+
+            foreach (var id in IDs)
+            {
+                comboProduct.ProductID = id;
+                comboProduct.ComboID = combo.ComboID;
+                DB.db.ComboProduct.Add(comboProduct);
+                DB.db.SaveChanges();
+            }
 
         }
 
@@ -59,8 +88,23 @@ namespace CafeApplication.Pages
                 return;
             }
 
+            foreach (var item in DB.db.ComboProduct.Where(x => x.ComboID == combo.ComboID))
+            {
+                DB.db.ComboProduct.Remove(item);
+            }
+
+            string[] prods = new string[lbProducts.Items.Count];
+            int i = 0;
+            foreach (var item in lbProducts.Items)
+            {
+                prods[i] = item.ToString();
+                i++;
+            }
+
             if (combo.ComboID == 0)
                 DB.db.Combo.Add(combo);
+
+            AddProductFoodStaff(prods);
 
             try
             {
@@ -90,6 +134,11 @@ namespace CafeApplication.Pages
                     MessageBox.Show(ex.ToString());
                 }
             }
+        }
+
+        private void imgLogo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

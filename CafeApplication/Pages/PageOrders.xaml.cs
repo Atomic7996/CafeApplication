@@ -119,12 +119,12 @@ namespace CafeApplication.Pages
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.mainFrame.Navigate(new PageAddEditOrder(new Order()));
         }
 
         private void lvOrders_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            Manager.mainFrame.Navigate(new PageAddEditOrder(lvOrders.SelectedItem as Order));
         }
     }
 }

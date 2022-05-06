@@ -17,6 +17,7 @@ namespace CafeApplication
         public int ComboID { get; set; }
         public int ProductID { get; set; }
         public Nullable<decimal> Count { get; set; }
+        public int ComboProductID { get; set; }
     
         public virtual Combo Combo { get; set; }
         public virtual Product Product { get; set; }

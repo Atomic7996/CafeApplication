@@ -93,6 +93,7 @@
       <DependentUpon>ModelCafe.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Combo.cs" />
+    <Compile Include="Model\Coupon.cs" />
     <Compile Include="Model\DB.cs" />
     <Compile Include="Model\FoodStaff.cs" />
     <Compile Include="Model\Order.cs" />
@@ -114,6 +115,9 @@
     </Compile>
     <Compile Include="Pages\PageAddEditFoodStaff.xaml.cs">
       <DependentUpon>PageAddEditFoodStaff.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageAddEditOrder.xaml.cs">
+      <DependentUpon>PageAddEditOrder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageAddEditProduct.xaml.cs">
       <DependentUpon>PageAddEditProduct.xaml</DependentUpon>
@@ -160,7 +164,7 @@
     <Compile Include="Windows\WindowAutorization.xaml.cs">
       <DependentUpon>WindowAutorization.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -168,7 +172,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -177,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PageAddEditFoodStaff.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageAddEditOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -263,6 +271,9 @@
     <Resource Include="Resources\foodstaff.png" />
     <Resource Include="Resources\product.png" />
     <Resource Include="Resources\staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cafe.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ModelCafe.Context.tt">

@@ -1,4 +1,4 @@
-﻿<Page x:Class="CafeApplication.Pages.PageAddEditCombo"
+﻿<Page x:Class="CafeApplication.Pages.PageAddEditOrder"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CafeApplication.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1920"
-      Title="PageAddEditCombo">
+      Title="PageAddEditOrder">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -23,19 +23,15 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Редактор набора" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
-
-        <TextBox Name="tbTitle" Text="{Binding Title}" Grid.Row="1" Grid.Column="1" />
-        <ListBox Name="lbProducts" SelectionMode="Multiple" Grid.Row="2" Grid.Column="1"/>
-        <TextBox Name="tbCost" Text="{Binding Cost}" Grid.Row="1" Grid.Column="3"/>
-        <TextBox Name="tbDesc" Text="{Binding Description}" Grid.Row="3" Grid.Column="3" Height="80" TextWrapping="Wrap"/>
-        <Image Name="imgLogo" Source="{Binding ValidImage}" Grid.Row="2" Grid.Column="3" Width="70" Height="70" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown"/>
-
-        <TextBlock Text="Наименование" Grid.Row="1" Grid.Column="0"/>
-        <TextBlock Text="Состав" Grid.Row="2" Grid.Column="0"/>
-        <TextBlock Text="Стоимость" Grid.Row="1" Grid.Column="2"/>
-        <TextBlock Text="Описание" Grid.Row="3" Grid.Column="2"/>
-        <TextBlock Text="Изображение" Grid.Row="2" Grid.Column="2"/>
+        <TextBlock Text="Редактор заказа" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
+        
+        <ListBox Name="lbProducts" SelectionMode="Multiple" Grid.Row="3" Grid.Column="1"/>
+        <ListBox Name="lbCombos" SelectionMode="Multiple" Grid.Row="2" Grid.Column="1"/>
+        <TextBox Name="tbCoupon" Text="{Binding Coupon}" Grid.Row="3" Grid.Column="3" Height="80" TextWrapping="Wrap"/>
+        
+        <TextBlock Text="Товары:" Grid.Row="3" Grid.Column="0"/>
+        <TextBlock Text="Наборы:" Grid.Row="2" Grid.Column="0"/>
+        <TextBlock Text="Купон" Grid.Row="3" Grid.Column="2"/>
 
         <StackPanel Grid.Row="5" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="btnSave" Content="Сохранить" Click="btnSave_Click"/>
