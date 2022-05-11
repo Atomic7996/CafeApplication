@@ -10,11 +10,11 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -25,13 +25,16 @@
 
         <TextBlock Text="Редактор заказа" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
         
-        <ListBox Name="lbProducts" SelectionMode="Multiple" Grid.Row="3" Grid.Column="1"/>
-        <ListBox Name="lbCombos" SelectionMode="Multiple" Grid.Row="2" Grid.Column="1"/>
-        <TextBox Name="tbCoupon" Text="{Binding Coupon}" Grid.Row="3" Grid.Column="3" Height="80" TextWrapping="Wrap"/>
+        <ListBox Name="lbProducts" SelectionMode="Multiple" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" HorizontalContentAlignment="Center"/>
+        <ListBox Name="lbCombos" SelectionMode="Multiple" Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" HorizontalContentAlignment="Center"/>
         
-        <TextBlock Text="Товары:" Grid.Row="3" Grid.Column="0"/>
-        <TextBlock Text="Наборы:" Grid.Row="2" Grid.Column="0"/>
-        <TextBlock Text="Купон" Grid.Row="3" Grid.Column="2"/>
+        <TextBlock Text="Товары:" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2"/>
+        <TextBlock Text="Наборы:" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2"/>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Купон" Margin="0, 0, 50, 0"/>
+            <TextBox Name="tbCoupon" Text="{Binding Coupon}" Grid.Row="3" Grid.Column="3" Margin="0, 0, 0, 0" TextWrapping="Wrap"/>
+        </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="btnSave" Content="Сохранить" Click="btnSave_Click"/>

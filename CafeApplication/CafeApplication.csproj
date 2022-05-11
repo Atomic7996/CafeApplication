@@ -165,6 +165,9 @@
     <Compile Include="Windows\WindowAutorization.xaml.cs">
       <DependentUpon>WindowAutorization.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\WindowImages.xaml.cs">
+      <DependentUpon>WindowImages.xaml</DependentUpon>
+    </Compile>
     <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -225,6 +228,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\WindowImages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Manager.cs" />
@@ -275,6 +282,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\cafe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FoodStaff\milk.png" />
+    <Resource Include="Images\FoodStaff\potato.png" />
+    <Resource Include="Images\Products\smashedpotato.png" />
+    <Resource Include="Images\Combos\combo1.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ModelCafe.Context.tt">

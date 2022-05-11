@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CafeApplication.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -138,7 +139,15 @@ namespace CafeApplication.Pages
 
         private void imgLogo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            WindowImages window = new WindowImages("Combo");
+            window.ShowDialog();
 
+            if (window.DialogResult == true)
+            {
+                combo.Image = window.imageUrl;
+                DataContext = null;
+                DataContext = combo;
+            }
         }
     }
 }

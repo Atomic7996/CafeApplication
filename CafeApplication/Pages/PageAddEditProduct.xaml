@@ -10,11 +10,11 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -38,8 +38,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <TextBox Name="tbCost" Text="{Binding Cost}" Grid.Row="1" Grid.Column="3"/>
-        <TextBox Name="tbDesc" Text="{Binding Description}" Grid.Row="3" Grid.Column="3" Height="80" TextWrapping="Wrap"/>
-        <Image Name="imgLogo" Source="{Binding ValidImage}" Grid.Row="2" Grid.Column="3" Width="70" Height="70" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown"/>
+        <TextBox Name="tbDesc" Text="{Binding Description}" Grid.Row="3" Grid.Column="3" Height="auto" Width="auto" Margin="15" TextWrapping="Wrap"/>
+        <Image Name="imgLogo" Source="{Binding ValidImage}" Style="{DynamicResource imgEffect}" Grid.Row="2" Grid.Column="3" Width="200" Height="200" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown" Cursor="Hand"/>
         
         <TextBlock Text="Наименование" Grid.Row="1" Grid.Column="0"/>
         <TextBlock Text="Тип продукта" Grid.Row="2" Grid.Column="0"/>

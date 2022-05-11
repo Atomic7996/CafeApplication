@@ -17,8 +17,8 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -46,15 +46,15 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding ValidImage}" Grid.Column="0"/>
+                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Margin="10" Width="120" Height="120" Stretch="UniformToFill" Grid.Column="0"/>
 
-                        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Left">
                             <TextBlock Text="{Binding LastName}" HorizontalAlignment="Left"/>
                             <TextBlock Text="{Binding FirstName}" HorizontalAlignment="Left"/>
                             <TextBlock Text="{Binding Patronymic}" HorizontalAlignment="Left"/>
                             </StackPanel>
 
-                        <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                        <StackPanel Grid.Column="2" HorizontalAlignment="Left">
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                 <TextBlock Text="Логин: "/>

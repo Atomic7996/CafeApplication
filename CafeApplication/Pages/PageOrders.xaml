@@ -56,7 +56,7 @@
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Состав: "/>
-                                <TextBlock Text="{Binding ValidList}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding ValidList}" TextWrapping="Wrap" Width="650" />
                             </StackPanel>
                         </StackPanel>
 

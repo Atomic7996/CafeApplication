@@ -86,5 +86,34 @@
         <Style TargetType="ListBox">
             <Setter Property="Margin" Value="10" />
         </Style>
+
+        <Style TargetType="{x:Type Image}" x:Key="imgEffect">
+            <Setter Property="Cursor" Value="Hand" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect
+                                             BlurRadius="5"
+                                             Color="Black"
+                                             Direction="315"
+                                             Opacity="100"
+                                             RenderingBias="Performance"
+                                             ShadowDepth="5"/>
+                        </Setter.Value>
+                    </Setter>
+                    
+                    <!--<Setter Property="BitmapEffect">
+                        <Setter.Value>
+                            <OuterGlowBitmapEffect GlowColor="Red"
+                                                   GlowSize="15"
+                                                   
+                                                   />
+                        </Setter.Value>
+                    </Setter>-->
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CafeApplication.Windows;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace CafeApplication.Pages
     {
         Product product = new Product();
         ProductFoodStuff productFoodStuff = new ProductFoodStuff();
-        TextBox tb = new TextBox();
+        //TextBox tb = new TextBox();
 
         public PageAddEditProduct(Product selectedProduct)
         {
@@ -49,7 +50,7 @@ namespace CafeApplication.Pages
             lbFoodStaff.SelectedValuePath = "Title";
 
             //tb = lbFoodStaff.ItemTemplate.FindName("tbCount", lbFoodStaff) as TextBox;
-            tb = lbFoodStaff.SelectedItem.ToString();
+            //tb = lbFoodStaff.SelectedItem.ToString();
         }
 
         private void AddProductFoodStaff()
@@ -74,10 +75,10 @@ namespace CafeApplication.Pages
             {
                 productFoodStuff.FoodStaffID = id;
                 productFoodStuff.ProductID = product.ProductID;
-                productFoodStuff.Count = count[j];
+                //productFoodStuff.Count = count[j];
                 j++;
                 DB.db.ProductFoodStuff.Add(productFoodStuff);
-                //DB.db.SaveChanges();
+                DB.db.SaveChanges();
             }
         }
 
@@ -138,7 +139,15 @@ namespace CafeApplication.Pages
 
         private void imgLogo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            WindowImages window = new WindowImages("Product");
+            window.ShowDialog();
 
+            if (window.DialogResult == true)
+            {
+                product.Image = window.imageUrl;
+                DataContext = null;
+                DataContext = product;
+            }
         }
     }
 }

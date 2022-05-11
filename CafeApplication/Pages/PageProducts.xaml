@@ -40,12 +40,12 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="350"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding ValidImage}" Grid.Column="0" Margin="10" Width="100" Height="100" Stretch="UniformToFill" />
+                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Grid.Column="0" Margin="10" Width="120" Height="120" Stretch="UniformToFill" Cursor="Hand"/>
 
                         <StackPanel Grid.Column="1" HorizontalAlignment="Left">
                             <StackPanel Orientation="Horizontal">
@@ -55,7 +55,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Состав: "/>
-                                <TextBlock Name="tbFoodStaffList" Text="{Binding FoodStaffList}"/>
+                                <TextBlock Name="tbFoodStaffList" Text="{Binding FoodStaffList}" Width="650" TextWrapping="Wrap"/>
                             </StackPanel>
                         </StackPanel>
 
