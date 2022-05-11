@@ -28,7 +28,6 @@ namespace CafeApplication
 
             Manager.mainFrame = windowFrame;
             windowFrame.Navigate(new PageMenu(roleID));
-            //new WindowAutorization().Show();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -42,6 +41,18 @@ namespace CafeApplication
             if (Manager.mainFrame.CanGoBack)
             {
                 Manager.mainFrame.GoBack();
+            }
+        }
+
+        private void windowFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            if (Manager.mainFrame.CanGoBack)
+            {
+                btnBack.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnBack.Visibility = Visibility.Hidden;
             }
         }
     }

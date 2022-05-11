@@ -30,10 +30,10 @@
         <ListView Name="lbFoodStaff" SelectionMode="Multiple" Grid.Row="3" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <StackPanel>
                         <TextBlock Name="tbTitle" Text="{Binding Title}"/>
-                        <TextBox Name="tbCount" Text="{Binding Count}" Width="35" HorizontalAlignment="Right"/>
-                    </Grid>
+                        <TextBox x:Name="tbCount" Text="" Width="35" HorizontalAlignment="Right"/>
+                    </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

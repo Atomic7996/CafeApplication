@@ -98,6 +98,7 @@
     <Compile Include="Model\FoodStaff.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\ProductFoodStuff.cs" />
     <Compile Include="Model\ProductType.cs" />
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Model\StaffRole.cs" />

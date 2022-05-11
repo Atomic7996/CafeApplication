@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +23,13 @@ namespace CafeApplication.Pages
     {
         Product product = new Product();
         ProductFoodStuff productFoodStuff = new ProductFoodStuff();
+        TextBox tb = new TextBox();
 
         public PageAddEditProduct(Product selectedProduct)
         {
             InitializeComponent();
+
+            DB.db.ProductFoodStuff.Load();
 
             if (selectedProduct != null)
             {
@@ -43,13 +47,13 @@ namespace CafeApplication.Pages
 
             lbFoodStaff.ItemsSource = DB.db.FoodStaff.ToList();
             lbFoodStaff.SelectedValuePath = "Title";
+
+            //tb = lbFoodStaff.ItemTemplate.FindName("tbCount", lbFoodStaff) as TextBox;
+            tb = lbFoodStaff.SelectedItem.ToString();
         }
 
         private void AddProductFoodStaff()
         {
-            //var innerListView = lvAlbums.ItemTemplate.FindName("lvTracks", lvAlbums) as ListView;
-            //var textBlock = lbFoodStaff.ItemTemplate.FindName("tbTitle", lbFoodStaff) as TextBlock;
-
             int[] IDs = new int[lbFoodStaff.SelectedItems.Count];
             int i = 0;
             int j = 0;
@@ -63,8 +67,7 @@ namespace CafeApplication.Pages
             {
                 string title = foodStaff[i];
                 IDs[i] = DB.db.FoodStaff.Where(x => x.Title.ToLower() == title.ToLower()).FirstOrDefault().FoodStuffID;
-                //count.Add();!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                i++;
+                //count.Add(decimal.Parse(tb.Text));
             }
             
             foreach (var id in IDs)
@@ -74,7 +77,7 @@ namespace CafeApplication.Pages
                 productFoodStuff.Count = count[j];
                 j++;
                 DB.db.ProductFoodStuff.Add(productFoodStuff);
-                DB.db.SaveChanges();
+                //DB.db.SaveChanges();
             }
         }
 
