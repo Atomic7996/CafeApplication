@@ -41,7 +41,6 @@ namespace CafeApplication.Pages
                 LastName = "Все сотрудники"
             });
 
-            cbStaff.DisplayMemberPath = "LastName";
             cbStaff.SelectedValuePath = "StaffID";
 
             //cbSort.ItemsSource = sort;
@@ -49,6 +48,14 @@ namespace CafeApplication.Pages
 
             //cbSort.SelectedIndex = 0;
             cbStaff.SelectedIndex = 0;
+
+            if (Properties.Settings.Default.globalRole == "admin")
+            {
+                lvOrders.ToolTip = null;
+                lvOrders.MouseDoubleClick -= lvOrders_MouseDoubleClick;
+                btnAdd.Visibility = Visibility.Hidden;
+            }
+                
         }
 
         void UpdateLvItems()
@@ -123,8 +130,8 @@ namespace CafeApplication.Pages
         }
 
         private void lvOrders_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            Manager.mainFrame.Navigate(new PageAddEditOrder(lvOrders.SelectedItem as Order));
+        {            
+            Manager.mainFrame.Navigate(new PageAddEditOrder(lvOrders.SelectedItem as Order));            
         }
     }
 }

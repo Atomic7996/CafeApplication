@@ -37,6 +37,10 @@ namespace CafeApplication
                 {
                     return product;
                 }
+                else if (string.IsNullOrEmpty(product))
+                {
+                    return combo;
+                }
                 else
                     return combo + ", " + product;
             }

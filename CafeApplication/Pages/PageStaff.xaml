@@ -17,8 +17,8 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -31,8 +31,8 @@
             <TextBlock Text=" из "/>
             <TextBlock Name="tbRecordsCountAll"/>
         </StackPanel>
-        
-        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" TextChanged="tbFinder_TextChanged" ToolTip="Поиск"/>
+
+        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите фамилию для поиска" TextChanged="tbFinder_TextChanged"/>
         <ComboBox Name="cbFilter"  Grid.Row="1" Grid.Column="1" SelectionChanged="cbFilter_SelectionChanged"/>
         <ComboBox Name="cbSort"  Grid.Row="1" Grid.Column="2" SelectionChanged="cbSort_SelectionChanged"/>
 
@@ -46,9 +46,9 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Margin="10" Width="120" Height="120" Stretch="UniformToFill" Grid.Column="0"/>
+                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Margin="10" Width="200" Height="200" Stretch="UniformToFill" Grid.Column="0"/>
 
-                        <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
                             <TextBlock Text="{Binding LastName}" HorizontalAlignment="Left"/>
                             <TextBlock Text="{Binding FirstName}" HorizontalAlignment="Left"/>
                             <TextBlock Text="{Binding Patronymic}" HorizontalAlignment="Left"/>

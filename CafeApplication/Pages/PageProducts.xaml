@@ -25,7 +25,7 @@
 
         <TextBlock Text="Товары" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
 
-        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" TextChanged="tbFinder_TextChanged"/>
+        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите название для поиска" TextChanged="tbFinder_TextChanged"/>
         <ComboBox Name="cbFilter"  Grid.Row="1" Grid.Column="1" SelectionChanged="cbFilter_SelectionChanged"/>
         <ComboBox Name="cbSort"  Grid.Row="1" Grid.Column="2" SelectionChanged="cbSort_SelectionChanged"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -45,9 +45,9 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Grid.Column="0" Margin="10" Width="120" Height="120" Stretch="UniformToFill" Cursor="Hand"/>
+                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Grid.Column="0" Margin="10" Width="200" Height="200" Stretch="UniformToFill" Cursor="Hand"/>
 
-                        <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding ProductType}"/>
                                 <TextBlock Text=" | "/>
@@ -59,7 +59,7 @@
                             </StackPanel>
                         </StackPanel>
 
-                        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Left">
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Left" >
                             <TextBlock Text="Стоимость: "/>
                             <TextBlock Text="{Binding Cost}"/>
                             <TextBlock Text=" руб."/>

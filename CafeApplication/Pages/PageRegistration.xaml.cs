@@ -43,6 +43,7 @@ namespace CafeApplication.Pages
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            Staff checkStaff = DB.db.Staff.Where(s => s.Login == tbLogin.Text).FirstOrDefault();
             StringBuilder errors = new StringBuilder();
 
             if (string.IsNullOrWhiteSpace(staff.LastName))
@@ -55,6 +56,8 @@ namespace CafeApplication.Pages
                 errors.AppendLine("Укажите логин");
             if (string.IsNullOrWhiteSpace(staff.Password))
                 errors.AppendLine("Придумайте пароль");
+            if (checkStaff != null)
+                errors.AppendLine("Такой логин уже занят");
 
             if (errors.Length > 0)
             {

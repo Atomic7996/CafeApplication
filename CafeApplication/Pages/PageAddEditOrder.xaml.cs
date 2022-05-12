@@ -23,6 +23,7 @@ namespace CafeApplication.Pages
         Order order = new Order();
         OrderCombo orderCombo = new OrderCombo();
         OrderProduct orderProduct = new OrderProduct();
+        Coupon coupon;
 
         public PageAddEditOrder(Order selectedOrder)
         {
@@ -42,6 +43,8 @@ namespace CafeApplication.Pages
 
             lbProducts.ItemsSource = GetProductsCombos("prod");
             lbCombos.ItemsSource = GetProductsCombos("combo");
+
+            
         }
 
         private string[] GetProductsCombos(string type)
@@ -83,6 +86,7 @@ namespace CafeApplication.Pages
             {
                 orderProduct.ProductID = id;
                 orderProduct.OrderID = order.OrderID;
+                orderProduct.Count = 1;
                 DB.db.OrderProduct.Add(orderProduct);
                 DB.db.SaveChanges();
             }
@@ -99,10 +103,13 @@ namespace CafeApplication.Pages
                 i++;
             }
 
+            
+
             foreach (var id in IDs)
             {
                 orderCombo.ComboID = id;
-                orderCombo.OrderId = order.OrderID;
+                orderCombo.OrderID = order.OrderID;
+                orderCombo.Count = 1;
                 DB.db.OrderCombo.Add(orderCombo);
                 DB.db.SaveChanges();
             }
@@ -121,10 +128,15 @@ namespace CafeApplication.Pages
                 MessageBox.Show(errors.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
-
+                        
             foreach (var item in DB.db.OrderProduct.Where(x => x.OrderID == order.OrderID))
             {
                 DB.db.OrderProduct.Remove(item);
+            }
+
+            foreach (var item in DB.db.OrderCombo.Where(x => x.OrderID == order.OrderID))
+            {
+                DB.db.OrderCombo.Remove(item);
             }
 
             string[] prods = new string[lbProducts.Items.Count];
@@ -143,13 +155,25 @@ namespace CafeApplication.Pages
             {
                     coms[j] = item.ToString();
                     j++;                
-            }
+            }            
 
             if (order.OrderID == 0)
             {
                 order.OrderDateTime = DateTime.Now;
-                order.StaffID = 1;
+                order.StaffID = Properties.Settings.Default.staffID;
+                if (coupon != null)
+                {
+                    order.CouponID = coupon.CouponID;
+                }
+
                 DB.db.Order.Add(order);
+            }
+            else
+            {
+                if (coupon != null)
+                {
+                    order.CouponID = coupon.CouponID;
+                }
             }
 
             AddOrderProduct(prods);
@@ -157,6 +181,8 @@ namespace CafeApplication.Pages
 
             try
             {
+                
+                
                 DB.db.SaveChanges();
                 MessageBox.Show("Данные сохранены", "Уведомление");
                 Manager.mainFrame.GoBack();
@@ -169,7 +195,44 @@ namespace CafeApplication.Pages
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            if (MessageBox.Show("Вы точно хотите удалить запись?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    
+                    foreach (var item in DB.db.OrderProduct.Where(x => x.OrderID == order.OrderID))
+                        DB.db.OrderProduct.Remove(item);
 
+                    foreach (var item in DB.db.OrderCombo.Where(x => x.OrderID == order.OrderID))
+                        DB.db.OrderCombo.Remove(item);
+
+
+                    DB.db.Order.Remove(order);
+                        DB.db.SaveChanges();
+                        MessageBox.Show("Запись удалена", "Уведомление");
+                        Manager.mainFrame.GoBack();
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        private void tbCoupon_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbCoupon.Text))
+            {
+                coupon = DB.db.Coupon.Where(s => s.PromoCode == tbCoupon.Text).FirstOrDefault();
+
+                if (coupon == null)
+                {
+                    MessageBox.Show("Такого купона не существует");
+                    tbCoupon.Text = null;
+                    return;
+                }
+            }         
         }
     }
 }

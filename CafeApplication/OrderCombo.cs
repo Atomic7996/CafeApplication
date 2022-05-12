@@ -14,7 +14,7 @@ namespace CafeApplication
     
     public partial class OrderCombo
     {
-        public int OrderId { get; set; }
+        public int OrderID { get; set; }
         public int ComboID { get; set; }
         public Nullable<decimal> Count { get; set; }
         public int OrderComboID { get; set; }

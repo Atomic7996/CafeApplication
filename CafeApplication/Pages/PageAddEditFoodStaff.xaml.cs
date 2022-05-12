@@ -80,10 +80,19 @@ namespace CafeApplication.Pages
             {
                 try
                 {
-                    DB.db.FoodStaff.Remove(foodStaff);
-                    DB.db.SaveChanges();
-                    MessageBox.Show("Запись удалена", "Уведомление");
-                    Manager.mainFrame.GoBack();
+                    if ((DB.db.ProductFoodStuff.Where(x => x.FoodStaffID == foodStaff.FoodStuffID)) != null)
+                    {
+                        MessageBox.Show("Продукт используется в товарах, запись удалить невозможно", "Уведомление");
+                    }
+                    else
+                    {
+                        DB.db.FoodStaff.Remove(foodStaff);
+                        DB.db.SaveChanges();
+                        MessageBox.Show("Запись удалена", "Уведомление");
+                        Manager.mainFrame.GoBack();
+                    }
+
+                    
                 }
                 catch (Exception ex)
                 {

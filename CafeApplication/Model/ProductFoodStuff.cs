@@ -8,9 +8,5 @@ namespace CafeApplication
 {
     public partial class ProductFoodStuff
     {
-        public override string ToString()
-        {
-            return Count.ToString();
-        }
     }
 }

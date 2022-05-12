@@ -16,25 +16,13 @@ using System.Windows.Shapes;
 namespace CafeApplication.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PageMenu.xaml
+    /// Логика взаимодействия для PageMenuCashier.xaml
     /// </summary>
-    public partial class PageMenu : Page
+    public partial class PageMenuCashier : Page
     {
-        public PageMenu(int roleID)
+        public PageMenuCashier()
         {
             InitializeComponent();
-
-            switch (roleID)
-            {
-                case 2:
-                    btnStaff.Visibility = Visibility.Hidden;
-                    break;
-                case 1:
-                    btnCombo.Visibility = Visibility.Hidden;
-                    btnFoodStaff.Visibility = Visibility.Hidden;
-                    btnProducts.Visibility = Visibility.Hidden;
-                    break;
-            }
         }
 
         private void btnProducts_Click(object sender, RoutedEventArgs e)
@@ -57,9 +45,9 @@ namespace CafeApplication.Pages
             Manager.mainFrame.Navigate(new PageCombo());
         }
 
-        private void btnStaff_Click(object sender, RoutedEventArgs e)
+        private void btnAddOrder_Click(object sender, RoutedEventArgs e)
         {
-            Manager.mainFrame.Navigate(new PageStaff());
+            Manager.mainFrame.Navigate(new PageAddEditOrder(new Order()));
         }
     }
 }

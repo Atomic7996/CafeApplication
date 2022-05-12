@@ -14,43 +14,44 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.3*"/>
+            <ColumnDefinition Width="1.3*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Редактор товара" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
-        
-        <TextBox Name="tbTitle" Text="{Binding Title}" Grid.Row="1" Grid.Column="1" />
-        <ComboBox Name="cbTypes" SelectedItem="{Binding ProductType}" Grid.Row="2" Grid.Column="1"/>
-        <ListView Name="lbFoodStaff" SelectionMode="Multiple" Grid.Row="3" Grid.Column="1">
+
+        <TextBox Name="tbTitle" Text="{Binding Title}" Grid.Row="1" Grid.Column="1" Style="{StaticResource boxAddEdit}"/>
+        <ComboBox Name="cbTypes" SelectedItem="{Binding ProductType}" Grid.Row="2" Grid.Column="1" Margin="20, 0, 0, 0" HorizontalAlignment="Left"/>
+        <ListView Name="lbFoodStaff" SelectionMode="Multiple" Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock Name="tbTitle" Text="{Binding Title}"/>
-                        <TextBox x:Name="tbCount" Text="" Width="35" HorizontalAlignment="Right"/>
+                        <TextBox x:Name="tbCount" Text="{Binding d}" Width="35" HorizontalAlignment="Right" LostFocus="tbCount_LostFocus_1"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBox Name="tbCost" Text="{Binding Cost}" Grid.Row="1" Grid.Column="3"/>
+        <TextBox Name="tbCost" Text="{Binding Cost}" Grid.Row="1" Grid.Column="3" Style="{StaticResource boxAddEdit}"/>
         <TextBox Name="tbDesc" Text="{Binding Description}" Grid.Row="3" Grid.Column="3" Height="auto" Width="auto" Margin="15" TextWrapping="Wrap"/>
-        <Image Name="imgLogo" Source="{Binding ValidImage}" Style="{DynamicResource imgEffect}" Grid.Row="2" Grid.Column="3" Width="200" Height="200" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown" Cursor="Hand"/>
-        
-        <TextBlock Text="Наименование" Grid.Row="1" Grid.Column="0"/>
-        <TextBlock Text="Тип продукта" Grid.Row="2" Grid.Column="0"/>
-        <TextBlock Text="Состав" Grid.Row="3" Grid.Column="0"/>
-        <TextBlock Text="Стоимость" Grid.Row="1" Grid.Column="2"/>
-        <TextBlock Text="Описание" Grid.Row="3" Grid.Column="2"/>
-        <TextBlock Text="Изображение" Grid.Row="2" Grid.Column="2"/>
+        <Image Name="imgLogo" Source="{Binding ValidImage}" Style="{DynamicResource imgEffect}" Grid.Row="2" Grid.Column="3" Width="170" Height="170" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown" Cursor="Hand"/>
+
+        <TextBlock Text="Наименование" Grid.Row="1" Grid.Column="0" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Тип продукта" Grid.Row="2" Grid.Column="0" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Состав" Grid.Row="3" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Стоимость" Grid.Row="1" Grid.Column="2" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Описание" Grid.Row="3" Grid.Column="2" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Изображение" Grid.Row="2" Grid.Column="2" Style="{StaticResource tbAddEdit}"/>
 
         <StackPanel Grid.Row="5" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="btnSave" Content="Сохранить" Click="btnSave_Click"/>
-            <Button Name="btnDelete" Content="Удалить" Click="btnDelete_Click"/>
+            <Button Name="btnSave" Content="Сохранить" Click="btnSave_Click" Margin="0, 0, 30, 0"/>
+            <Button Name="btnDelete" Content="Удалить" Click="btnDelete_Click" Margin="30, 0, 0, 0"/>
         </StackPanel>
     </Grid>
 </Page>

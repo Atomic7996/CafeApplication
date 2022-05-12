@@ -32,20 +32,18 @@ namespace CafeApplication.Windows
             {
                 if (staff.Password == tbPass.Password)
                 {
-                    
-
                     switch (staff.RoleID)
                     {
                         case 1:
-                            MainWindow mainWindow = new MainWindow(staff.RoleID);
-                            mainWindow.tbName.Text = staff.LastName + " " + staff.FirstName;
-                            mainWindow.Show();
+                            Properties.Settings.Default.globalRole = "admin";
+                            Properties.Settings.Default.staffID = staff.StaffID;
+                            new MainWindow().Show();
                             this.Close();
                             break;
                         case 2:
-                            MainWindow mainWindow1 = new MainWindow(staff.RoleID);
-                            mainWindow1.tbName.Text = staff.LastName + " " + staff.FirstName;
-                            mainWindow1.Show();
+                            Properties.Settings.Default.globalRole = "cashier";
+                            Properties.Settings.Default.staffID = staff.StaffID;
+                            new MainWindow().Show();
                             this.Close();
                             break;
                     }

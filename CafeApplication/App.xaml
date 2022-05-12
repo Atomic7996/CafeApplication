@@ -13,14 +13,6 @@
             <Setter Property="Fill" Value="#CEFFF9" />
         </Style>
 
-        <Style TargetType="Button">
-            <Setter Property="Width" Value="420" />
-            <Setter Property="Height" Value="65" />
-            <Setter Property="Background" Value="#00CC76"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="FontSize" Value="24"/>
-        </Style>
-
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="5" />
             <Setter Property="FontSize" Value="24" />
@@ -28,6 +20,16 @@
             <Setter Property="Height" Value="65" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="boxAddEdit" TargetType="TextBox">
+            <Setter Property="Margin" Value="25, 5, 5, 5" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="Width" Value="420" />
+            <Setter Property="Height" Value="65" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />            
         </Style>
 
         <Style TargetType="PasswordBox">
@@ -67,6 +69,13 @@
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
 
+        <Style x:Key="tbAddEdit" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0, 0, 20, 0" />
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="5" />
             <Setter Property="FontSize" Value="24" />
@@ -94,26 +103,81 @@
                     <Setter Property="Effect">
                         <Setter.Value>
                             <DropShadowEffect
-                                             BlurRadius="5"
-                                             Color="Black"
-                                             Direction="315"
-                                             Opacity="100"
-                                             RenderingBias="Performance"
-                                             ShadowDepth="5"/>
+                                BlurRadius="5"
+                                Color="LightGray"
+                                Direction="315"
+                                Opacity="100"
+                                RenderingBias="Performance"
+                                ShadowDepth="5"/>
                         </Setter.Value>
                     </Setter>
-                    
-                    <!--<Setter Property="BitmapEffect">
-                        <Setter.Value>
-                            <OuterGlowBitmapEffect GlowColor="Red"
-                                                   GlowSize="15"
-                                                   
-                                                   />
-                        </Setter.Value>
-                    </Setter>-->
-
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Width" Value="420" />
+            <Setter Property="Height" Value="65" />
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="Black" BorderThickness="2">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                        <RadialGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                                <TranslateTransform X="0.02" Y="0.3"/>
+                                            </TransformGroup>
+                                        </RadialGradientBrush.RelativeTransform>
+                                        <GradientStop Offset="0" Color="#CDD1FA"/>
+                                        <GradientStop Offset="0.5" Color="#96A9F1"/>
+                                        <GradientStop Offset="1" Color="#4985E7"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center">
+                                </ContentPresenter>
+                            </Border>
+                        </Grid>
+                        
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#00000000" Offset="1"/>
+                                            <GradientStop Color="#FF303030" Offset="0.3"/>
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF33962B"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                        
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
     </Application.Resources>
 </Application>

@@ -59,7 +59,7 @@
           <Key>
             <PropertyRef Name="OrderComboID" />
           </Key>
-          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="ComboID" Type="int" Nullable="false" />
           <Property Name="Count" Type="decimal" Precision="18" Scale="0" />
           <Property Name="OrderComboID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
@@ -237,7 +237,7 @@
               <PropertyRef Name="OrderID" />
             </Principal>
             <Dependent Role="OrderCombo">
-              <PropertyRef Name="OrderId" />
+              <PropertyRef Name="OrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -456,7 +456,7 @@
           <Key>
             <PropertyRef Name="OrderComboID" />
           </Key>
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="ComboID" Type="Int32" Nullable="false" />
           <Property Name="Count" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="OrderComboID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
@@ -662,7 +662,7 @@
               <PropertyRef Name="OrderID" />
             </Principal>
             <Dependent Role="OrderCombo">
-              <PropertyRef Name="OrderId" />
+              <PropertyRef Name="OrderID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -862,7 +862,7 @@
           <EntitySetMapping Name="OrderCombo">
             <EntityTypeMapping TypeName="CafeModel.OrderCombo">
               <MappingFragment StoreEntitySet="OrderCombo">
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="ComboID" ColumnName="ComboID" />
                 <ScalarProperty Name="Count" ColumnName="Count" />
                 <ScalarProperty Name="OrderComboID" ColumnName="OrderComboID" />

@@ -22,12 +22,29 @@ namespace CafeApplication
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(int roleID)
+        public MainWindow()
         {
             InitializeComponent();
 
             Manager.mainFrame = windowFrame;
-            windowFrame.Navigate(new PageMenu(roleID));
+
+            switch (Properties.Settings.Default.globalRole)
+            {
+                case "admin":
+                    windowFrame.Navigate(new PageMenuAdmin());
+                    break;
+                case "cashier":
+                    windowFrame.Navigate(new PageMenuCashier());
+                    break;
+            }
+
+
+            
+
+            Staff staff = DB.db.Staff.Where(s => s.StaffID == Properties.Settings.Default.staffID).FirstOrDefault();
+
+            tbName.Text = staff.LastName + " " + staff.FirstName;
+            tbRole.Text = staff.StaffRole.ToString();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

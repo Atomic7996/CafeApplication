@@ -25,7 +25,7 @@
 
         <TextBlock Text="Заказы" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
 
-        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" TextChanged="tbFinder_TextChanged"/>
+        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите фамилию для поиска" TextChanged="tbFinder_TextChanged"/>
         <ComboBox Name="cbStaff"  Grid.Row="1" Grid.Column="1"  SelectionChanged="cbStaff_SelectionChanged"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Записей: "/>

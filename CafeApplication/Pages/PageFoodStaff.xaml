@@ -25,7 +25,7 @@
 
         <TextBlock Text="Продукты" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
 
-        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" TextChanged="tbFinder_TextChanged"/>
+        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите название для поиска" TextChanged="tbFinder_TextChanged"/>
         <ComboBox Name="cbSort"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" SelectionChanged="cbSort_SelectionChanged"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Записей: "/>
@@ -46,9 +46,9 @@
 
                         <Rectangle Fill="{Binding ValidColor}" Grid.ColumnSpan="3"/>
 
-                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Margin="10" Width="120" Height="120" Stretch="UniformToFill" Grid.Column="0" />
+                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Margin="10" Width="200" Height="200" Stretch="UniformToFill" Grid.Column="0" />
 
-                        <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
                             <TextBlock Text="{Binding Title}"/>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Мин. кол-во: "/>

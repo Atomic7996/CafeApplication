@@ -17,31 +17,31 @@
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.3*"/>
+            <ColumnDefinition Width="1.3*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Редактор продукта" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
 
-        <TextBox Name="tbTitle" Text="{Binding Title}" Grid.Row="1" Grid.Column="1" />
-        <TextBox Name="tbUnit" Text="{Binding Unit}" Grid.Row="2" Grid.Column="1"/>
-        <TextBox Name="tbMinCount" Text="{Binding MinCount}" Grid.Row="3" Grid.Column="1"/>
-        <TextBox Name="tbCountInStock" Text="{Binding CountInStock}" Grid.Row="1" Grid.Column="3"/>
-        <Image Name="imgLogo" Source="{Binding ValidImage}" Style="{DynamicResource imgEffect}" Grid.Row="2" Grid.Column="3" Width="200" Height="200" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown" Cursor="Hand" />
+        <TextBox Name="tbTitle" Text="{Binding Title}" Grid.Row="1" Grid.Column="1" Style="{StaticResource boxAddEdit}"/>
+        <TextBox Name="tbUnit" Text="{Binding Unit}" Grid.Row="2" Grid.Column="1" Style="{StaticResource boxAddEdit}"/>
+        <TextBox Name="tbMinCount" Text="{Binding MinCount}" Grid.Row="3" Grid.Column="1" Style="{StaticResource boxAddEdit}"/>
+        <TextBox Name="tbCountInStock" Text="{Binding CountInStock}" Grid.Row="1" Grid.Column="3" Style="{StaticResource boxAddEdit}"/>
+        <Image Name="imgLogo" Source="{Binding ValidImage}" Style="{DynamicResource imgEffect}" Grid.Row="2" Grid.Column="3" Width="200" Height="200" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown" Cursor="Hand"/>
         <TextBox Name="tbDesc" Text="{Binding Description}" Grid.Row="3" Grid.Column="3" Height="auto" Width="auto" Margin="15" TextWrapping="Wrap"/>
 
-        <TextBlock Text="Наименование" Grid.Row="1" Grid.Column="0"/>
-        <TextBlock Text="Ед. измерения" Grid.Row="2" Grid.Column="0"/>
-        <TextBlock Text="Мин. кол-во на складе" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap"/>
-        <TextBlock Text="Кол-во на складе" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap"/>
-        <TextBlock Text="Изображение" Grid.Row="2" Grid.Column="2"/>
-        <TextBlock Text="Описание" Grid.Row="3" Grid.Column="2"/>
+        <TextBlock Text="Наименование" Grid.Row="1" Grid.Column="0" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Ед. измерения" Grid.Row="2" Grid.Column="0" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Мин. кол-во на складе" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Кол-во на складе" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Изображение" Grid.Row="2" Grid.Column="2" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Описание" Grid.Row="3" Grid.Column="2" Style="{StaticResource tbAddEdit}"/>
 
         <StackPanel Grid.Row="5" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="btnSave" Content="Сохранить" Click="btnSave_Click"/>
-            <Button Name="btnDelete" Content="Удалить" Click="btnDelete_Click"/>
+            <Button Name="btnSave" Content="Сохранить" Click="btnSave_Click" Margin="0, 0, 30, 0"/>
+            <Button Name="btnDelete" Content="Удалить" Click="btnDelete_Click" Margin="30, 0, 0, 0"/>
         </StackPanel>
     </Grid>
 </Page>

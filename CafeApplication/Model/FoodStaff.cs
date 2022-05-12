@@ -16,7 +16,7 @@ namespace CafeApplication
             {
                 if (CountInStock < MinCount)
                 {
-                    return "red";
+                    return "LightCoral";
                 }
                 else 
                     return "";

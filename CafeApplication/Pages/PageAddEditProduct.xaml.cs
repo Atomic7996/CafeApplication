@@ -24,7 +24,8 @@ namespace CafeApplication.Pages
     {
         Product product = new Product();
         ProductFoodStuff productFoodStuff = new ProductFoodStuff();
-        //TextBox tb = new TextBox();
+        List<decimal?> count = new List<decimal?>();
+        int t = 0;
 
         public PageAddEditProduct(Product selectedProduct)
         {
@@ -46,10 +47,11 @@ namespace CafeApplication.Pages
 
             cbTypes.ItemsSource = DB.db.ProductType.ToList();
 
+            //lbFoodStaff.ItemsSource = DB.db.ProductFoodStuff.Where(p => p.ProductID == product.ProductID).ToList();
             lbFoodStaff.ItemsSource = DB.db.FoodStaff.ToList();
-            lbFoodStaff.SelectedValuePath = "Title";
+            //lbFoodStaff.SelectedValuePath = "Title";
 
-            //tb = lbFoodStaff.ItemTemplate.FindName("tbCount", lbFoodStaff) as TextBox;
+            //TextBox tb = lbFoodStaff.ItemTemplate.FindName("tbCount", lbFoodStaff) as TextBox;
             //tb = lbFoodStaff.SelectedItem.ToString();
         }
 
@@ -59,24 +61,29 @@ namespace CafeApplication.Pages
             int i = 0;
             int j = 0;
             List<string> foodStaff = new List<string>();
-            List<decimal?> count = new List<decimal?>();
 
             foreach (var item in lbFoodStaff.SelectedItems)
+            {
+                MessageBox.Show(item.ToString());
                 foodStaff.Add(item.ToString());
+                //count.Add();
+            }
 
             foreach (var item in foodStaff)
             {
                 string title = foodStaff[i];
                 IDs[i] = DB.db.FoodStaff.Where(x => x.Title.ToLower() == title.ToLower()).FirstOrDefault().FoodStuffID;
-                //count.Add(decimal.Parse(tb.Text));
+                i++;
             }
             
             foreach (var id in IDs)
             {
+                //j = count.Count;
                 productFoodStuff.FoodStaffID = id;
                 productFoodStuff.ProductID = product.ProductID;
                 //productFoodStuff.Count = count[j];
-                j++;
+                productFoodStuff.Count = 1;
+                j--;
                 DB.db.ProductFoodStuff.Add(productFoodStuff);
                 DB.db.SaveChanges();
             }
@@ -98,9 +105,7 @@ namespace CafeApplication.Pages
             }
 
             foreach (var item in DB.db.ProductFoodStuff.Where(x => x.ProductID == product.ProductID))
-            {
                 DB.db.ProductFoodStuff.Remove(item);
-            }
 
             if (product.ProductID == 0)
                 DB.db.Product.Add(product);
@@ -125,10 +130,21 @@ namespace CafeApplication.Pages
             {
                 try
                 {
-                    DB.db.Product.Remove(product);
-                    DB.db.SaveChanges();
-                    MessageBox.Show("Запись удалена", "Уведомление");
-                    Manager.mainFrame.GoBack();
+                    if ((DB.db.ComboProduct.Where(x => x.ProductID == product.ProductID)) != null || 
+                        (DB.db.OrderProduct.Where(x => x.ProductID == product.ProductID)) != null)
+                    {
+                        MessageBox.Show("Товар используется в наборах или заказах, запись удалить невозможно", "Уведомление");
+                    }
+                    else
+                    {
+                        foreach (var item in DB.db.ProductFoodStuff.Where(x => x.ProductID == product.ProductID))
+                            DB.db.ProductFoodStuff.Remove(item);
+
+                        DB.db.Product.Remove(product);
+                        DB.db.SaveChanges();
+                        MessageBox.Show("Запись удалена", "Уведомление");
+                        Manager.mainFrame.GoBack();
+                    }                    
                 }
                 catch (Exception ex)
                 {
@@ -148,6 +164,22 @@ namespace CafeApplication.Pages
                 DataContext = null;
                 DataContext = product;
             }
+        }
+
+        private void tbCount_LostFocus_1(object sender, RoutedEventArgs e)
+        {
+            //count.Insert(lbFoodStaff.SelectedIndex, decimal.Parse(((TextBox)sender).Text));
+            //count.Add(decimal.Parse(((TextBox)sender).Text));
+            //string str = "";
+
+            //for (int i = 0; i < count.Count; i++)
+            //{
+            //    str += count[i].ToString() + '\n';
+                
+            //}
+            ////MessageBox.Show(str.ToString());
+            //MessageBox.Show(lbFoodStaff.SelectedItem.ToString());
+
         }
     }
 }

@@ -54,7 +54,7 @@ namespace CafeApplication.Pages
             return products;
         }
 
-        private void AddProductFoodStaff(string[] foodStaff)
+        private void AddComboProduct(string[] foodStaff)
         {
             int[] IDs = new int[lbProducts.SelectedItems.Count];
             int i = 0;
@@ -105,7 +105,7 @@ namespace CafeApplication.Pages
             if (combo.ComboID == 0)
                 DB.db.Combo.Add(combo);
 
-            AddProductFoodStaff(prods);
+            AddComboProduct(prods);
 
             try
             {
@@ -125,16 +125,27 @@ namespace CafeApplication.Pages
             {
                 try
                 {
-                    DB.db.Combo.Remove(combo);
-                    DB.db.SaveChanges();
-                    MessageBox.Show("Запись удалена", "Уведомление");
-                    Manager.mainFrame.GoBack();
+                    if ((DB.db.OrderCombo.Where(x => x.ComboID == combo.ComboID)) != null)
+                    {
+                        MessageBox.Show("Набор используется в заказах, запись удалить невозможно", "Уведомление");
+                    }
+                    else
+                    {
+                        foreach (var item in DB.db.ComboProduct.Where(x => x.ComboID == combo.ComboID))
+                            DB.db.ComboProduct.Remove(item);
+
+                        DB.db.Combo.Remove(combo);
+                        DB.db.SaveChanges();
+                        MessageBox.Show("Запись удалена", "Уведомление");
+                        Manager.mainFrame.GoBack();
+                    }                    
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
             }
+
         }
 
         private void imgLogo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
