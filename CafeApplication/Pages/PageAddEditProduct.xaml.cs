@@ -64,7 +64,7 @@ namespace CafeApplication.Pages
 
             foreach (var item in lbFoodStaff.SelectedItems)
             {
-                MessageBox.Show(item.ToString());
+                //MessageBox.Show(item.ToString());
                 foodStaff.Add(item.ToString());
                 //count.Add();
             }

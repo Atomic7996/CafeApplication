@@ -56,8 +56,17 @@ namespace CafeApplication.Pages
                 errors.AppendLine("Укажите логин");
             if (string.IsNullOrWhiteSpace(staff.Password))
                 errors.AppendLine("Придумайте пароль");
+
             if (checkStaff != null)
-                errors.AppendLine("Такой логин уже занят");
+            {
+                if (staff.StaffID != checkStaff.StaffID)
+                {
+
+                    errors.AppendLine("Такой логин уже занят");
+                }
+            }
+
+                
 
             if (errors.Length > 0)
             {
