@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -261,6 +264,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EntityDeploy Include="ModelCafe.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -297,6 +301,7 @@
     <Resource Include="Images\Combos\combo1.jpeg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icon.ico" />
     <Resource Include="Images\FoodStaff\carrot.png" />
     <Resource Include="Images\FoodStaff\cucamber.png" />
     <Resource Include="Images\FoodStaff\tomato.png" />

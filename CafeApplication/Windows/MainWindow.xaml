@@ -5,31 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeApplication"
         mc:Ignorable="d"
-        Title="Кафе" Height="1060" Width="1900" WindowStartupLocation="CenterScreen" Icon="/CafeApplication;component/Resources/cafe.png" WindowState="Maximized">
+        Title="Кафе" Height="1060" Width="1900" MinHeight="600" MinWidth="1200" WindowStartupLocation="CenterScreen" Icon="/CafeApplication;component/Resources/cafe.png" >
+    <!--WindowState="Maximized"-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1.5*"/>
             <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="1.3*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="15" />
+            </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="0" Background="LightBlue" CornerRadius="0,0,50,50"/>
+            <Border Background="LightBlue" Grid.Column="1" CornerRadius="0,0,20,20" Grid.ColumnSpan="4"/>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
-            <Image Height="180" Width="180" Source="/Resources/cafe.png"/>
-            <TextBlock Text="Кафе" VerticalAlignment="Center" FontSize="48"/>
-        </StackPanel>
-
-        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0, 0, 100, 30">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Здравствуйте,"/>
-                <TextBlock Name="tbName"/>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
+                <Image Source="/Resources/cafe.png"/>
+                <TextBlock Text="Кафе" VerticalAlignment="Center" FontSize="48"/>
             </StackPanel>
-            <TextBlock Name="tbRole"/>
-        </StackPanel>
-        
-        <Frame Name="windowFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Navigated="windowFrame_Navigated"/>
 
-        <Button Name="btnBack" Content="Назад" Grid.Row="0" Width="125" Click="btnBack_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25"/>
-        <Button Name="btnExit" Content="Выход" Grid.Row="0" Width="125" Click="btnExit_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="25"/>
+            <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Здравствуйте,"/>
+                    <TextBlock Name="tbName"/>
+                </StackPanel>
+                <TextBlock Name="tbRole"/>
+            </StackPanel>
+
+            <Button Name="btnBack" Content="&lt;-" Grid.Column="1" Height="50" Width="50" Click="btnBack_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Name="btnExit" Content="X" Grid.Column="4" Height="50" Width="50" Click="btnExit_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        </Grid>
+
+        <Frame Name="windowFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Navigated="windowFrame_Navigated"/>
     </Grid>
 </Window>

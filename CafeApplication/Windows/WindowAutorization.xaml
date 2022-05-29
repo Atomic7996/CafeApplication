@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeApplication.Windows"
         mc:Ignorable="d"
-        Title="Вход" Height="600" Width="700" WindowStartupLocation="CenterScreen" Icon="/CafeApplication;component/Resources/cafe.png" >
+        Title="Вход" Height="600" Width="700" WindowStartupLocation="CenterScreen" Icon="/CafeApplication;component/Resources/cafe.png" ResizeMode="NoResize" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="85"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" Background="#FF8284F5" CornerRadius="0, 0, 20, 20">
             <TextBlock Text="Авторизация" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource Label}"/>
@@ -19,19 +19,18 @@
 
 
         <Border Background="#FF8284F5" CornerRadius="40" VerticalAlignment="Center" HorizontalAlignment="Center" Width="600" Height="270" Grid.Row="1">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <StackPanel VerticalAlignment="Center" >
-                    <TextBlock Text="Логин" Height="60" Margin="0, 0, 0, 50"/>
-                    <TextBlock Text="Пароль" Height="60"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Text="Логин:" Width="90" HorizontalAlignment="Right"/>
+                    <TextBox Name="tbLogin" Text="cash" Width="420"/>
                 </StackPanel>
-
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBox Name="tbLogin" Text="cash" Margin="0, 0, 0, 50"/>
-                    <PasswordBox Name="tbPass" Password="cash"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="540" Height="100">
+                    <TextBlock Text="Пароль:" Width="90" HorizontalAlignment="Right"/>
+                    <PasswordBox Name="tbPass" Style="{StaticResource passwordBox}" Password="cash"/>
                 </StackPanel>
             </StackPanel>
         </Border>
 
-        <Button Name="btnEnter" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Click="btnEnter_Click"/>
+        <Button Name="btnEnter" Content="Войти" HorizontalAlignment="Center" Width="600" VerticalAlignment="Center" Grid.Row="2" Click="btnEnter_Click"/>
     </Grid>
 </Window>
