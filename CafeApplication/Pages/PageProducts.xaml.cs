@@ -19,7 +19,9 @@ namespace CafeApplication.Pages
     /// Логика взаимодействия для PageProducts.xaml
     /// </summary>
     public partial class PageProducts : Page
-    {
+    {/// <summary>
+    /// 
+    /// </summary>
         public PageProducts()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace CafeApplication.Pages
             sort.Add("По названию, от А до Я");
             sort.Add("По названию, от Я до А"); ;
             sort.Add("По возрастанию стоимости"); ;
-            sort.Add("По убыванию стоимости"); ;
+            sort.Add("По убыванию стоимости");
 
             lvProducts.ItemsSource = currentProducts;
 
@@ -50,7 +52,9 @@ namespace CafeApplication.Pages
             cbSort.SelectedIndex = 0;
             cbFilter.SelectedIndex = 0;
         }
-
+        /// <summary>
+        /// Обновление списка выводимых блюд при поиске, сортировке и фильтрации
+        /// </summary>
         void UpdateLvItems()
         {
             var currentProducts = DB.db.Product.ToList();

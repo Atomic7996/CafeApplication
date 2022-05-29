@@ -23,7 +23,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Товары" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
+        <TextBlock Text="Блюда" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
 
         <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите название для поиска" TextChanged="tbFinder_TextChanged"/>
         <ComboBox Name="cbFilter"  Grid.Row="1" Grid.Column="1" SelectionChanged="cbFilter_SelectionChanged"/>
@@ -35,7 +35,7 @@
             <TextBlock Name="tbRecordsCountAll"/>
         </StackPanel>
 
-        <ListView Name="lvProducts" Grid.Row="2" Grid.ColumnSpan="4" IsVisibleChanged="lvProducts_IsVisibleChanged" MouseDoubleClick="lvProducts_MouseDoubleClick" ToolTip="Для просмотра нажмите дважды">
+        <ListView Name="lvProducts" Grid.Row="2" Grid.ColumnSpan="4" IsVisibleChanged="lvProducts_IsVisibleChanged" MouseDoubleClick="lvProducts_MouseDoubleClick" ToolTip="Для просмотра нажмите дважды" SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -45,7 +45,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Grid.Column="0" Margin="10" Width="200" Height="200" Stretch="UniformToFill" Cursor="Hand"/>
+                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Grid.Column="0" Margin="10" Width="200" Height="200" Stretch="UniformToFill"/>
 
                         <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
@@ -70,7 +70,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Name="btnAdd" Content="Добавить товар" Grid.Row="3" Grid.ColumnSpan="4" Click="btnAdd_Click"/>
+        <Button Name="btnAdd" Content="Добавить блюдо" Grid.Row="3" Grid.ColumnSpan="4" Click="btnAdd_Click"/>
         
     </Grid>
 </Page>

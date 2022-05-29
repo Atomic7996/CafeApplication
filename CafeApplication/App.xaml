@@ -10,7 +10,7 @@
         </Style>
 
         <Style TargetType="Rectangle">
-            <Setter Property="Fill" Value="#CEFFF9" />
+            <Setter Property="Fill" Value="#FFFFF9" />
         </Style>
 
         <Style TargetType="TextBox">
