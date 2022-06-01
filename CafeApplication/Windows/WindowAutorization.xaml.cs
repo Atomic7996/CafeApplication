@@ -24,7 +24,7 @@ namespace CafeApplication.Windows
             InitializeComponent();
         }
 
-        private void btnEnter_Click(object sender, RoutedEventArgs e)
+        private void Login()
         {
             Staff staff = DB.db.Staff.Where(s => s.Login == tbLogin.Text).FirstOrDefault();
 
@@ -35,7 +35,7 @@ namespace CafeApplication.Windows
                     switch (staff.RoleID)
                     {
                         case 1:
-                            Properties.Settings.Default.globalRole = "admin";
+                            Properties.Settings.Default.globalRole = "manager";
                             Properties.Settings.Default.staffID = staff.StaffID;
                             new MainWindow().Show();
                             this.Close();
@@ -50,14 +50,21 @@ namespace CafeApplication.Windows
                 }
                 else
                 {
-                    MessageBox.Show("Неверный пароль", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Неверный пароль", "Предупреждение", 
+                        MessageBoxButton.OK, MessageBoxImage.Information);
                     tbPass.Password = "";
                 }
             }
             else
             {
-                MessageBox.Show("Такого пользоватиеля не существует", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Такого пользоватиеля не существует", "Предупреждение", 
+                    MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void btnEnter_Click(object sender, RoutedEventArgs e)
+        {
+            Login();
         }
     }
 }

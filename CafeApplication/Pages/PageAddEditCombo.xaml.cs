@@ -27,37 +27,38 @@ namespace CafeApplication.Pages
         public PageAddEditCombo(Combo selectedCombo)
         {
             InitializeComponent();
+            PageStartUp(selectedCombo);            
+        }
 
+        private void PageStartUp(Combo selectedCombo)
+        {
             if (selectedCombo != null)
-            {
                 combo = selectedCombo;
-            }
 
             if (combo.ComboID == 0)
-            {
                 btnDelete.Visibility = Visibility.Hidden;
-            }
 
             DataContext = combo;
-
-            lbProducts.ItemsSource = GetProducts();
+            //lbProducts.ItemsSource = GetProducts();
+            lbProducts.ItemsSource = DB.db.Product.ToList();
         }
 
-        private string[] GetProducts()
-        {
-            List<Product> prod = DB.db.Product.ToList();
-            string[] products = new string[prod.Count];
-            for (int i = 0; i < prod.Count; i++)
-            {
-                products[i] = prod[i].Title;
-            }
-            return products;
-        }
+        //private string[] GetProducts()
+        //{
+        //    List<Product> prod = DB.db.Product.ToList();
+        //    string[] products = new string[prod.Count];
+        //    for (int i = 0; i < prod.Count; i++)
+        //    {
+        //        products[i] = prod[i].Title;
+        //    }
+        //    return products;
+        //}
 
         private void AddComboProduct(string[] foodStaff)
         {
             int[] IDs = new int[lbProducts.SelectedItems.Count];
             int i = 0;
+
             foreach (var item in lbProducts.SelectedItems)
             {
                 IDs[i] = DB.db.Product.Where(x => x.Title == item.ToString()).FirstOrDefault().ProductID;
@@ -74,7 +75,7 @@ namespace CafeApplication.Pages
 
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void Save()
         {
             StringBuilder errors = new StringBuilder();
 
@@ -85,17 +86,17 @@ namespace CafeApplication.Pages
 
             if (errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(errors.ToString(), "Внимание",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
             foreach (var item in DB.db.ComboProduct.Where(x => x.ComboID == combo.ComboID))
-            {
                 DB.db.ComboProduct.Remove(item);
-            }
 
             string[] prods = new string[lbProducts.Items.Count];
             int i = 0;
+
             foreach (var item in lbProducts.Items)
             {
                 prods[i] = item.ToString();
@@ -119,13 +120,14 @@ namespace CafeApplication.Pages
             }
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void Delete()
         {
-            if (MessageBox.Show("Вы точно хотите удалить запись?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Вы точно хотите удалить запись?", "Внимание", 
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    if ((DB.db.OrderCombo.Where(x => x.ComboID == combo.ComboID)) != null)
+                    if ((DB.db.OrderCombo.Where(x => x.ComboID == combo.ComboID)).FirstOrDefault() != null)
                     {
                         MessageBox.Show("Набор используется в заказах, запись удалить невозможно", "Уведомление");
                     }
@@ -138,14 +140,23 @@ namespace CafeApplication.Pages
                         DB.db.SaveChanges();
                         MessageBox.Show("Запись удалена", "Уведомление");
                         Manager.mainFrame.GoBack();
-                    }                    
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
             }
+        }
 
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Save();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Delete();
         }
 
         private void imgLogo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

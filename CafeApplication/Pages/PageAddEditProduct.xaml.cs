@@ -30,22 +30,25 @@ namespace CafeApplication.Pages
         public PageAddEditProduct(Product selectedProduct)
         {
             InitializeComponent();
+            PageStartUp(selectedProduct);            
+        }
 
+        private void PageStartUp(Product selectedProduct)
+        {
             DB.db.ProductFoodStuff.Load();
 
             if (selectedProduct != null)
-            {
                 product = selectedProduct;
-            }
 
             if (product.ProductID == 0)
-            {
                 btnDelete.Visibility = Visibility.Hidden;
-            }
 
             DataContext = product;
 
             cbTypes.ItemsSource = DB.db.ProductType.ToList();
+            lbFoodStaff.SelectedIndex = 0;
+            lbFoodStaff.SelectedIndex += 2;
+            lbFoodStaff.SelectedIndex += 3;
 
             //lbFoodStaff.ItemsSource = DB.db.ProductFoodStuff.Where(p => p.ProductID == product.ProductID).ToList();
             lbFoodStaff.ItemsSource = DB.db.FoodStaff.ToList();
@@ -89,7 +92,7 @@ namespace CafeApplication.Pages
             }
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void Save()
         {
             StringBuilder errors = new StringBuilder();
 
@@ -124,14 +127,15 @@ namespace CafeApplication.Pages
             }
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void Delete()
         {
-            if (MessageBox.Show("Вы точно хотите удалить запись?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Вы точно хотите удалить запись?", "Внимание", 
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    if ((DB.db.ComboProduct.Where(x => x.ProductID == product.ProductID)) != null || 
-                        (DB.db.OrderProduct.Where(x => x.ProductID == product.ProductID)) != null)
+                    if ((DB.db.ComboProduct.Where(x => x.ProductID == product.ProductID)).FirstOrDefault() != null ||
+                        (DB.db.OrderProduct.Where(x => x.ProductID == product.ProductID)).FirstOrDefault() != null)
                     {
                         MessageBox.Show("Товар используется в наборах или заказах, запись удалить невозможно", "Уведомление");
                     }
@@ -144,13 +148,23 @@ namespace CafeApplication.Pages
                         DB.db.SaveChanges();
                         MessageBox.Show("Запись удалена", "Уведомление");
                         Manager.mainFrame.GoBack();
-                    }                    
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
             }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Save();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Delete();
         }
 
         private void imgLogo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -179,6 +193,11 @@ namespace CafeApplication.Pages
             //}
             ////MessageBox.Show(str.ToString());
             //MessageBox.Show(lbFoodStaff.SelectedItem.ToString());
+
+        }
+
+        private void lbFoodStaff_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
 
         }
     }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeApplication.Windows"
         mc:Ignorable="d"
-        Title="Изображения" Height="600" Width="840" WindowStartupLocation="CenterScreen">
+        Title="Изображения" Height="600" Width="840" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Name="gImages">
         
     </Grid>

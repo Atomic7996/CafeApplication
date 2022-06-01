@@ -23,6 +23,17 @@ namespace CafeApplication.Pages
         public PageCombo()
         {
             InitializeComponent();
+            PageStartUp();            
+        }
+
+        private void PageStartUp()
+        {
+            if (Properties.Settings.Default.globalRole != "manager")
+            {
+                lvCombos.MouseDoubleClick -= lvCombos_MouseDoubleClick;
+                lvCombos.ToolTip = null;
+                btnAdd.Visibility = Visibility.Hidden;
+            }
 
             var currentProducts = DB.db.Combo.ToList();
             var sort = new List<string>();
@@ -59,14 +70,11 @@ namespace CafeApplication.Pages
                     case 4:
                         currentCombos = currentCombos.OrderByDescending(p => p.Cost).ToList();
                         break;
-
                 }
             }
 
             if (tbFinder.Text != null)
-            {
                 currentCombos = currentCombos.Where(s => s.Title.ToLower().Contains(tbFinder.Text.ToLower())).ToList();
-            }
 
             lvCombos.ItemsSource = currentCombos;
 

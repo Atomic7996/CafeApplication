@@ -28,25 +28,22 @@ namespace CafeApplication.Pages
         public PageAddEditOrder(Order selectedOrder)
         {
             InitializeComponent();
+            PageStartUp(selectedOrder);
+        }
 
+        private void PageStartUp(Order selectedOrder)
+        {
             if (selectedOrder != null)
-            {
                 order = selectedOrder;
-            }
 
             if (order.OrderID == 0)
-            {
                 btnDelete.Visibility = Visibility.Hidden;
-            }
 
             DataContext = order;
 
             lbProducts.ItemsSource = GetProductsCombos("prod");
             lbCombos.ItemsSource = GetProductsCombos("combo");
-
-            
         }
-
         private string[] GetProductsCombos(string type)
         {
             List<Product> prod = DB.db.Product.ToList();
@@ -71,6 +68,21 @@ namespace CafeApplication.Pages
             return combos;
         }
 
+        private void CouponCheck()
+        {
+            if (!string.IsNullOrEmpty(tbCoupon.Text))
+            {
+                coupon = DB.db.Coupon.Where(s => s.PromoCode == tbCoupon.Text).FirstOrDefault();
+
+                if (coupon == null)
+                {
+                    MessageBox.Show("Такого купона не существует");
+                    tbCoupon.Text = null;
+                    return;
+                }
+            }
+        }
+
         private void AddOrderProduct(string[] products)
         {
             int[] IDs = new int[lbProducts.SelectedItems.Count];
@@ -87,8 +99,15 @@ namespace CafeApplication.Pages
                 orderProduct.ProductID = id;
                 orderProduct.OrderID = order.OrderID;
                 orderProduct.Count = 1;
-                DB.db.OrderProduct.Add(orderProduct);
-                DB.db.SaveChanges();
+                try
+                {
+                    DB.db.OrderProduct.Add(orderProduct);
+                    DB.db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
 
@@ -101,22 +120,26 @@ namespace CafeApplication.Pages
             {
                 IDs[i] = DB.db.Combo.Where(x => x.Title == item.ToString()).FirstOrDefault().ComboID;
                 i++;
-            }
-
-            
+            }            
 
             foreach (var id in IDs)
             {
                 orderCombo.ComboID = id;
                 orderCombo.OrderID = order.OrderID;
                 orderCombo.Count = 1;
-                DB.db.OrderCombo.Add(orderCombo);
-                DB.db.SaveChanges();
+                try
+                {
+                    DB.db.OrderCombo.Add(orderCombo);
+                    DB.db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }                
             }
-
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void Save()
         {
             StringBuilder errors = new StringBuilder();
 
@@ -128,16 +151,12 @@ namespace CafeApplication.Pages
                 MessageBox.Show(errors.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
-                        
+
             foreach (var item in DB.db.OrderProduct.Where(x => x.OrderID == order.OrderID))
-            {
                 DB.db.OrderProduct.Remove(item);
-            }
 
             foreach (var item in DB.db.OrderCombo.Where(x => x.OrderID == order.OrderID))
-            {
                 DB.db.OrderCombo.Remove(item);
-            }
 
             string[] prods = new string[lbProducts.Items.Count];
             int i = 0;
@@ -153,27 +172,22 @@ namespace CafeApplication.Pages
 
             foreach (var item in lbCombos.Items)
             {
-                    coms[j] = item.ToString();
-                    j++;                
-            }            
+                coms[j] = item.ToString();
+                j++;
+            }
 
             if (order.OrderID == 0)
             {
                 order.OrderDateTime = DateTime.Now;
                 order.StaffID = Properties.Settings.Default.staffID;
                 if (coupon != null)
-                {
                     order.CouponID = coupon.CouponID;
-                }
 
                 DB.db.Order.Add(order);
             }
-            else
+            else if (coupon != null)
             {
-                if (coupon != null)
-                {
-                    order.CouponID = coupon.CouponID;
-                }
+                order.CouponID = coupon.CouponID;
             }
 
             AddOrderProduct(prods);
@@ -181,8 +195,6 @@ namespace CafeApplication.Pages
 
             try
             {
-                
-                
                 DB.db.SaveChanges();
                 MessageBox.Show("Данные сохранены", "Уведомление");
                 Manager.mainFrame.GoBack();
@@ -193,25 +205,23 @@ namespace CafeApplication.Pages
             }
         }
 
-        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        private void Delete()
         {
-            if (MessageBox.Show("Вы точно хотите удалить запись?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Вы точно хотите удалить запись?", "Внимание", 
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    
                     foreach (var item in DB.db.OrderProduct.Where(x => x.OrderID == order.OrderID))
                         DB.db.OrderProduct.Remove(item);
 
                     foreach (var item in DB.db.OrderCombo.Where(x => x.OrderID == order.OrderID))
                         DB.db.OrderCombo.Remove(item);
 
-
                     DB.db.Order.Remove(order);
-                        DB.db.SaveChanges();
-                        MessageBox.Show("Запись удалена", "Уведомление");
-                        Manager.mainFrame.GoBack();
-                    
+                    DB.db.SaveChanges();
+                    MessageBox.Show("Запись удалена", "Уведомление");
+                    Manager.mainFrame.GoBack();
                 }
                 catch (Exception ex)
                 {
@@ -220,19 +230,19 @@ namespace CafeApplication.Pages
             }
         }
 
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Save();
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Delete();
+        }
+
         private void tbCoupon_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(tbCoupon.Text))
-            {
-                coupon = DB.db.Coupon.Where(s => s.PromoCode == tbCoupon.Text).FirstOrDefault();
-
-                if (coupon == null)
-                {
-                    MessageBox.Show("Такого купона не существует");
-                    tbCoupon.Text = null;
-                    return;
-                }
-            }         
+            CouponCheck();
         }
     }
 }

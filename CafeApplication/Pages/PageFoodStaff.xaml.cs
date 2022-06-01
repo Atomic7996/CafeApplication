@@ -23,6 +23,17 @@ namespace CafeApplication.Pages
         public PageFoodStaff()
         {
             InitializeComponent();
+            PageStartUp();            
+        }
+
+        private void PageStartUp()
+        {
+            if (Properties.Settings.Default.globalRole != "manager")
+            {
+                lvFoodStaff.MouseDoubleClick -= lvFoodStaff_MouseDoubleClick;
+                lvFoodStaff.ToolTip = null;
+                btnAdd.Visibility = Visibility.Hidden;
+            }
 
             var currentFoodStaff = DB.db.FoodStaff.ToList();
             var sort = new List<string>();
@@ -60,14 +71,11 @@ namespace CafeApplication.Pages
                     case 4:
                         currentFoodStuff = currentFoodStuff.OrderByDescending(p => p.CountInStock).ToList();
                         break;
-
                 }
             }
             
             if (tbFinder.Text != null)
-            {
                 currentFoodStuff = currentFoodStuff.Where(s => s.Title.ToLower().Contains(tbFinder.Text)).ToList();
-            }
 
             lvFoodStaff.ItemsSource = currentFoodStuff;
 

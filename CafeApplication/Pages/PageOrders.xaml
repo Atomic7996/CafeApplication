@@ -49,7 +49,7 @@
                             <TextBlock Text="{Binding Staff}"/>
 
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Время заказа: "/>
+                                <TextBlock Text="Дата заказа: "/>
                                 <TextBlock Text="{Binding OrderDateTime}"/>
                             </StackPanel>
                         </StackPanel>

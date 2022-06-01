@@ -23,14 +23,18 @@ namespace CafeApplication.Pages
         public PageStaff()
         {
             InitializeComponent();
+            PageStartUp();            
+        }
 
+        private void PageStartUp()
+        {
             var currentStaff = DB.db.Staff.ToList();
             var sort = new List<string>();
             var filter = DB.db.StaffRole.ToList();
 
             sort.Add("Сортировка");
             sort.Add("По фамилии, от А до Я");
-            sort.Add("По фамилии, от Я до А");;
+            sort.Add("По фамилии, от Я до А"); ;
 
             lvStaff.ItemsSource = currentStaff;
 
@@ -63,19 +67,14 @@ namespace CafeApplication.Pages
                     case 2:
                         currentStaff = currentStaff.OrderByDescending(p => p.LastName).ToList();
                         break;
-
                 }
             }
 
             if (cbFilter.SelectedIndex > 0)
-            {
                 currentStaff = currentStaff.Where(s => s.RoleID == int.Parse(cbFilter.SelectedValue.ToString())).ToList();
-            }
 
             if (tbFinder.Text != null)
-            {
                 currentStaff = currentStaff.Where(s => s.LastName.ToLower().Contains(tbFinder.Text.ToLower())).ToList();
-            }
 
             lvStaff.ItemsSource = currentStaff;
 

@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeApplication"
         mc:Ignorable="d"
-        Title="Кафе" Height="1060" Width="1900" MinHeight="600" MinWidth="1200" WindowStartupLocation="CenterScreen" Icon="/CafeApplication;component/Resources/cafe.png" >
-    <!--WindowState="Maximized"-->
+        Title="Кафе" Height="1060" Width="1900" MinHeight="800" MinWidth="1500" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
@@ -22,7 +21,7 @@
                 <ColumnDefinition Width="15" />
             </Grid.ColumnDefinitions>
 
-            <Border Background="LightBlue" Grid.Column="1" CornerRadius="0,0,20,20" Grid.ColumnSpan="4"/>
+            <Border Background="#FF84A2FF" Grid.Column="1" CornerRadius="0,0,20,20" Grid.ColumnSpan="4"/>
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
                 <Image Source="/Resources/cafe.png"/>

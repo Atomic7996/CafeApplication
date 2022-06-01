@@ -25,9 +25,29 @@ namespace CafeApplication.Pages
             InitializeComponent();
         }
 
+        private void btnProducts_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.mainFrame.Navigate(new PageProducts());
+        }
+
+        private void btnFoodStaff_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.mainFrame.Navigate(new PageFoodStaff());
+        }
+
         private void btnOrders_Click(object sender, RoutedEventArgs e)
         {
             Manager.mainFrame.Navigate(new PageOrders());
+        }
+
+        private void btnCombo_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.mainFrame.Navigate(new PageCombo());
+        }
+
+        private void btnAddOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.mainFrame.Navigate(new PageAddEditOrder(new Order()));
         }
 
         private void btnStaff_Click(object sender, RoutedEventArgs e)

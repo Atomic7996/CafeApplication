@@ -25,21 +25,22 @@ namespace CafeApplication
         public MainWindow()
         {
             InitializeComponent();
+            WindowStartUp();                       
+        }
 
+        private void WindowStartUp()
+        {
             Manager.mainFrame = windowFrame;
 
             switch (Properties.Settings.Default.globalRole)
             {
-                case "admin":
+                case "manager":
                     windowFrame.Navigate(new PageMenuAdmin());
                     break;
                 case "cashier":
                     windowFrame.Navigate(new PageMenuCashier());
                     break;
             }
-
-
-            
 
             Staff staff = DB.db.Staff.Where(s => s.StaffID == Properties.Settings.Default.staffID).FirstOrDefault();
 
@@ -56,9 +57,7 @@ namespace CafeApplication
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             if (Manager.mainFrame.CanGoBack)
-            {
                 Manager.mainFrame.GoBack();
-            }
         }
 
         private void windowFrame_Navigated(object sender, NavigationEventArgs e)

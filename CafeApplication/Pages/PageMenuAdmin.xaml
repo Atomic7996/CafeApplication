@@ -17,6 +17,9 @@
         <TextBlock Text="Меню" Style="{StaticResource Label}"/>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Margin="0, 0, 0, 130">
+            <Button Name="btnProducts" Content="Блюда" Click="btnProducts_Click"/>
+            <Button Name="btnFoodStaff" Content="Продукты" Click="btnFoodStaff_Click"/>
+            <Button Name="btnCombo" Content="Наборы" Click="btnCombo_Click"/>
             <Button Name="btnOrders" Content="Заказы" Click="btnOrders_Click"/>
             <Button Name="btnStaff" Content="Сотрудники" Click="btnStaff_Click"/>
         </StackPanel>

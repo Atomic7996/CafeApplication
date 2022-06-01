@@ -28,7 +28,7 @@
             <RowDefinition Height="0.67*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Регистрация" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource Label}"/>
+        <TextBlock Name="tbHeader" Text="Регистрация" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource Label}"/>
         <TextBlock Text="Фамилия" Grid.Row="1" Grid.Column="1"/>
         <TextBlock Text="Имя" Grid.Row="2" Grid.Column="1"/>
         <TextBlock Text="Отчество" Grid.Row="3" Grid.Column="1"/>

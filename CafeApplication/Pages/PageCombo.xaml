@@ -39,7 +39,7 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="650"/>
                             <ColumnDefinition Width="*"/>

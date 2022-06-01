@@ -19,12 +19,23 @@ namespace CafeApplication.Pages
     /// Логика взаимодействия для PageProducts.xaml
     /// </summary>
     public partial class PageProducts : Page
-    {/// <summary>
-    /// 
-    /// </summary>
+    {
         public PageProducts()
         {
             InitializeComponent();
+            PageStartUp();            
+        }
+        /// <summary>
+        /// Подготовка данных для элементов страницы
+        /// </summary>
+        private void PageStartUp()
+        {
+            if (Properties.Settings.Default.globalRole != "manager")
+            {
+                lvProducts.MouseDoubleClick -= lvProducts_MouseDoubleClick;
+                lvProducts.ToolTip = null;
+                btnAdd.Visibility = Visibility.Hidden;
+            }
 
             var currentProducts = DB.db.Product.ToList();
             var sort = new List<string>();
@@ -55,10 +66,10 @@ namespace CafeApplication.Pages
         /// <summary>
         /// Обновление списка выводимых блюд при поиске, сортировке и фильтрации
         /// </summary>
-        void UpdateLvItems()
+        private void UpdateLvItems()
         {
             var currentProducts = DB.db.Product.ToList();
-
+            //Сортировка данных
             if (cbSort.SelectedIndex > 0)
             {
                 switch (cbSort.SelectedIndex)
@@ -75,22 +86,17 @@ namespace CafeApplication.Pages
                     case 4:
                         currentProducts = currentProducts.OrderByDescending(p => p.Cost).ToList();
                         break;
-
                 }
             }
-
+            //Фильтрация данных
             if (cbFilter.SelectedIndex > 0)
-            {
                 currentProducts = currentProducts.Where(s => s.ProductTypeID == int.Parse(cbFilter.SelectedValue.ToString())).ToList();
-            }
-
+            //Поиск
             if (tbFinder.Text != null)
-            {
                 currentProducts = currentProducts.Where(s => s.Title.ToLower().Contains(tbFinder.Text.ToLower())).ToList();
-            }
-
+            //Вывод данных
             lvProducts.ItemsSource = currentProducts;
-
+            //Количество выведенных записей
             tbRecordsCount.Text = lvProducts.Items.Count.ToString();
             tbRecordsCountAll.Text = DB.db.Product.Count().ToString();
         }

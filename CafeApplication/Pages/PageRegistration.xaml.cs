@@ -25,23 +25,29 @@ namespace CafeApplication.Pages
         public PageRegistration(Staff selectedStaff)
         {
             InitializeComponent();
+            PageStartUp(selectedStaff);            
+        }
 
+        private void PageStartUp(Staff selectedStaff)
+        {
             if (selectedStaff != null)
-            {
                 staff = selectedStaff;
-            }
 
             if (staff.StaffID == 0)
             {
                 btnDel.Visibility = Visibility.Hidden;
+                tbHeader.Text = "Регистрация";
+            }
+            else
+            {
+                tbHeader.Text = "Редактор сотрудника";
             }
 
             DataContext = staff;
-
             cbRole.ItemsSource = DB.db.StaffRole.ToList();
         }
 
-        private void btnSave_Click(object sender, RoutedEventArgs e)
+        private void Save()
         {
             Staff checkStaff = DB.db.Staff.Where(s => s.Login == tbLogin.Text).FirstOrDefault();
             StringBuilder errors = new StringBuilder();
@@ -60,25 +66,20 @@ namespace CafeApplication.Pages
             if (checkStaff != null)
             {
                 if (staff.StaffID != checkStaff.StaffID)
-                {
-
                     errors.AppendLine("Такой логин уже занят");
-                }
             }
-
-                
 
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
-            }
-
-            if (staff.StaffID == 0)
-                DB.db.Staff.Add(staff);
+            }            
 
             try
             {
+                if (staff.StaffID == 0)
+                    DB.db.Staff.Add(staff);
+
                 DB.db.SaveChanges();
                 MessageBox.Show("Данные сохранены", "Уведомление");
                 Manager.mainFrame.GoBack();
@@ -89,9 +90,10 @@ namespace CafeApplication.Pages
             }
         }
 
-        private void btnDel_Click(object sender, RoutedEventArgs e)
+        private void Delete()
         {
-            if (MessageBox.Show("Вы точно хотите удалить запись?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Вы точно хотите удалить запись?", "Внимание", 
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
@@ -105,6 +107,16 @@ namespace CafeApplication.Pages
                     MessageBox.Show(ex.ToString());
                 }
             }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Save();
+        }
+
+        private void btnDel_Click(object sender, RoutedEventArgs e)
+        {
+            Delete();
         }
     }
 }

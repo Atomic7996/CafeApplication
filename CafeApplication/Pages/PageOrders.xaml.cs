@@ -23,7 +23,11 @@ namespace CafeApplication.Pages
         public PageOrders()
         {
             InitializeComponent();
+            PageStartUp();                
+        }
 
+        private void PageStartUp()
+        {
             var currentOrders = DB.db.Order.ToList();
             var sort = new List<string>();
             var staff = DB.db.Staff.ToList();
@@ -42,11 +46,7 @@ namespace CafeApplication.Pages
             });
 
             cbStaff.SelectedValuePath = "StaffID";
-
-            //cbSort.ItemsSource = sort;
             cbStaff.ItemsSource = staff;
-
-            //cbSort.SelectedIndex = 0;
             cbStaff.SelectedIndex = 0;
 
             if (Properties.Settings.Default.globalRole == "admin")
@@ -55,42 +55,17 @@ namespace CafeApplication.Pages
                 lvOrders.MouseDoubleClick -= lvOrders_MouseDoubleClick;
                 btnAdd.Visibility = Visibility.Hidden;
             }
-                
         }
 
         void UpdateLvItems()
         {
             var currentOrders = DB.db.Order.ToList();
 
-            //if (cbSort.SelectedIndex > 0)
-            //{
-            //    switch (cbSort.SelectedIndex)
-            //    {
-            //        case 1:
-            //            currentOrders = currentOrders.OrderBy(p => p.Title).ToList();
-            //            break;
-            //        case 2:
-            //            currentOrders = currentOrders.OrderByDescending(p => p.Title).ToList();
-            //            break;
-            //        case 3:
-            //            currentOrders = currentOrders.OrderBy(p => p.Cost).ToList();
-            //            break;
-            //        case 4:
-            //            currentOrders = currentOrders.OrderByDescending(p => p.Cost).ToList();
-            //            break;
-
-            //    }
-            //}
-
             if (cbStaff.SelectedIndex > 0)
-            {
                 currentOrders = currentOrders.Where(s => s.StaffID == int.Parse(cbStaff.SelectedValue.ToString())).ToList();
-            }
 
             if (tbFinder.Text != null)
-            {
                 currentOrders = currentOrders.Where(s => s.OrderDateTime.Date.ToString().Contains(calendar.SelectedDate.ToString())).ToList();
-            }
 
             lvOrders.ItemsSource = currentOrders;
 

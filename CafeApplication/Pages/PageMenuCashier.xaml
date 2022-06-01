@@ -17,10 +17,10 @@
         <TextBlock Text="Меню" Style="{StaticResource Label}"/>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Margin="0, 0, 0, 50">
-            <Button Name="btnProducts" Content="Товары" Click="btnProducts_Click"/>
+            <Button Name="btnProducts" Content="Блюда" Click="btnProducts_Click"/>
             <Button Name="btnFoodStaff" Content="Продукты" Click="btnFoodStaff_Click"/>
-            <Button Name="btnOrders" Content="Заказы" Click="btnOrders_Click"/>
             <Button Name="btnCombo" Content="Наборы" Click="btnCombo_Click"/>
+            <Button Name="btnOrders" Content="Заказы" Click="btnOrders_Click"/>
         </StackPanel>
 
         <Button Name="btnAddOrder" Content="Создать заказ" Click="btnAddOrder_Click" Margin="1457,265,263,386" Grid.Row="1" Height="120" Width="200" />

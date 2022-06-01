@@ -35,20 +35,29 @@
             <TextBlock Name="tbRecordsCountAll"/>
         </StackPanel>
 
-        <ListView Name="lvProducts" Grid.Row="2" Grid.ColumnSpan="4" IsVisibleChanged="lvProducts_IsVisibleChanged" MouseDoubleClick="lvProducts_MouseDoubleClick" ToolTip="Для просмотра нажмите дважды" SelectionMode="Single">
+        <ListView Name="lvProducts" Grid.Row="2" Grid.ColumnSpan="4" 
+                  IsVisibleChanged="lvProducts_IsVisibleChanged" 
+                  MouseDoubleClick="lvProducts_MouseDoubleClick" 
+                  ToolTip="Для просмотра нажмите дважды" 
+                  SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="650"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Stretch="UniformToFill" Grid.Column="1"/>
+                        <Image Source="{Binding ValidImage}" 
+                               HorizontalAlignment="Right" 
+                               Stretch="UniformToFill" 
+                               Grid.Column="1"/>
 
-                        <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <StackPanel Grid.Column="2" 
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding ProductType}"/>
                                 <TextBlock Text=" | "/>
@@ -56,11 +65,16 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Состав: "/>
-                                <TextBlock Name="tbFoodStaffList" Text="{Binding FoodStaffList}" Width="650" TextWrapping="Wrap"/>
+                                <TextBlock Name="tbFoodStaffList" 
+                                           Text="{Binding FoodStaffList}" 
+                                           Width="650" 
+                                           TextWrapping="Wrap"/>
                             </StackPanel>
                         </StackPanel>
 
-                        <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Left" >
+                        <StackPanel Grid.Column="3" 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Left" >
                             <TextBlock Text="Стоимость: "/>
                             <TextBlock Text="{Binding Cost}"/>
                             <TextBlock Text=" руб."/>
