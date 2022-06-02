@@ -16,7 +16,7 @@ namespace ClassLibraryCafe
     {
         public int ComboID { get; set; }
         public int ProductID { get; set; }
-        public Nullable<decimal> Count { get; set; }
+        public Nullable<int> Count { get; set; }
         public int ComboProductID { get; set; }
     
         public virtual Combo Combo { get; set; }

@@ -5,30 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище CafeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Agent">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="AgentTypeID" Type="int" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="300" />
-          <Property Name="INN" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="KPP" Type="varchar" MaxLength="9" />
-          <Property Name="DirectorName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="255" />
-          <Property Name="Logo" Type="nvarchar" MaxLength="100" />
-          <Property Name="Priority" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AgentType">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Image" Type="nvarchar" MaxLength="100" />
-        </EntityType>
         <EntityType Name="Combo">
           <Key>
             <PropertyRef Name="ComboID" />
@@ -45,7 +21,7 @@
           </Key>
           <Property Name="ComboID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="Count" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Count" Type="int" />
           <Property Name="ComboProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Coupon">
@@ -69,37 +45,6 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Image" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Material">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="CountInPack" Type="int" Nullable="false" />
-          <Property Name="Unit" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="CountInStock" Type="float" />
-          <Property Name="MinCount" Type="float" Nullable="false" />
-          <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Image" Type="nvarchar" MaxLength="100" />
-          <Property Name="MaterialTypeID" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MaterialSupplier">
-          <Key>
-            <PropertyRef Name="MaterialID" />
-            <PropertyRef Name="SupplierID" />
-          </Key>
-          <Property Name="MaterialID" Type="int" Nullable="false" />
-          <Property Name="SupplierID" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MaterialType">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="DefectedPercent" Type="float" />
-        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -116,7 +61,7 @@
           </Key>
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="ComboID" Type="int" Nullable="false" />
-          <Property Name="Count" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Count" Type="int" />
           <Property Name="OrderComboID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderProduct">
@@ -125,7 +70,7 @@
           </Key>
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="Count" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Count" Type="int" />
           <Property Name="OrderProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
@@ -145,30 +90,14 @@
           </Key>
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="FoodStaffID" Type="int" Nullable="false" />
-          <Property Name="Count" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Count" Type="int" />
           <Property Name="ProductFoodStaffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ProductMaterial">
-          <Key>
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="MaterialID" />
-          </Key>
-          <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="MaterialID" Type="int" Nullable="false" />
-          <Property Name="Count" Type="float" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
             <PropertyRef Name="ProductTypeID" />
           </Key>
           <Property Name="ProductTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Roles">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Staff">
@@ -191,24 +120,6 @@
           </Key>
           <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Status">
-          <Key>
-            <PropertyRef Name="StatusID" />
-          </Key>
-          <Property Name="StatusID" Type="int" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Supplier">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="INN" Type="varchar" MaxLength="12" Nullable="false" />
-          <Property Name="StartDate" Type="date" Nullable="false" />
-          <Property Name="QualityRating" Type="int" />
-          <Property Name="SupplierType" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -234,28 +145,6 @@
           <Property Name="UserCardID" Type="nvarchar" MaxLength="50" />
           <Property Name="CardSale" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserLogin" Type="nchar" MaxLength="25" Nullable="false" />
-          <Property Name="UserPassword" Type="nchar" MaxLength="25" Nullable="false" />
-          <Property Name="UserRole" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Agent_AgentType">
-          <End Role="AgentType" Type="Self.AgentType" Multiplicity="1" />
-          <End Role="Agent" Type="Self.Agent" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AgentType">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Agent">
-              <PropertyRef Name="AgentTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ComboProduct_Combo">
           <End Role="Combo" Type="Self.Combo" Multiplicity="1" />
           <End Role="ComboProduct" Type="Self.ComboProduct" Multiplicity="*" />
@@ -289,42 +178,6 @@
             </Principal>
             <Dependent Role="Coupon">
               <PropertyRef Name="ProductTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Material_MaterialType">
-          <End Role="MaterialType" Type="Self.MaterialType" Multiplicity="1" />
-          <End Role="Material" Type="Self.Material" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MaterialType">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Material">
-              <PropertyRef Name="MaterialTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MaterialSupplier_Material">
-          <End Role="Material" Type="Self.Material" Multiplicity="1" />
-          <End Role="MaterialSupplier" Type="Self.MaterialSupplier" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Material">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="MaterialSupplier">
-              <PropertyRef Name="MaterialID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MaterialSupplier_Supplier">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
-          <End Role="MaterialSupplier" Type="Self.MaterialSupplier" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Supplier">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="MaterialSupplier">
-              <PropertyRef Name="SupplierID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -448,18 +301,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductMaterial_Material">
-          <End Role="Material" Type="Self.Material" Multiplicity="1" />
-          <End Role="ProductMaterial" Type="Self.ProductMaterial" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Material">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProductMaterial">
-              <PropertyRef Name="MaterialID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Staff_StaffRole">
           <End Role="StaffRole" Type="Self.StaffRole" Multiplicity="1" />
           <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
@@ -472,47 +313,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище CafeModelContainer">
-          <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AgentType" EntityType="Self.AgentType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Combo" EntityType="Self.Combo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ComboProduct" EntityType="Self.ComboProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Coupon" EntityType="Self.Coupon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FoodStaff" EntityType="Self.FoodStaff" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MaterialSupplier" EntityType="Self.MaterialSupplier" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MaterialType" EntityType="Self.MaterialType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderCombo" EntityType="Self.OrderCombo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductFoodStuff" EntityType="Self.ProductFoodStuff" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductMaterial" EntityType="Self.ProductMaterial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffRole" EntityType="Self.StaffRole" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Agent_AgentType" Association="Self.FK_Agent_AgentType">
-            <End Role="AgentType" EntitySet="AgentType" />
-            <End Role="Agent" EntitySet="Agent" />
-          </AssociationSet>
           <AssociationSet Name="FK_ComboProduct_Combo" Association="Self.FK_ComboProduct_Combo">
             <End Role="Combo" EntitySet="Combo" />
             <End Role="ComboProduct" EntitySet="ComboProduct" />
@@ -524,18 +339,6 @@
           <AssociationSet Name="FK_Coupon_ProductType" Association="Self.FK_Coupon_ProductType">
             <End Role="ProductType" EntitySet="ProductType" />
             <End Role="Coupon" EntitySet="Coupon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Material_MaterialType" Association="Self.FK_Material_MaterialType">
-            <End Role="MaterialType" EntitySet="MaterialType" />
-            <End Role="Material" EntitySet="Material" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MaterialSupplier_Material" Association="Self.FK_MaterialSupplier_Material">
-            <End Role="Material" EntitySet="Material" />
-            <End Role="MaterialSupplier" EntitySet="MaterialSupplier" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MaterialSupplier_Supplier" Association="Self.FK_MaterialSupplier_Supplier">
-            <End Role="Supplier" EntitySet="Supplier" />
-            <End Role="MaterialSupplier" EntitySet="MaterialSupplier" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Coupon" Association="Self.FK_Order_Coupon">
             <End Role="Coupon" EntitySet="Coupon" />
@@ -577,17 +380,9 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductFoodStuff" EntitySet="ProductFoodStuff" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductMaterial_Material" Association="Self.FK_ProductMaterial_Material">
-            <End Role="Material" EntitySet="Material" />
-            <End Role="ProductMaterial" EntitySet="ProductMaterial" />
-          </AssociationSet>
           <AssociationSet Name="FK_Staff_StaffRole" Association="Self.FK_Staff_StaffRole">
             <End Role="StaffRole" EntitySet="StaffRole" />
             <End Role="Staff" EntitySet="Staff" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -595,32 +390,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CafeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Agent">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AgentTypeID" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="INN" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="KPP" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
-          <Property Name="DirectorName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Logo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Priority" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AgentType" Relationship="Self.FK_Agent_AgentType" FromRole="Agent" ToRole="AgentType" />
-        </EntityType>
-        <EntityType Name="AgentType">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Agent" Relationship="Self.FK_Agent_AgentType" FromRole="AgentType" ToRole="Agent" />
-        </EntityType>
         <EntityType Name="Combo">
           <Key>
             <PropertyRef Name="ComboID" />
@@ -639,7 +408,7 @@
           </Key>
           <Property Name="ComboID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Count" Type="Int32" />
           <Property Name="ComboProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Combo" Relationship="Self.FK_ComboProduct_Combo" FromRole="ComboProduct" ToRole="Combo" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ComboProduct_Product" FromRole="ComboProduct" ToRole="Product" />
@@ -668,33 +437,6 @@
           <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProductFoodStuff" Relationship="Self.FK_ProductFoodStuff_FoodStaff" FromRole="FoodStaff" ToRole="ProductFoodStuff" />
         </EntityType>
-        <EntityType Name="Material">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CountInPack" Type="Int32" Nullable="false" />
-          <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CountInStock" Type="Double" />
-          <Property Name="MinCount" Type="Double" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MaterialTypeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MaterialType" Relationship="Self.FK_Material_MaterialType" FromRole="Material" ToRole="MaterialType" />
-          <NavigationProperty Name="ProductMaterial" Relationship="Self.FK_ProductMaterial_Material" FromRole="Material" ToRole="ProductMaterial" />
-          <NavigationProperty Name="Supplier" Relationship="Self.MaterialSupplier" FromRole="Material" ToRole="Supplier" />
-        </EntityType>
-        <EntityType Name="MaterialType">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DefectedPercent" Type="Double" />
-          <NavigationProperty Name="Material" Relationship="Self.FK_Material_MaterialType" FromRole="MaterialType" ToRole="Material" />
-        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -716,7 +458,7 @@
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="ComboID" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Count" Type="Int32" />
           <Property Name="OrderComboID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Combo" Relationship="Self.FK_OrderCombo_Combo" FromRole="OrderCombo" ToRole="Combo" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderCombo_Order" FromRole="OrderCombo" ToRole="Order" />
@@ -727,7 +469,7 @@
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Count" Type="Int32" />
           <Property Name="OrderProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderProduct_Order" FromRole="OrderProduct" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="Self.FK_OrderProduct_Product" FromRole="OrderProduct" ToRole="Product" />
@@ -753,20 +495,10 @@
           </Key>
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="FoodStaffID" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Count" Type="Int32" />
           <Property Name="ProductFoodStaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="FoodStaff" Relationship="Self.FK_ProductFoodStuff_FoodStaff" FromRole="ProductFoodStuff" ToRole="FoodStaff" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ProductFoodStuff_Product" FromRole="ProductFoodStuff" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="ProductMaterial">
-          <Key>
-            <PropertyRef Name="ProductID" />
-            <PropertyRef Name="MaterialID" />
-          </Key>
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="MaterialID" Type="Int32" Nullable="false" />
-          <Property Name="Count" Type="Double" />
-          <NavigationProperty Name="Material" Relationship="Self.FK_ProductMaterial_Material" FromRole="ProductMaterial" ToRole="Material" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -776,14 +508,6 @@
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Coupon" Relationship="Self.FK_Coupon_ProductType" FromRole="ProductType" ToRole="Coupon" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="Roles">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -808,25 +532,6 @@
           <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_StaffRole" FromRole="StaffRole" ToRole="Staff" />
-        </EntityType>
-        <EntityType Name="Status">
-          <Key>
-            <PropertyRef Name="StatusID" />
-          </Key>
-          <Property Name="StatusID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Supplier">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="INN" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="QualityRating" Type="Int32" />
-          <Property Name="SupplierType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Material" Relationship="Self.MaterialSupplier" FromRole="Supplier" ToRole="Material" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -853,29 +558,6 @@
           <Property Name="CardSale" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
         </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserLogin" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="UserPassword" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="UserRole" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
-        </EntityType>
-        <Association Name="FK_Agent_AgentType">
-          <End Role="AgentType" Type="Self.AgentType" Multiplicity="1" />
-          <End Role="Agent" Type="Self.Agent" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AgentType">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Agent">
-              <PropertyRef Name="AgentTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ComboProduct_Combo">
           <End Role="Combo" Type="Self.Combo" Multiplicity="1" />
           <End Role="ComboProduct" Type="Self.ComboProduct" Multiplicity="*" />
@@ -945,30 +627,6 @@
             </Principal>
             <Dependent Role="ProductFoodStuff">
               <PropertyRef Name="FoodStaffID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Material_MaterialType">
-          <End Role="MaterialType" Type="Self.MaterialType" Multiplicity="1" />
-          <End Role="Material" Type="Self.Material" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MaterialType">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Material">
-              <PropertyRef Name="MaterialTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductMaterial_Material">
-          <End Role="Material" Type="Self.Material" Multiplicity="1" />
-          <End Role="ProductMaterial" Type="Self.ProductMaterial" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Material">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="ProductMaterial">
-              <PropertyRef Name="MaterialID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1056,18 +714,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Users_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Staff_StaffRole">
           <End Role="StaffRole" Type="Self.StaffRole" Multiplicity="1" />
           <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
@@ -1080,38 +726,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="MaterialSupplier">
-          <End Role="Material" Type="Self.Material" Multiplicity="*" />
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="CafeEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Agent" EntityType="Self.Agent" />
-          <EntitySet Name="AgentType" EntityType="Self.AgentType" />
           <EntitySet Name="Combo" EntityType="Self.Combo" />
           <EntitySet Name="ComboProduct" EntityType="Self.ComboProduct" />
           <EntitySet Name="Coupon" EntityType="Self.Coupon" />
           <EntitySet Name="FoodStaff" EntityType="Self.FoodStaff" />
-          <EntitySet Name="Material" EntityType="Self.Material" />
-          <EntitySet Name="MaterialType" EntityType="Self.MaterialType" />
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="OrderCombo" EntityType="Self.OrderCombo" />
           <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" />
           <EntitySet Name="Product" EntityType="Self.Product" />
           <EntitySet Name="ProductFoodStuff" EntityType="Self.ProductFoodStuff" />
-          <EntitySet Name="ProductMaterial" EntityType="Self.ProductMaterial" />
           <EntitySet Name="ProductType" EntityType="Self.ProductType" />
-          <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Staff" EntityType="Self.Staff" />
           <EntitySet Name="StaffRole" EntityType="Self.StaffRole" />
-          <EntitySet Name="Status" EntityType="Self.Status" />
-          <EntitySet Name="Supplier" EntityType="Self.Supplier" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK_Agent_AgentType" Association="Self.FK_Agent_AgentType">
-            <End Role="AgentType" EntitySet="AgentType" />
-            <End Role="Agent" EntitySet="Agent" />
-          </AssociationSet>
           <AssociationSet Name="FK_ComboProduct_Combo" Association="Self.FK_ComboProduct_Combo">
             <End Role="Combo" EntitySet="Combo" />
             <End Role="ComboProduct" EntitySet="ComboProduct" />
@@ -1135,14 +764,6 @@
           <AssociationSet Name="FK_ProductFoodStuff_FoodStaff" Association="Self.FK_ProductFoodStuff_FoodStaff">
             <End Role="FoodStaff" EntitySet="FoodStaff" />
             <End Role="ProductFoodStuff" EntitySet="ProductFoodStuff" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Material_MaterialType" Association="Self.FK_Material_MaterialType">
-            <End Role="MaterialType" EntitySet="MaterialType" />
-            <End Role="Material" EntitySet="Material" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductMaterial_Material" Association="Self.FK_ProductMaterial_Material">
-            <End Role="Material" EntitySet="Material" />
-            <End Role="ProductMaterial" EntitySet="ProductMaterial" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Staff" Association="Self.FK_Order_Staff">
             <End Role="Staff" EntitySet="Staff" />
@@ -1172,17 +793,9 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductFoodStuff" EntitySet="ProductFoodStuff" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
           <AssociationSet Name="FK_Staff_StaffRole" Association="Self.FK_Staff_StaffRole">
             <End Role="StaffRole" EntitySet="StaffRole" />
             <End Role="Staff" EntitySet="Staff" />
-          </AssociationSet>
-          <AssociationSet Name="MaterialSupplier" Association="Self.MaterialSupplier">
-            <End Role="Material" EntitySet="Material" />
-            <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1191,32 +804,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище CafeModelContainer" CdmEntityContainer="CafeEntities">
-          <EntitySetMapping Name="Agent">
-            <EntityTypeMapping TypeName="CafeModel.Agent">
-              <MappingFragment StoreEntitySet="Agent">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="AgentTypeID" ColumnName="AgentTypeID" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="INN" ColumnName="INN" />
-                <ScalarProperty Name="KPP" ColumnName="KPP" />
-                <ScalarProperty Name="DirectorName" ColumnName="DirectorName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
-                <ScalarProperty Name="Priority" ColumnName="Priority" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AgentType">
-            <EntityTypeMapping TypeName="CafeModel.AgentType">
-              <MappingFragment StoreEntitySet="AgentType">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Combo">
             <EntityTypeMapping TypeName="CafeModel.Combo">
               <MappingFragment StoreEntitySet="Combo">
@@ -1258,31 +845,6 @@
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Material">
-            <EntityTypeMapping TypeName="CafeModel.Material">
-              <MappingFragment StoreEntitySet="Material">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="CountInPack" ColumnName="CountInPack" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="CountInStock" ColumnName="CountInStock" />
-                <ScalarProperty Name="MinCount" ColumnName="MinCount" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="MaterialTypeID" ColumnName="MaterialTypeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MaterialType">
-            <EntityTypeMapping TypeName="CafeModel.MaterialType">
-              <MappingFragment StoreEntitySet="MaterialType">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="DefectedPercent" ColumnName="DefectedPercent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1339,27 +901,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductMaterial">
-            <EntityTypeMapping TypeName="CafeModel.ProductMaterial">
-              <MappingFragment StoreEntitySet="ProductMaterial">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
-                <ScalarProperty Name="Count" ColumnName="Count" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ProductType">
             <EntityTypeMapping TypeName="CafeModel.ProductType">
               <MappingFragment StoreEntitySet="ProductType">
                 <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="CafeModel.Roles">
-              <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1384,26 +929,6 @@
               <MappingFragment StoreEntitySet="StaffRole">
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="CafeModel.Status">
-              <MappingFragment StoreEntitySet="Status">
-                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Supplier">
-            <EntityTypeMapping TypeName="CafeModel.Supplier">
-              <MappingFragment StoreEntitySet="Supplier">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="INN" ColumnName="INN" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="QualityRating" ColumnName="QualityRating" />
-                <ScalarProperty Name="SupplierType" ColumnName="SupplierType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1433,25 +958,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="CafeModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="MaterialSupplier" TypeName="CafeModel.MaterialSupplier" StoreEntitySet="MaterialSupplier">
-            <EndProperty Name="Material">
-              <ScalarProperty Name="ID" ColumnName="MaterialID" />
-            </EndProperty>
-            <EndProperty Name="Supplier">
-              <ScalarProperty Name="ID" ColumnName="SupplierID" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

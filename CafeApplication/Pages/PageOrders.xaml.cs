@@ -49,10 +49,13 @@ namespace CafeApplication.Pages
             cbStaff.ItemsSource = staff;
             cbStaff.SelectedIndex = 0;
 
-            if (Properties.Settings.Default.globalRole == "admin")
+            if (Properties.Settings.Default.globalRole != "manager")
             {
                 lvOrders.ToolTip = null;
-                lvOrders.MouseDoubleClick -= lvOrders_MouseDoubleClick;
+                lvOrders.MouseDoubleClick -= lvOrders_MouseDoubleClick;                
+            }
+            else
+            {
                 btnAdd.Visibility = Visibility.Hidden;
             }
         }
@@ -64,7 +67,7 @@ namespace CafeApplication.Pages
             if (cbStaff.SelectedIndex > 0)
                 currentOrders = currentOrders.Where(s => s.StaffID == int.Parse(cbStaff.SelectedValue.ToString())).ToList();
 
-            if (tbFinder.Text != null)
+            if (calendar.SelectedDate != null)
                 currentOrders = currentOrders.Where(s => s.OrderDateTime.Date.ToString().Contains(calendar.SelectedDate.ToString())).ToList();
 
             lvOrders.ItemsSource = currentOrders;

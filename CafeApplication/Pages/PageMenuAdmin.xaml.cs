@@ -54,5 +54,10 @@ namespace CafeApplication.Pages
         {
             Manager.mainFrame.Navigate(new PageStaff());
         }
+
+        private void btnReports_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.mainFrame.Navigate(new PageReports());
+        }
     }
 }

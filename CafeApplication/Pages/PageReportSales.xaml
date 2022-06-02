@@ -1,0 +1,54 @@
+﻿<Page x:Class="CafeApplication.Pages.PageReportSales"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CafeApplication.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1920"
+      Title="PageReportSales">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Отчет по продажам" Grid.ColumnSpan="4" Style="{StaticResource Label}" />
+
+        <ComboBox Name="cbTypes"  Grid.Row="1" Grid.Column="0" Style="{StaticResource comboBox}" SelectionChanged="cbTypes_SelectionChanged"/>
+        <ComboBox Name="cbSort"  Grid.Row="1" Grid.Column="1" Style="{StaticResource comboBox}" SelectionChanged="cbSort_SelectionChanged"/>
+        <DatePicker Name="calendar" Grid.Row="1" Grid.Column="2" SelectedDateChanged="calendar_SelectedDateChanged" FirstDayOfWeek="Monday" SelectedDateFormat="Long"/>
+
+        <StackPanel Name="spProds" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden">
+            <TextBlock Text="Блюд продано: "/>
+            <TextBlock Name="tbProductsCount"/>
+            <TextBlock Text="На сумму: "/>
+            <TextBlock Name="tbProductsPrice"/>
+        </StackPanel>
+        <StackPanel Name="spCombos" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden">
+            <TextBlock Text="Наборов продано: "/>
+            <TextBlock Name="tbCombosCount"/>
+            <TextBlock Text="На сумму: "/>
+            <TextBlock Name="tbCombosPrice"/>
+        </StackPanel>
+
+        <StackPanel Name="spSelectedProduct" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden">
+            
+            <TextBlock Name="tbTitle"/>
+            <TextBlock Text="продано в количестве: "/>
+            <TextBlock Name="tbCount"/>
+            <TextBlock Text="На сумму: "/>
+            <TextBlock Name="tbCost"/>
+        </StackPanel>
+
+    </Grid>
+</Page>

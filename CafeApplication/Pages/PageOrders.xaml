@@ -25,8 +25,9 @@
 
         <TextBlock Text="Заказы" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
 
-        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите фамилию для поиска" TextChanged="tbFinder_TextChanged"/>
+        <!--<TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите фамилию для поиска" TextChanged="tbFinder_TextChanged"/>-->
         <ComboBox Name="cbStaff"  Grid.Row="1" Grid.Column="1" Style="{StaticResource comboBox}" SelectionChanged="cbStaff_SelectionChanged"/>
+        <DatePicker Name="calendar" Grid.Row="1" Grid.Column="2" SelectedDateChanged="calendar_SelectedDateChanged" FirstDayOfWeek="Monday" SelectedDateFormat="Long" />
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Записей: "/>
             <TextBlock Name="tbRecordsCount"/>
@@ -72,6 +73,5 @@
         </ListView>
 
         <Button Name="btnAdd" Content="Добавить заказ" Grid.Row="3" Grid.ColumnSpan="4" Click="btnAdd_Click"/>
-        <DatePicker Name="calendar" Grid.Row="1" Grid.Column="2" SelectedDateChanged="calendar_SelectedDateChanged" FirstDayOfWeek="Monday" SelectedDateFormat="Long" />
     </Grid>
 </Page>

@@ -68,12 +68,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Agent.cs">
-      <DependentUpon>ModelCafe.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AgentType.cs">
-      <DependentUpon>ModelCafe.tt</DependentUpon>
-    </Compile>
     <Compile Include="Combo.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
@@ -84,12 +78,6 @@
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="FoodStaff.cs">
-      <DependentUpon>ModelCafe.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Material.cs">
-      <DependentUpon>ModelCafe.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MaterialType.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelCafe.Context.cs">
@@ -112,6 +100,8 @@
     <Compile Include="Model\DB.cs" />
     <Compile Include="Model\FoodStaff.cs" />
     <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderCombo.cs" />
+    <Compile Include="Model\OrderProduct.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductFoodStuff.cs" />
     <Compile Include="Model\ProductType.cs" />
@@ -156,6 +146,12 @@
     <Compile Include="Pages\PageRegistration.xaml.cs">
       <DependentUpon>PageRegistration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageReports.xaml.cs">
+      <DependentUpon>PageReports.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageReportSales.xaml.cs">
+      <DependentUpon>PageReportSales.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageStaff.xaml.cs">
       <DependentUpon>PageStaff.xaml</DependentUpon>
     </Compile>
@@ -165,13 +161,7 @@
     <Compile Include="ProductFoodStuff.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductMaterial.cs">
-      <DependentUpon>ModelCafe.tt</DependentUpon>
-    </Compile>
     <Compile Include="ProductType.cs">
-      <DependentUpon>ModelCafe.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Roles.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="Staff.cs">
@@ -180,19 +170,10 @@
     <Compile Include="StaffRole.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
-    <Compile Include="Status.cs">
-      <DependentUpon>ModelCafe.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Supplier.cs">
-      <DependentUpon>ModelCafe.tt</DependentUpon>
-    </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>ModelCafe.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Users.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="Windows\WindowAutorization.xaml.cs">
@@ -206,6 +187,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PageMenuCashier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageReportSales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -51,3 +51,7 @@ C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\Pages\Page
 C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\Windows\WindowImages.baml
 C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\CafeApplication.csproj.SuggestedBindingRedirects.cache
 C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\CafeApplication.csproj.CopyComplete
+C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageReports.g.cs
+C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageReportSales.g.cs
+C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageReports.baml
+C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageReportSales.baml

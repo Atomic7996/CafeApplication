@@ -1,32 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище CafeModelContainer" CdmEntityContainer="CafeEntities">
-    <EntitySetMapping Name="Agent">
-      <EntityTypeMapping TypeName="CafeModel.Agent">
-        <MappingFragment StoreEntitySet="Agent">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="AgentTypeID" ColumnName="AgentTypeID" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="INN" ColumnName="INN" />
-          <ScalarProperty Name="KPP" ColumnName="KPP" />
-          <ScalarProperty Name="DirectorName" ColumnName="DirectorName" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Logo" ColumnName="Logo" />
-          <ScalarProperty Name="Priority" ColumnName="Priority" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AgentType">
-      <EntityTypeMapping TypeName="CafeModel.AgentType">
-        <MappingFragment StoreEntitySet="AgentType">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+  <EntityContainerMapping StorageEntityContainer="Хранилище CafeModelContainer" CdmEntityContainer="CafeEntities1">
     <EntitySetMapping Name="Combo">
       <EntityTypeMapping TypeName="CafeModel.Combo">
         <MappingFragment StoreEntitySet="Combo">
@@ -68,31 +42,6 @@
           <ScalarProperty Name="Unit" ColumnName="Unit" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Image" ColumnName="Image" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Material">
-      <EntityTypeMapping TypeName="CafeModel.Material">
-        <MappingFragment StoreEntitySet="Material">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="CountInPack" ColumnName="CountInPack" />
-          <ScalarProperty Name="Unit" ColumnName="Unit" />
-          <ScalarProperty Name="CountInStock" ColumnName="CountInStock" />
-          <ScalarProperty Name="MinCount" ColumnName="MinCount" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Cost" ColumnName="Cost" />
-          <ScalarProperty Name="Image" ColumnName="Image" />
-          <ScalarProperty Name="MaterialTypeID" ColumnName="MaterialTypeID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MaterialType">
-      <EntityTypeMapping TypeName="CafeModel.MaterialType">
-        <MappingFragment StoreEntitySet="MaterialType">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="DefectedPercent" ColumnName="DefectedPercent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -149,27 +98,10 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ProductMaterial">
-      <EntityTypeMapping TypeName="CafeModel.ProductMaterial">
-        <MappingFragment StoreEntitySet="ProductMaterial">
-          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-          <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
-          <ScalarProperty Name="Count" ColumnName="Count" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ProductType">
       <EntityTypeMapping TypeName="CafeModel.ProductType">
         <MappingFragment StoreEntitySet="ProductType">
           <ScalarProperty Name="ProductTypeID" ColumnName="ProductTypeID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="CafeModel.Roles">
-        <MappingFragment StoreEntitySet="Roles">
-          <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Title" ColumnName="Title" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -194,26 +126,6 @@
         <MappingFragment StoreEntitySet="StaffRole">
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
           <ScalarProperty Name="Title" ColumnName="Title" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Status">
-      <EntityTypeMapping TypeName="CafeModel.Status">
-        <MappingFragment StoreEntitySet="Status">
-          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Supplier">
-      <EntityTypeMapping TypeName="CafeModel.Supplier">
-        <MappingFragment StoreEntitySet="Supplier">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="INN" ColumnName="INN" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="QualityRating" ColumnName="QualityRating" />
-          <ScalarProperty Name="SupplierType" ColumnName="SupplierType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -243,24 +155,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="CafeModel.Users">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
-          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <AssociationSetMapping Name="MaterialSupplier" TypeName="CafeModel.MaterialSupplier" StoreEntitySet="MaterialSupplier">
-      <EndProperty Name="Material">
-        <ScalarProperty Name="ID" ColumnName="MaterialID" />
-      </EndProperty>
-      <EndProperty Name="Supplier">
-        <ScalarProperty Name="ID" ColumnName="SupplierID" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

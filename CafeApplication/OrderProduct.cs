@@ -16,7 +16,7 @@ namespace CafeApplication
     {
         public int OrderID { get; set; }
         public int ProductID { get; set; }
-        public Nullable<decimal> Count { get; set; }
+        public Nullable<int> Count { get; set; }
         public int OrderProductID { get; set; }
     
         public virtual Order Order { get; set; }

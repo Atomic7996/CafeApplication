@@ -8,6 +8,6 @@ namespace CafeApplication
 {
     public class DB
     {
-        public static CafeEntities db = new CafeEntities();
+        public static CafeEntities1 db = new CafeEntities1();
     }
 }
