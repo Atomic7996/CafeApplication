@@ -25,19 +25,28 @@ namespace CafeApplication
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Agent> Agent { get; set; }
+        public virtual DbSet<AgentType> AgentType { get; set; }
         public virtual DbSet<Combo> Combo { get; set; }
         public virtual DbSet<ComboProduct> ComboProduct { get; set; }
         public virtual DbSet<Coupon> Coupon { get; set; }
         public virtual DbSet<FoodStaff> FoodStaff { get; set; }
+        public virtual DbSet<Material> Material { get; set; }
+        public virtual DbSet<MaterialType> MaterialType { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderCombo> OrderCombo { get; set; }
         public virtual DbSet<OrderProduct> OrderProduct { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductFoodStuff> ProductFoodStuff { get; set; }
+        public virtual DbSet<ProductMaterial> ProductMaterial { get; set; }
         public virtual DbSet<ProductType> ProductType { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Staff> Staff { get; set; }
         public virtual DbSet<StaffRole> StaffRole { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<Supplier> Supplier { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
     }
 }

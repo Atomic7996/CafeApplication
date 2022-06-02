@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\App.xaml
-151348183587
-21108437758
-48-17044108
-19-1316298368
+151114027008
+2-508343043
+56-298235769
+191745598096
 Pages\PageMenuAdmin.xaml;Pages\PageMenuCashier.xaml;Windows\MainWindow.xaml;Pages\PageAddEditCombo.xaml;Pages\PageAddEditFoodStaff.xaml;Pages\PageAddEditOrder.xaml;Pages\PageAddEditProduct.xaml;Pages\PageCombo.xaml;Pages\PageFoodStaff.xaml;Pages\PageOrders.xaml;Pages\PageProducts.xaml;Pages\PageRegistration.xaml;Pages\PageStaff.xaml;Windows\WindowAutorization.xaml;Windows\WindowImages.xaml;
 
-True
+False
 

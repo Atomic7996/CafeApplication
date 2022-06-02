@@ -4,27 +4,39 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a252614cb3c3481984ac9ba6f5d8fda1" Name="Diagram1">
+      <Diagram DiagramId="ea21cd548c7e41c5a54b9881f1b58a4c" Name="Diagram1">
+        <EntityTypeShape EntityType="CafeModel.Agent" Width="1.5" PointX="10" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeModel.AgentType" Width="1.5" PointX="7.75" PointY="12.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.Combo" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.ComboProduct" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.Coupon" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.FoodStaff" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeModel.Material" Width="1.5" PointX="12" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeModel.MaterialType" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.Order" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.OrderCombo" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.OrderProduct" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.Product" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.ProductFoodStuff" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeModel.ProductMaterial" Width="1.5" PointX="14.25" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.ProductType" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeModel.Roles" Width="1.5" PointX="9.75" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.Staff" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.StaffRole" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CafeModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeModel.Status" Width="1.5" PointX="12.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeModel.Supplier" Width="1.5" PointX="14.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeModel.sysdiagrams" Width="1.5" PointX="12.75" PointY="14.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CafeModel.User" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CafeModel.Users" Width="1.5" PointX="12" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="CafeModel.FK_Agent_AgentType" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_ComboProduct_Combo" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_OrderCombo_Combo" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_ComboProduct_Product" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_Coupon_ProductType" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_Order_Coupon" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_ProductFoodStuff_FoodStaff" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeModel.FK_Material_MaterialType" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeModel.FK_ProductMaterial_Material" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_Order_Staff" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_Order_User" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_OrderCombo_Order" ManuallyRouted="false" />
@@ -32,7 +44,9 @@
         <AssociationConnector Association="CafeModel.FK_OrderProduct_Product" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_Product_ProductType" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_ProductFoodStuff_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeModel.FK_Users_Roles" ManuallyRouted="false" />
         <AssociationConnector Association="CafeModel.FK_Staff_StaffRole" ManuallyRouted="false" />
+        <AssociationConnector Association="CafeModel.MaterialSupplier" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

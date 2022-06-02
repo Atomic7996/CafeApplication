@@ -74,3 +74,11 @@ C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\obj\Debug\CafeWeb
 C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\obj\Debug\CafeWebApplication.csproj.CopyComplete
 C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\obj\Debug\CafeWebApplication.dll
 C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\obj\Debug\CafeWebApplication.pdb
+C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\bin\ClassLibraryCafe.dll
+C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\bin\EntityFramework.dll
+C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\bin\ClassLibraryCafe.pdb
+C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\bin\ClassLibraryCafe.dll.config
+C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\bin\EntityFramework.xml
+C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\bin\EntityFramework.SqlServer.dll
+C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\bin\EntityFramework.SqlServer.xml
+C:\Users\sasha\Source\Repos\CafeApplication\CafeWebApplication\obj\Debug\CafeWebApplication.g.resources

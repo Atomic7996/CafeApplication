@@ -49,3 +49,5 @@ C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\Windows\Wi
 C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageMenuAdmin.baml
 C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageMenuCashier.baml
 C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\Windows\WindowImages.baml
+C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\CafeApplication.csproj.SuggestedBindingRedirects.cache
+C:\Users\sasha\Source\Repos\CafeApplication\CafeApplication\obj\Debug\CafeApplication.csproj.CopyComplete

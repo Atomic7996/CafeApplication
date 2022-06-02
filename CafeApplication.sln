@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeApplication", "CafeApplication\CafeApplication.csproj", "{BCF7352C-5A4F-4709-8E14-A7A1E5599AD2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CafeWebApplication", "CafeWebApplication\CafeWebApplication.csproj", "{7F4713FA-8C6B-467A-808A-80B2282ECDFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryCafe", "ClassLibraryCafe\ClassLibraryCafe.csproj", "{4469D89F-9C70-47AA-87B2-624CA0B89425}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7F4713FA-8C6B-467A-808A-80B2282ECDFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F4713FA-8C6B-467A-808A-80B2282ECDFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F4713FA-8C6B-467A-808A-80B2282ECDFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4469D89F-9C70-47AA-87B2-624CA0B89425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4469D89F-9C70-47AA-87B2-624CA0B89425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4469D89F-9C70-47AA-87B2-624CA0B89425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4469D89F-9C70-47AA-87B2-624CA0B89425}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

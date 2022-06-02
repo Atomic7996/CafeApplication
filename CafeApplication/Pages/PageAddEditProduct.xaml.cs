@@ -46,9 +46,9 @@ namespace CafeApplication.Pages
             DataContext = product;
 
             cbTypes.ItemsSource = DB.db.ProductType.ToList();
-            lbFoodStaff.SelectedIndex = 0;
-            lbFoodStaff.SelectedIndex += 2;
-            lbFoodStaff.SelectedIndex += 3;
+            //lbFoodStaff.SelectedIndex = 0;
+            //lbFoodStaff.SelectedIndex += 2;
+            //lbFoodStaff.SelectedIndex += 3;
 
             //lbFoodStaff.ItemsSource = DB.db.ProductFoodStuff.Where(p => p.ProductID == product.ProductID).ToList();
             lbFoodStaff.ItemsSource = DB.db.FoodStaff.ToList();

@@ -1,0 +1,14 @@
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\bin\Debug\ClassLibraryCafe.dll.config
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\bin\Debug\ClassLibraryCafe.dll
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\bin\Debug\ClassLibraryCafe.pdb
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\bin\Debug\EntityFramework.dll
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\bin\Debug\EntityFramework.xml
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\obj\Debug\ClassLibraryCafe.csproj.AssemblyReference.cache
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\obj\Debug\ClassLibraryCafe.csproj.CoreCompileInputs.cache
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\obj\Debug\ClassLibraryCafe.csproj.CopyComplete
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\obj\Debug\ClassLibraryCafe.dll
+C:\Users\sasha\Source\Repos\CafeApplication\ClassLibraryCafe\obj\Debug\ClassLibraryCafe.pdb

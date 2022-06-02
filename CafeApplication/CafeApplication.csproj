@@ -68,6 +68,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Agent.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AgentType.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
     <Compile Include="Combo.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
@@ -78,6 +84,12 @@
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="FoodStaff.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Material.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialType.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="ModelCafe.Context.cs">
@@ -153,7 +165,13 @@
     <Compile Include="ProductFoodStuff.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductMaterial.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
     <Compile Include="ProductType.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Roles.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="Staff.cs">
@@ -162,10 +180,19 @@
     <Compile Include="StaffRole.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="Windows\WindowAutorization.xaml.cs">
@@ -310,6 +337,8 @@
     <Resource Include="Images\Products\soup.png" />
     <Resource Include="Images\Combos\combo3.png" />
     <Resource Include="Images\FoodStaff\meet1.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelCafe.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelCafe.edmx</DependentUpon>
