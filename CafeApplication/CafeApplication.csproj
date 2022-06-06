@@ -146,9 +146,6 @@
     <Compile Include="Pages\PageRegistration.xaml.cs">
       <DependentUpon>PageRegistration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PageReports.xaml.cs">
-      <DependentUpon>PageReports.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\PageReportSales.xaml.cs">
       <DependentUpon>PageReportSales.xaml</DependentUpon>
     </Compile>
@@ -176,8 +173,14 @@
     <Compile Include="User.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
+    <Compile Include="Windows\WindowAddProductType.xaml.cs">
+      <DependentUpon>WindowAddProductType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\WindowAutorization.xaml.cs">
       <DependentUpon>WindowAutorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowChangePass.xaml.cs">
+      <DependentUpon>WindowChangePass.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\WindowImages.xaml.cs">
       <DependentUpon>WindowImages.xaml</DependentUpon>
@@ -187,10 +190,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PageMenuCashier.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\PageReports.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -250,7 +249,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\WindowAddProductType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\WindowAutorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowChangePass.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

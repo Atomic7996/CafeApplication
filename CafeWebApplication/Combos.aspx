@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Наборы" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Combos.aspx.cs" Inherits="CafeWebApplication.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    
+        <h2>Наборы</h2>
     <asp:ListView runat="server" ID="lvCombos" 
         ItemType="ClassLibraryCafe.Combo" DataKeyNames="ComboID"
         SelectMethod="lvCombos_GetData">

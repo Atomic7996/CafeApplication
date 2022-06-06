@@ -45,7 +45,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Background="{Binding ValidColor}" CornerRadius="10" Grid.ColumnSpan="4" Margin="0"/>
+                        <Border Background="{Binding ValidColor}" CornerRadius="10" Grid.ColumnSpan="4" Margin="0" Opacity="50"/>
 
                         <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Stretch="UniformToFill" Grid.Column="1" />
 

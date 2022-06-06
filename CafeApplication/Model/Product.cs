@@ -19,8 +19,6 @@ namespace CafeApplication
         {
             get
             {
-                DB.db.ChangeTracker.Entries().ToList().ForEach(e => e.Reload());
-
                 string foodStaff = "";
                 foreach (var item in ProductFoodStuff)
                 {

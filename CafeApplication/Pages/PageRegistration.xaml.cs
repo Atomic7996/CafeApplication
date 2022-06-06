@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CafeApplication.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,10 +38,14 @@ namespace CafeApplication.Pages
             {
                 btnDel.Visibility = Visibility.Hidden;
                 tbHeader.Text = "Регистрация";
+                spPass.Visibility = Visibility.Visible;
+                btnPassword.Visibility = Visibility.Hidden;
             }
             else
             {
                 tbHeader.Text = "Редактор сотрудника";
+                btnPassword.Visibility = Visibility.Visible;
+                spPass.Visibility = Visibility.Hidden;
             }
 
             DataContext = staff;
@@ -60,7 +65,7 @@ namespace CafeApplication.Pages
                 errors.AppendLine("Укажите отчество");
             if (string.IsNullOrWhiteSpace(staff.Login))
                 errors.AppendLine("Укажите логин");
-            if (string.IsNullOrWhiteSpace(staff.Password))
+            if (string.IsNullOrWhiteSpace(tbPassword.Password))
                 errors.AppendLine("Придумайте пароль");
 
             if (checkStaff != null)
@@ -78,7 +83,10 @@ namespace CafeApplication.Pages
             try
             {
                 if (staff.StaffID == 0)
+                {
+                    staff.Password = tbPassword.Password;
                     DB.db.Staff.Add(staff);
+                }                    
 
                 DB.db.SaveChanges();
                 MessageBox.Show("Данные сохранены", "Уведомление");
@@ -117,6 +125,18 @@ namespace CafeApplication.Pages
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
             Delete();
+        }
+
+        private void btnPassword_Click(object sender, RoutedEventArgs e)
+        {
+            WindowChangePass window = new WindowChangePass(staff);
+            window.ShowDialog();
+
+            if (window.DialogResult == true)
+            {
+                DataContext = null;
+                DataContext = staff;
+            }
         }
     }
 }

@@ -25,7 +25,7 @@
 
         <TextBlock Text="Наборы" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
 
-        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите название для поиска" TextChanged="tbFinder_TextChanged"/>
+        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите название для поиска" TextChanged="tbFinder_TextChanged" Tag=""/>
         <ComboBox Name="cbSort"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource comboBox}" Width="450" SelectionChanged="cbSort_SelectionChanged"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Записей: "/>

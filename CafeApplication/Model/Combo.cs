@@ -8,6 +8,11 @@ namespace CafeApplication
 {
     public partial class Combo
     {
+        public override string ToString()
+        {
+            return Title;
+        }
+
         public string ValidImage => Image == null ? "../../Resources/combo.png" : Image;
 
         public string ProductList

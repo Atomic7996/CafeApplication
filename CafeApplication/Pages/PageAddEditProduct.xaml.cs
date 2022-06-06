@@ -118,7 +118,8 @@ namespace CafeApplication.Pages
             try
             {
                 DB.db.SaveChanges();
-                MessageBox.Show("Данные сохранены", "Уведомление");
+                MessageBox.Show("Данные сохранены", "Уведомление", 
+                    MessageBoxButton.OK, MessageBoxImage.Information);
                 Manager.mainFrame.GoBack();
             }
             catch (Exception ex)
@@ -199,6 +200,18 @@ namespace CafeApplication.Pages
         private void lbFoodStaff_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void btnAddType_Click(object sender, RoutedEventArgs e)
+        {
+            WindowAddProductType window = new WindowAddProductType();
+            window.ShowDialog();
+            if (window.DialogResult == true)
+            {
+                cbTypes.ItemsSource = DB.db.ProductType.ToList();
+                DataContext = null;
+                DataContext = product;
+            }
         }
     }
 }
