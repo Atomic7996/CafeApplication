@@ -39,7 +39,7 @@ namespace CafeApplication.Windows
                 case "FoodStaff":
                     imgs = Directory.GetFiles("../../Images/FoodStaff");
                     break;
-                case "Product":
+                case "combo":
                     imgs = Directory.GetFiles("../../Images/Products");
                     break;
                 case "Combo":

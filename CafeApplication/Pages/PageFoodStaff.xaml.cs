@@ -25,7 +25,9 @@ namespace CafeApplication.Pages
             InitializeComponent();
             PageStartUp();            
         }
-
+        /// <summary>
+        /// Преднастройка элементов страницы
+        /// </summary>
         private void PageStartUp()
         {
             if (Properties.Settings.Default.globalRole != "manager")
@@ -47,10 +49,11 @@ namespace CafeApplication.Pages
             lvFoodStaff.ItemsSource = currentFoodStaff;
 
             cbSort.ItemsSource = sort;
-
             cbSort.SelectedIndex = 0;
         }
-
+        /// <summary>
+        /// Поиск, сортировка и фильтрация выводимошо списка продуктов
+        /// </summary>
         void UpdateLvItems()
         {
             var currentFoodStuff = DB.db.FoodStaff.ToList();
@@ -92,7 +95,7 @@ namespace CafeApplication.Pages
         {
             UpdateLvItems();
         }
-                
+        
         private void lvFoodStaff_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());

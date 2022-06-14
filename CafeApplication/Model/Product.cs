@@ -13,7 +13,7 @@ namespace CafeApplication
             return Title;
         }
 
-        public string ValidImage => Image == null ? "../../Resources/product.png" : Image;
+        public string ValidImage => Image == null ? "../../Resources/combo.png" : Image;
 
         public string FoodStaffList
         {

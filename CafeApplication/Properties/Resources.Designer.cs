@@ -105,7 +105,7 @@ namespace CafeApplication.Properties {
         /// </summary>
         public static System.Drawing.Bitmap product {
             get {
-                object obj = ResourceManager.GetObject("product", resourceCulture);
+                object obj = ResourceManager.GetObject("combo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

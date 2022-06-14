@@ -118,8 +118,15 @@ namespace CafeApplication.Pages
 
         private void lvProducts_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
-            lvProducts.ItemsSource = DB.db.Product.ToList();
+            try
+            {
+                DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
+                lvProducts.ItemsSource = DB.db.Product.ToList();
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void lvProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)

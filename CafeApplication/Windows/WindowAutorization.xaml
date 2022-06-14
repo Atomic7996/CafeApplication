@@ -22,13 +22,13 @@
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <TextBlock Text="Логин:" Width="90" HorizontalAlignment="Right"/>
-                    <TextBox Name="tbLogin"  Width="420"/>
-                    <!--Text="adm"-->
+                    <TextBox Name="tbLogin" Text="adm" Width="420"/>
+                    <!---->
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="540" Height="100">
                     <TextBlock Text="Пароль:" Width="90" HorizontalAlignment="Right"/>
-                    <PasswordBox Name="tbPass" Style="{StaticResource passwordBox}" />
-                    <!--Password="adm"-->
+                    <PasswordBox Name="tbPass" Password="йцукен1234" Style="{StaticResource passwordBox}" />
+                    <!---->
                 </StackPanel>
             </StackPanel>
         </Border>

@@ -23,6 +23,6 @@
             <Button Name="btnOrders" Content="Заказы" Click="btnOrders_Click"/>
         </StackPanel>
 
-        <Button Name="btnAddOrder" Content="Создать заказ" Click="btnAddOrder_Click" Margin="1457,265,263,386" Grid.Row="1" Height="120" Width="200" />
+        <Button Name="btnAddOrder" Content="Создать заказ" Click="btnAddOrder_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,250,0" Grid.Row="1" Height="120" Width="200" />
     </Grid>
 </Page>

@@ -26,7 +26,7 @@ namespace CafeApplication
         }
     
         public virtual DbSet<Combo> Combo { get; set; }
-        public virtual DbSet<ComboProduct> ComboProduct { get; set; }
+        public virtual DbSet<OrderProduct> ComboProduct { get; set; }
         public virtual DbSet<Coupon> Coupon { get; set; }
         public virtual DbSet<FoodStaff> FoodStaff { get; set; }
         public virtual DbSet<Order> Order { get; set; }

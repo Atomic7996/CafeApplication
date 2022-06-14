@@ -57,3 +57,8 @@ C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Windows\Wi
 C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Windows\WindowAddProductType.baml
 C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Windows\WindowChangePass.g.cs
 C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Windows\WindowChangePass.baml
+C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageEditProductStructure.g.cs
+C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageEditProductStructure.baml
+C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageAddEditComboStructure.g.cs
+C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageAddEditComboStructure.baml
+C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageAddEditOrderProducts.g.cs

@@ -54,6 +54,7 @@
                         <li><a runat="server" href="~/">Главная</a></li>
                         <li><a runat="server" href="~/Products">Блюда</a></li>
                         <li><a runat="server" href="~/Combos">Наборы</a></li>
+                        <li><a runat="server" href="~/Combos">Корзина</a></li>
                     </ul>
                 </div>
             </div>

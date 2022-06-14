@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=desktop-ug8cjuo\\sqlexpress;Database=Cafe;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+}

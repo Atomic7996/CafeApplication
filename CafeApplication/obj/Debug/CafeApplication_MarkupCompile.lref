@@ -1,5 +1,8 @@
 ﻿
 FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\App.xaml;;
+FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Pages\PageAddEditComboStructure.xaml;;
+FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Pages\PageAddEditOrderProducts.xaml;;
+FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Pages\PageEditProductStructure.xaml;;
 FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Pages\PageMenuAdmin.xaml;;
 FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Pages\PageMenuCashier.xaml;;
 FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Pages\PageReportSales.xaml;;
@@ -16,6 +19,6 @@ FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Pages\PageRegistrat
 FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Pages\PageStaff.xaml;;
 FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Windows\WindowAddProductType.xaml;;
 FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Windows\WindowAutorization.xaml;;
-FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Windows\WindowImages.xaml;;
 FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Windows\WindowChangePass.xaml;;
+FC:\Users\sasha\source\repos\CafeApplication\CafeApplication\Windows\WindowImages.xaml;;
 

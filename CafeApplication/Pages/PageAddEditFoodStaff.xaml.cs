@@ -28,7 +28,10 @@ namespace CafeApplication.Pages
             InitializeComponent();
             PageStartUp(selectedFoodStaff);            
         }
-
+        /// <summary>
+        /// Преднастройка элементов страницы
+        /// </summary>
+        /// <param name="selectedFoodStaff"></param>
         private void PageStartUp(FoodStaff selectedFoodStaff)
         {
             if (selectedFoodStaff != null)
@@ -39,7 +42,9 @@ namespace CafeApplication.Pages
 
             DataContext = foodStaff;
         }
-
+        /// <summary>
+        /// Сохранение данных в БД
+        /// </summary>
         private void Save()
         {
             StringBuilder errors = new StringBuilder();
@@ -73,7 +78,9 @@ namespace CafeApplication.Pages
                 MessageBox.Show(ex.ToString());
             }
         }
-
+        /// <summary>
+        /// Удаление записи из БД
+        /// </summary>
         private void Delete()
         {
             if (MessageBox.Show("Вы точно хотите удалить запись?", "Внимание", 
@@ -109,7 +116,11 @@ namespace CafeApplication.Pages
         {
             Delete();
         }
-
+        /// <summary>
+        /// Выбор изображения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void imgLogo_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             WindowImages window = new WindowImages("FoodStaff");

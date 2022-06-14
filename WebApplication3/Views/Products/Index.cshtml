@@ -1,0 +1,31 @@
+﻿@page
+@using ClassLibraryCafe
+
+@model ProductsListViewModel
+
+
+<h1>ListProducts</h1>
+
+@{
+    foreach (var prod in Views_Products_Index.getAllProducts)
+    {
+        //<div>
+        //    <h2>Название: @prod.Title</h2>
+        //    <p>Категория: @prod.ProductType</p>
+        //    <p>Описание: @prod.Description</p>
+        //    <p>Состав: @prod.FoodStaffList</p>
+        //    <p>Цена: @prod.Cost.ToString("c")</p>
+        //</div>
+
+        <div class="col-lg-4">
+            <img class="img-thumbnail" src="@prod.ValidImage"/>
+            <h2>@prod.Title</h2>
+            <h2>@prod.ProductType</h2>
+            <h2>@prod.Description</h2>
+            <h2>@prod.FoodStaffList</h2>
+            <h2>@prod.Cost.ToString()</h2>
+        </div>
+
+
+    }
+}

@@ -27,7 +27,9 @@ namespace CafeApplication.Windows
 
             staff = selectedStaff;
         }
-
+        /// <summary>
+        /// Проверка старого пароля и смена на новый
+        /// </summary>
         private void ChangePassword()
         {
             if (staff.Password == tbOldPass.Password)

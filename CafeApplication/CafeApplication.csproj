@@ -116,8 +116,13 @@
     <Compile Include="OrderProduct.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ComboItemTemplate.cs" />
+    <Compile Include="Pages\FoodStaffItemTemplate.cs" />
     <Compile Include="Pages\PageAddEditCombo.xaml.cs">
       <DependentUpon>PageAddEditCombo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageAddEditComboStructure.xaml.cs">
+      <DependentUpon>PageAddEditComboStructure.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageAddEditFoodStaff.xaml.cs">
       <DependentUpon>PageAddEditFoodStaff.xaml</DependentUpon>
@@ -125,11 +130,17 @@
     <Compile Include="Pages\PageAddEditOrder.xaml.cs">
       <DependentUpon>PageAddEditOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageAddEditOrderProducts.xaml.cs">
+      <DependentUpon>PageAddEditOrderProducts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageAddEditProduct.xaml.cs">
       <DependentUpon>PageAddEditProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageCombo.xaml.cs">
       <DependentUpon>PageCombo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageEditProductStructure.xaml.cs">
+      <DependentUpon>PageEditProductStructure.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageFoodStaff.xaml.cs">
       <DependentUpon>PageFoodStaff.xaml</DependentUpon>
@@ -152,6 +163,7 @@
     <Compile Include="Pages\PageStaff.xaml.cs">
       <DependentUpon>PageStaff.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ProductItemTemplate.cs" />
     <Compile Include="Product.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
@@ -185,6 +197,18 @@
     <Compile Include="Windows\WindowImages.xaml.cs">
       <DependentUpon>WindowImages.xaml</DependentUpon>
     </Compile>
+    <Page Include="Pages\PageAddEditComboStructure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageAddEditOrderProducts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageEditProductStructure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageMenuAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

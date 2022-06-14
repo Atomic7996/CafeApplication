@@ -1,0 +1,61 @@
+﻿@*@model ProductsListViewModel
+*@
+
+<!DOCKTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width"/>
+        <title>List</title>
+    </head>
+
+    <body>
+        <h1>ListProducts</h1>
+
+@*@{
+    foreach (var prod in Model.getAllProducts)
+    {
+        //<div>
+        //    <h2>Название: @prod.Title</h2>
+        //    <p>Категория: @prod.ProductType</p>
+        //    <p>Описание: @prod.Description</p>
+        //    <p>Состав: @prod.FoodStaffList</p>
+        //    <p>Цена: @prod.Cost.ToString("c")</p>
+        //</div>
+
+        <div class="col-lg-4">
+            <img class="img-thumbnail" src="@prod.ValidImage"/>
+            <h2>@prod.Title</h2>
+            <h2>@prod.ProductType</h2>
+            <h2>@prod.Description</h2>
+            <h2>@prod.FoodStaffList</h2>
+            <h2>@prod.Cost.ToString()</h2>
+        </div>
+
+
+    }
+}*@
+    </body>
+</html>
+
+</!DOCKTYPE>
+
+
+
+@*<asp:ListView runat="server" ID="lvProducts" 
+        ItemType="ClassLibraryCafe.Product" DataKeyNames="ProductID"
+        SelectMethod="lvProducts_GetData">
+        <ItemTemplate>
+            <span>
+                <asp:Image runat="server" ImageUrl='<%# Eval("ValidImage") %>' Width="100" Height="100"/>
+                <b>
+                    <%# Eval("ProductType") %> | <%# Eval("Title") %>
+                </b> <br />
+                <small>
+                    Описание - <%# Eval("Description") %> <br />
+                    Состав - <%# Eval("FoodStaffList") %> <br />
+                    Цена: <%# Eval("Cost") %> руб. <br />
+                </small> <br />
+            </span>
+
+        </ItemTemplate>
+    </asp:ListView>*@

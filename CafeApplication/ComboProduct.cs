@@ -12,7 +12,7 @@ namespace CafeApplication
     using System;
     using System.Collections.Generic;
     
-    public partial class ComboProduct
+    public partial class OrderProduct
     {
         public int ComboID { get; set; }
         public int ProductID { get; set; }

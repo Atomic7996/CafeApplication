@@ -15,10 +15,9 @@
                 <small>
                     Описание - <%# Eval("Description") %> <br />
                     Состав - <%# Eval("FoodStaffList") %> <br />
-                    Цена: <%# Eval("Cost") %> руб. <br />
+                    Стоимость: <%# Eval("Cost") %> руб. <br />
                 </small> <hr /> <br />
             </span>
-
         </ItemTemplate>
     </asp:ListView>
 </asp:Content>

@@ -49,10 +49,13 @@ namespace CafeApplication.Pages
             cbStaff.ItemsSource = staff;
             cbStaff.SelectedIndex = 0;
 
+            lvOrders.ToolTip = null;
+            lvOrders.MouseDoubleClick -= lvOrders_MouseDoubleClick;
+
             if (Properties.Settings.Default.globalRole != "manager")
             {
                 lvOrders.ToolTip = null;
-                lvOrders.MouseDoubleClick -= lvOrders_MouseDoubleClick;                
+                lvOrders.MouseDoubleClick -= lvOrders_MouseDoubleClick;
             }
             else
             {

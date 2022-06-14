@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:CafeApplication"
         mc:Ignorable="d"
         Title="Кафе" Height="1060" Width="1900" MinHeight="800" MinWidth="1500" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
