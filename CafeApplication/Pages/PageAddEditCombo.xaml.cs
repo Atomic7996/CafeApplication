@@ -126,8 +126,16 @@ namespace CafeApplication.Pages
 
         private void tbStructure_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
-            tbStructure.Text = combo.ProductList;
+            try
+            {
+                DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
+                tbStructure.Text = combo.ProductList;
+            }
+            catch (Exception)
+            {
+
+            }
+            
         }
 
         private void btnChange_Click(object sender, RoutedEventArgs e)

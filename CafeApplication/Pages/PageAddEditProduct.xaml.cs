@@ -192,8 +192,16 @@ namespace CafeApplication.Pages
 
         private void tbStructure_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
-            tbStructure.Text = product.FoodStaffList;
+            try
+            {
+                DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
+                tbStructure.Text = product.FoodStaffList;
+            }
+            catch (Exception)
+            {
+
+            }
+            
         }
     }
 }

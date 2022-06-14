@@ -130,6 +130,9 @@
     <Compile Include="Pages\PageAddEditOrder.xaml.cs">
       <DependentUpon>PageAddEditOrder.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageAddEditOrderCombos.xaml.cs">
+      <DependentUpon>PageAddEditOrderCombos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageAddEditOrderProducts.xaml.cs">
       <DependentUpon>PageAddEditOrderProducts.xaml</DependentUpon>
     </Compile>
@@ -198,6 +201,10 @@
       <DependentUpon>WindowImages.xaml</DependentUpon>
     </Compile>
     <Page Include="Pages\PageAddEditComboStructure.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageAddEditOrderCombos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -17,7 +17,7 @@ namespace CafeApplication
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.ComboProduct = new HashSet<OrderProduct>();
+            this.ComboProduct = new HashSet<ComboProduct>();
             this.OrderProduct = new HashSet<OrderProduct>();
             this.ProductFoodStuff = new HashSet<ProductFoodStuff>();
         }
@@ -30,7 +30,7 @@ namespace CafeApplication
         public int ProductTypeID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderProduct> ComboProduct { get; set; }
+        public virtual ICollection<ComboProduct> ComboProduct { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProduct { get; set; }
         public virtual ProductType ProductType { get; set; }

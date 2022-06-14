@@ -140,7 +140,7 @@ namespace CafeApplication.Pages
 
                 foreach (var productItemTemplate in _productItemTemplates)
                 {
-                    OrderProduct cp = new OrderProduct();
+                    ComboProduct cp = new ComboProduct();
                     cp.ProductID = productItemTemplate.product.ProductID;
                     cp.ComboID = selectedCombo.ComboID;
                     cp.Count = int.Parse(productItemTemplate.TbCount.Text);
