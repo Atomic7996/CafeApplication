@@ -69,7 +69,10 @@
 
                                     <StackPanel Grid.Column="2">
                                         <TextBlock Text="Стоимость:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        <TextBlock Text="{Binding Cost}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Run Text="{Binding Cost}"/>
+                                            <Run Text="₽"/>
+                                        </TextBlock>
                                     </StackPanel>
 
                                 </Grid>

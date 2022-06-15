@@ -51,7 +51,7 @@
 
         <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Стоимость:" Style="{StaticResource tbAddEdit}" Margin="0, 0, 25, 0" />
-            <TextBlock Text="{Binding SummaryCost}"/>
+            <TextBlock Name="tbCost" Text="{Binding SummaryCost}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">

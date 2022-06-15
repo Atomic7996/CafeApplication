@@ -4,21 +4,6 @@
     "C:\\Users\\sasha\\source\\repos\\CafeApplication\\WebApplication4\\CafeWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sasha\\source\\repos\\CafeApplication\\ClassLibraryCafe\\ClassLibraryCafe.csproj": {
-      "restore": {
-        "projectUniqueName": "C:\\Users\\sasha\\source\\repos\\CafeApplication\\ClassLibraryCafe\\ClassLibraryCafe.csproj",
-        "projectName": "ClassLibraryCafe",
-        "projectPath": "C:\\Users\\sasha\\source\\repos\\CafeApplication\\ClassLibraryCafe\\ClassLibraryCafe.csproj",
-        "frameworks": {
-          "net472": {
-            "projectReferences": {}
-          }
-        }
-      },
-      "frameworks": {
-        "net472": {}
-      }
-    },
     "C:\\Users\\sasha\\source\\repos\\CafeApplication\\WebApplication4\\CafeWeb.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -42,11 +27,7 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {
-              "C:\\Users\\sasha\\source\\repos\\CafeApplication\\ClassLibraryCafe\\ClassLibraryCafe.csproj": {
-                "projectPath": "C:\\Users\\sasha\\source\\repos\\CafeApplication\\ClassLibraryCafe\\ClassLibraryCafe.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {

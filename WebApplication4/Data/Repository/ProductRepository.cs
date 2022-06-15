@@ -1,5 +1,4 @@
 ﻿using CafeWeb.Data.interfaces;
-using ClassLibraryCafe;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;

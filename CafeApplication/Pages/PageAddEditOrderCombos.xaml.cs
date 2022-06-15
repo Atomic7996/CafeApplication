@@ -60,6 +60,20 @@ namespace CafeApplication.Pages
             lbAllCombos.ItemsSource = combo;
         }
 
+        private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            decimal fullPrice = 0;
+            foreach (var cit in _comboItemTemplates)
+            {
+                if (!string.IsNullOrEmpty(cit.TbCount.Text))
+                {
+                    fullPrice += cit.combo.Cost * int.Parse(cit.TbCount.Text);
+                }
+            }
+
+            tbFullPrice.Text = fullPrice.ToString();
+        }
+
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
             DB.db.Combo.ToList();
@@ -82,8 +96,10 @@ namespace CafeApplication.Pages
             if (combo != null)
             {
                 ComboItemTemplate comboItemTemplate = new ComboItemTemplate(combo);
+                comboItemTemplate.TbCount.TextChanged += tbCount_TextChanged;
                 _comboItemTemplates.Add(comboItemTemplate);
                 ShowCombos();
+                tbCount_TextChanged(null, null);
             }
         }
 
@@ -98,6 +114,7 @@ namespace CafeApplication.Pages
                 {
                     _comboItemTemplates.Remove(comboItemTemplate);
                     ShowCombos();
+                    comboItemTemplate.TbCount.TextChanged += tbCount_TextChanged;
                 }
             }
         }

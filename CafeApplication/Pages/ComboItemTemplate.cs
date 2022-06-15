@@ -80,6 +80,37 @@ namespace CafeApplication
             Grid.SetColumn(gridData, 2);
             _gridComboItemTemplate.Children.Add(gridData);
 
+            Grid gridCost = new Grid();
+            gridCost.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(40) });
+            gridCost.RowDefinitions.Add(new RowDefinition());
+            {
+                TextBlock tblUnit = new TextBlock();
+                tblUnit.Text = "Стоимость:";
+                tblUnit.HorizontalAlignment = HorizontalAlignment.Center;
+                Grid.SetRow(tblUnit, 0);
+                gridCost.Children.Add(tblUnit);
+
+                StackPanel spCost = new StackPanel();
+                spCost.VerticalAlignment = VerticalAlignment.Center;
+                spCost.HorizontalAlignment = HorizontalAlignment.Center;
+                spCost.Orientation = Orientation.Horizontal;
+                {
+                    TextBlock tblUnit1 = new TextBlock();
+                    tblUnit1.Text = _combo.Cost.ToString();
+                    tblUnit1.HorizontalAlignment = HorizontalAlignment.Center;
+                    Grid.SetRow(tblUnit1, 1);
+                    spCost.Children.Add(tblUnit1);
+
+                    TextBlock tblUnit2 = new TextBlock();
+                    tblUnit2.Text = "₽";
+                    tblUnit2.HorizontalAlignment = HorizontalAlignment.Center;
+                    spCost.Children.Add(tblUnit2);
+                }
+                Grid.SetRow(spCost, 1);
+                gridCost.Children.Add(spCost);
+            }
+            Grid.SetColumn(gridCost, 3);
+            _gridComboItemTemplate.Children.Add(gridCost);
         }
 
         private ImageBrush GetImageBrush()
