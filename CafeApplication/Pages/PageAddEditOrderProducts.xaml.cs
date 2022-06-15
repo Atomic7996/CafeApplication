@@ -58,6 +58,22 @@ namespace CafeApplication.Pages
                 product = product.Where(fs => fs.Title.ToLower().Contains(tbFindFoodStaff.Text.ToLower())).ToList();
 
             lbAllProducts.ItemsSource = product;
+
+            
+        }
+
+        private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            decimal fullPrice = 0;
+            foreach (var pit in _productItemTemplates)
+            {
+                if (!string.IsNullOrEmpty(pit.TbCount.Text))
+                {
+                    fullPrice += pit.product.Cost * int.Parse(pit.TbCount.Text);
+                }
+            }                
+
+            tbFullPrice.Text = fullPrice.ToString();
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -82,8 +98,10 @@ namespace CafeApplication.Pages
             if (product != null)
             {
                 ProductItemTemplate productItemTemplate = new ProductItemTemplate(product);
+                productItemTemplate.TbCount.TextChanged += tbCount_TextChanged;
                 _productItemTemplates.Add(productItemTemplate);
                 ShowProducts();
+                tbCount_TextChanged(null, null);
             }
         }
 
@@ -98,6 +116,7 @@ namespace CafeApplication.Pages
                 {
                     _productItemTemplates.Remove(productItemTemplate);
                     ShowProducts();
+                    productItemTemplate.TbCount.TextChanged += tbCount_TextChanged;
                 }
             }
         }

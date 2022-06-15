@@ -1,4 +1,4 @@
-﻿using ClassLibraryCafe;
+﻿using CafeWeb.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CafeWeb.Data
@@ -11,5 +11,6 @@ namespace CafeWeb.Data
         }
 
         public DbSet<Product> Product { get; set; }
+        public DbSet<ProductType> ProductType { get; set; }
     }
 }

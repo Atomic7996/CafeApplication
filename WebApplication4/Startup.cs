@@ -30,9 +30,10 @@ namespace CafeWeb
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDBContext>(options => 
+            services.AddDbContext<AppDBContent>(options => 
                 options.UseSqlServer(_confString.GetConnectionString("CafeEntities")));
-            services.AddTransient<IProducts, MockProduct>();
+            services.AddTransient<IProducts, ProductRepository>();
+            services.AddTransient<IProductType, ProductTypeRepository>();
             services.AddMvc(option => option.EnableEndpointRouting = false);
         }
 

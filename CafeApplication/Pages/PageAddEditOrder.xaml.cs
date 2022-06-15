@@ -119,6 +119,14 @@ namespace CafeApplication.Pages
         private void tbCoupon_LostFocus(object sender, RoutedEventArgs e)
         {
             CouponCheck();
+            decimal? cost = order.SummaryCost;
+            if (coupon != null)
+            {
+                MessageBox.Show("Купон успешно применен");
+                cost -= cost * coupon.Sale / 100;
+            }
+                
+            tbCost.Text = cost.ToString();
         }
 
         private void btnChangeProds_Click(object sender, RoutedEventArgs e)
@@ -137,6 +145,7 @@ namespace CafeApplication.Pages
             {
                 DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
                 tbStructure.Text = order.ValidList;
+                tbCost.Text = order.SummaryCost.ToString();
             }
             catch (Exception)
             {

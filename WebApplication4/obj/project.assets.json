@@ -1785,15 +1785,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
-      },
-      "ClassLibraryCafe/1.0.0": {
-        "type": "project",
-        "compile": {
-          "bin/placeholder/ClassLibraryCafe.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/ClassLibraryCafe.dll": {}
-        }
       }
     }
   },
@@ -6503,16 +6494,10 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
-    },
-    "ClassLibraryCafe/1.0.0": {
-      "type": "project",
-      "path": "../ClassLibraryCafe/ClassLibraryCafe.csproj",
-      "msbuildProject": "../ClassLibraryCafe/ClassLibraryCafe.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "ClassLibraryCafe >= 1.0.0",
       "EntityFramework >= 6.4.4",
       "JSON >= 1.0.1",
       "Microsoft.AspNet.Mvc >= 5.2.9",
@@ -6547,11 +6532,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "C:\\Users\\sasha\\source\\repos\\CafeApplication\\ClassLibraryCafe\\ClassLibraryCafe.csproj": {
-              "projectPath": "C:\\Users\\sasha\\source\\repos\\CafeApplication\\ClassLibraryCafe\\ClassLibraryCafe.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

@@ -1,8 +1,8 @@
-﻿using ClassLibraryCafe;
+﻿using CafeWeb.Models;
 using System;
 using System.Collections.Generic;
 
-namespace CafeWeb.Models
+namespace CafeWeb
 {
     public partial class  Product
     {
@@ -10,8 +10,8 @@ namespace CafeWeb.Models
         public Product()
         {
             this.ComboProduct = new HashSet<ComboProduct>();
-            this.OrderProduct = new HashSet<OrderProduct>();
-            this.ProductFoodStuff = new HashSet<ProductFoodStuff>();
+            //this.OrderProduct = new HashSet<OrderProduct>();
+            //this.ProductFoodStuff = new HashSet<ProductFoodStuff>();
         }
 
         public int ProductID { get; set; }
@@ -23,10 +23,10 @@ namespace CafeWeb.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ComboProduct> ComboProduct { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderProduct> OrderProduct { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<OrderProduct> OrderProduct { get; set; }
         public virtual ProductType ProductType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductFoodStuff> ProductFoodStuff { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<ProductFoodStuff> ProductFoodStuff { get; set; }
     }
 }

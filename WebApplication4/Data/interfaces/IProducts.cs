@@ -1,4 +1,4 @@
-﻿using ClassLibraryCafe;
+﻿using CafeWeb.Models;
 using System.Collections.Generic;
 
 namespace CafeWeb.Data.interfaces

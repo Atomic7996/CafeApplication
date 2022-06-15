@@ -1,5 +1,4 @@
-﻿using ClassLibraryCafe;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace CafeWeb.Data
 {

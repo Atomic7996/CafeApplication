@@ -71,7 +71,6 @@ namespace CafeApplication
                 gridData.Children.Add(tblCount);
 
                 _tbCount = new TextBox();
-               // _tbCount.Style = DataStyles.TbData;
                 _tbCount.MaxLength = 5;
                 _tbCount.Text = "1";
                 _tbCount.Height = 40;
