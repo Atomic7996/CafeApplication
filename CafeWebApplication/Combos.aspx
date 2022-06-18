@@ -1,47 +1,33 @@
-﻿<%@ Page Title="Наборы" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Combos.aspx.cs" Inherits="CafeWebApplication.Contact" %>
+﻿<%@ Page Title="Наборы" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Combos.aspx.cs"
+    Inherits="CafeWebApplication.Contact" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-        <h2>Наборы</h2>
-    <asp:ListView runat="server" ID="lvCombos" 
-        ItemType="ClassLibraryCafe.Combo" DataKeyNames="ComboID"
-        SelectMethod="lvCombos_GetData">
-        <ItemTemplate>
-            <span>
-                <asp:Image runat="server" ImageUrl='<%# Eval("ValidImage") %>' Width="100" Height="100"/>
-                <b>
-                    <%# Eval("Title") %>
-                </b> <br />
-                <small>
-                    Состав - <%# Eval("ProductList") %> <br />
-                    Цена: <%# Eval("Cost") %> руб. <br />
-                </small> <hr /> <br />
-            </span>
+    <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+        <div style="text-align: center; font-size: 50px; margin: 30px;">Наборы</div>
+        <section style="display: grid; grid-template-columns: 1fr 1fr;">
+            <asp:ListView runat="server" ID="lvCombos" ItemType="ClassLibraryCafe.Combo" DataKeyNames="ComboID"
+                SelectMethod="lvCombos_GetData">
+                <ItemTemplate>
 
-        </ItemTemplate>
-    </asp:ListView>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <%--<h2><%: Title %>.</h2>
-    <h3>Your contact page.</h3>
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
-
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>--%>
-</asp:Content>
+                    <div class="card text-white bg-dark mb-3"
+                        style="width: 18rem; margin: 0 auto; border-radius: 10px;">
+                        <div class="card-img-top"
+                            style="background-color: #fff; border-radius: 10px 10px 0 0; display: flex; justify-content: center; padding: 5px;">
+                            <asp:Image runat="server" ImageUrl='<%# Eval("ValidImage") %>' Width="200" Height="200" />
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                               <b> <%# Eval("Title") %></b>
+                            </h5>
+                            <p class="card-text">
+                            <p style="margin: 0;"><b>Описание</b> - <%# Eval("Description") %>
+                            </p>
+                            <p style="margin: 0;"><b>Состав</b> - <%# Eval("ProductList") %>
+                            </p>
+                            <p style="margin: 0;"><b>Стоимость</b> - <%# Eval("Cost") %> ₽</p>
+                            </p>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:ListView>
+        </section>
+    </asp:Content>

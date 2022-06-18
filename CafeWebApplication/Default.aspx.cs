@@ -15,6 +15,11 @@ namespace CafeWebApplication
 
         }
 
-        
+        public IQueryable<ClassLibraryCafe.Coupon> lvProducts_GetData1()
+        {
+            var list = DB.db.Coupon.ToList().AsQueryable();
+            var query = list.OfType<ClassLibraryCafe.Coupon>();
+            return query;
+        }
     }
 }

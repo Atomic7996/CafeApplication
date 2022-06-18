@@ -13,7 +13,7 @@ namespace ClassLibraryCafe
             return Title;
         }
 
-        public string ValidImage => Image == null ? "../../Resources/combo.png" : Image;
+        public string ValidImage => Image == null ? "../../Images/combo.png" : Image;
 
         public string ProductList
         {
