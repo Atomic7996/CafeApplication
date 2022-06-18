@@ -80,9 +80,12 @@
     </Compile>
     <Compile Include="Model\Combo.cs" />
     <Compile Include="Model\Coupon.cs" />
-    <Compile Include="Model\FoodStaff.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderCombo.cs" />
+    <Compile Include="Model\OrderProduct.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\ProductType.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>

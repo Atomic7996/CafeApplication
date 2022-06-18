@@ -65,3 +65,4 @@ C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Pages\Page
 C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageAddEditOrderProducts.baml
 C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageAddEditOrderCombos.g.cs
 C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Pages\PageAddEditOrderCombos.baml
+C:\Users\sasha\source\repos\CafeApplication\CafeApplication\obj\Debug\Pages\Styles.baml

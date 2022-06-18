@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeApplication"
         mc:Ignorable="d"
-        Title="Кафе" Height="1060" Width="1900" MinHeight="800" MinWidth="1500" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="Кафе" Height="1060" Width="1900" MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     
     <Grid>
         <Grid.RowDefinitions>
@@ -26,19 +26,19 @@
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
                 <Image Source="/Resources/cafe.png"/>
-                <TextBlock Text="Кафе" VerticalAlignment="Center" FontSize="48"/>
+                <TextBlock Text="Кафе" VerticalAlignment="Center" Style="{DynamicResource Label}" FontSize="60"/>
             </StackPanel>
 
             <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Здравствуйте,"/>
-                    <TextBlock Name="tbName"/>
+                    <TextBlock Text="Здравствуйте, " Style="{DynamicResource tbAll}"/>
+                    <TextBlock Name="tbName" Style="{DynamicResource tbAll}"/>
                 </StackPanel>
-                <TextBlock Name="tbRole"/>
+                <TextBlock Name="tbRole" Style="{DynamicResource tbAll}"/>
             </StackPanel>
 
-            <Button Name="btnBack" Content="&lt;-" Grid.Column="1" Height="50" Width="50" Click="btnBack_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Name="btnExit" Content="X" Grid.Column="4" Height="50" Width="50" Click="btnExit_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Name="btnBack" Content="&lt;-" Grid.Column="1" Height="50" Width="50" FontSize="32" Click="btnBack_Click"/>
+            <Button Name="btnExit" Content="X" Grid.Column="4" Height="50" Width="50" FontSize="32" Click="btnExit_Click"/>
 
         </Grid>
 

@@ -22,7 +22,7 @@ namespace CafeApplication
         }
     
         public int OrderID { get; set; }
-        public int StaffID { get; set; }
+        public Nullable<int> StaffID { get; set; }
         public System.DateTime OrderDateTime { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> CouponID { get; set; }

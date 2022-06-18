@@ -41,48 +41,17 @@ namespace CafeApplication.Pages
                 product = selectedProduct;
 
             if (product.ProductID == 0)
+            {
                 btnDelete.Visibility = Visibility.Hidden;
+                btnChange.IsEnabled = false;
+            }
+                
 
             DataContext = product;
 
             cbTypes.ItemsSource = DB.db.ProductType.ToList();
-
-            //lbFoodStaff.ItemsSource = DB.db.FoodStaff.ToList();
         }
 
-        //private void AddProductFoodStaff()
-        //{
-        //    int[] IDs = new int[lbFoodStaff.SelectedItems.Count];
-        //    int i = 0;
-        //    int j = 0;
-        //    List<string> combo = new List<string>();
-
-        //    foreach (var item in lbFoodStaff.SelectedItems)
-        //    {
-        //        //MessageBox.Show(item.ToString());
-        //        combo.Add(item.ToString());
-        //        //count.Add();
-        //    }
-
-        //    foreach (var item in combo)
-        //    {
-        //        string title = combo[i];
-        //        IDs[i] = DB.db.FoodStaff.Where(x => x.Title.ToLower() == title.ToLower()).FirstOrDefault().FoodStuffID;
-        //        i++;
-        //    }
-            
-        //    foreach (var id in IDs)
-        //    {
-        //        //j = count.Count;
-        //        productFoodStuff.FoodStaffID = id;
-        //        productFoodStuff.ProductID = combo.ProductID;
-        //        //productFoodStuff.Count = count[j];
-        //        productFoodStuff.Count = 1;
-        //        j--;
-        //        DB.db.ProductFoodStuff.Add(productFoodStuff);
-        //        DB.db.SaveChanges();
-        //    }
-        //}
 
         private void Save()
         {
@@ -95,23 +64,18 @@ namespace CafeApplication.Pages
 
             if (errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(errors.ToString(), "Внимание", 
+                    MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
-
-            //foreach (var item in DB.db.ProductFoodStuff.Where(x => x.ProductID == combo.ProductID))
-            //    DB.db.ProductFoodStuff.Remove(item);
 
             if (product.ProductID == 0)
                 DB.db.Product.Add(product);
 
-            //AddProductFoodStaff();
-
             try
             {
                 DB.db.SaveChanges();
-                MessageBox.Show("Данные сохранены", "Уведомление", 
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                //MessageBox.Show("Данные сохранены", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 Manager.mainFrame.GoBack();
             }
             catch (Exception ex)
@@ -130,7 +94,8 @@ namespace CafeApplication.Pages
                     if ((DB.db.ComboProduct.Where(x => x.ProductID == product.ProductID)).FirstOrDefault() != null ||
                         (DB.db.OrderProduct.Where(x => x.ProductID == product.ProductID)).FirstOrDefault() != null)
                     {
-                        MessageBox.Show("Товар используется в наборах или заказах, запись удалить невозможно", "Уведомление");
+                        MessageBox.Show("Товар используется в наборах или заказах, запись удалить невозможно", "Уведомление",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else
                     {
@@ -139,7 +104,7 @@ namespace CafeApplication.Pages
 
                         DB.db.Product.Remove(product);
                         DB.db.SaveChanges();
-                        MessageBox.Show("Запись удалена", "Уведомление");
+                        //MessageBox.Show("Запись удалена", "Уведомление");
                         Manager.mainFrame.GoBack();
                     }
                 }
@@ -202,6 +167,30 @@ namespace CafeApplication.Pages
 
             }
             
+        }
+
+        private void tbTitle_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbTitle.Text))
+            {
+                btnChange.IsEnabled = false;
+            }
+            else
+            {
+                btnChange.IsEnabled = true;
+            }
+        }
+
+        private void tbTitle_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+                e.Handled = true;
+        }
+
+        private void tbCost_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Char.IsLetter(e.Text, 0) || Char.IsControl(e.Text, 0))
+                e.Handled = true;
         }
     }
 }

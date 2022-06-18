@@ -8,7 +8,12 @@ namespace ClassLibraryCafe
 {
     public partial class Combo
     {
-        public string ValidImage => Image == null ? "../../Images/combo.png" : Image;
+        public override string ToString()
+        {
+            return Title;
+        }
+
+        public string ValidImage => Image == null ? "../../Resources/combo.png" : Image;
 
         public string ProductList
         {

@@ -75,7 +75,7 @@ namespace CafeApplication.Properties {
         /// </summary>
         public static System.Drawing.Bitmap combo {
             get {
-                object obj = ResourceManager.GetObject("combo", resourceCulture);
+                object obj = ResourceManager.GetObject("order", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +105,7 @@ namespace CafeApplication.Properties {
         /// </summary>
         public static System.Drawing.Bitmap product {
             get {
-                object obj = ResourceManager.GetObject("combo", resourceCulture);
+                object obj = ResourceManager.GetObject("order", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

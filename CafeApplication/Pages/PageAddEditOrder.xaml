@@ -10,54 +10,53 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
             <RowDefinition Height="110"/>
-            <RowDefinition Height="110"/>
-            <RowDefinition Height="90"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="85"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="0.8*"/>
-            <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="0.8*"/>
-            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="70"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Редактор заказа" Grid.Column="1" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
-        
-        <!--<ListBox Name="lbProducts" SelectionMode="Multiple" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" HorizontalContentAlignment="Center"/>
-        <ListBox Name="lbCombos" SelectionMode="Multiple" Grid.Row="1" Grid.Column="4" Grid.RowSpan="2" HorizontalContentAlignment="Center"/>-->
 
-        
-
-
-
-        <TextBlock Text="Блюда" Grid.Row="1" Grid.Column="1" Style="{StaticResource tbAddEdit}"/>
-        <TextBlock Text="Наборы" Grid.Row="1" Grid.Column="3" Style="{StaticResource tbAddEdit}"/>
-
-        <Button Name="btnChangeProds" Content="Блюда" Grid.Row="1" Grid.Column="2" Width="250" Height="50" VerticalAlignment="Center" Click="btnChangeProds_Click"/>
-        <Button Name="btnChangeComs" Content="Наборы" Grid.Row="1" Grid.Column="4" Width="250" Height="50" VerticalAlignment="Center" Click="btnChangeComs_Click"/>
-        
-        <TextBlock Text="Состав" Grid.Row="2" Grid.Column="1" Style="{StaticResource tbAddEdit}"/>
-        <TextBlock Name="tbStructure" Text="{Binding ValidList}" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" TextWrapping="Wrap" IsVisibleChanged="tbStructure_IsVisibleChanged"/>
-
-        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Купон:" Style="{StaticResource tbAddEdit}" Margin="0, 0, 25, 0" />
-            <TextBox Name="tbCoupon" Text="{Binding Coupon.PromoCode}" Grid.Row="3" Grid.Column="3" Width="420" LostFocus="tbCoupon_LostFocus"/>
+        <StackPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Блюда" HorizontalAlignment="Center" Style="{StaticResource tbAddEdit}"/>
+            <Button Name="btnChangeProds" Content="Выбрать" Grid.Row="1" Grid.Column="2" Width="200" Height="50" VerticalAlignment="Center" Click="btnChangeProds_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Наборы" HorizontalAlignment="Center" Style="{StaticResource tbAddEdit}"/>
+            <Button Name="btnChangeComs" Content="Выбрать" Grid.Row="1" Grid.Column="4" Width="200" Height="50" VerticalAlignment="Center" Click="btnChangeComs_Click"/>
         </StackPanel>
 
+        <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2">
+            <TextBlock Text="Состав" Style="{StaticResource tbAddEdit}" HorizontalAlignment="Center"/>
+            <TextBlock Name="tbStructure" Text="{Binding ValidList}" Style="{DynamicResource tbAll}" Margin="0, 30, 0, 0" TextWrapping="Wrap" IsVisibleChanged="tbStructure_IsVisibleChanged"/>
+        </StackPanel>
+        
         <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Стоимость:" Style="{StaticResource tbAddEdit}" Margin="0, 0, 25, 0" />
-            <TextBlock Name="tbCost" Text="{Binding SummaryCost}"/>
+            <TextBlock Text="Купон:" Style="{StaticResource tbAddEdit}" Margin="0, 0, 25, 0" />
+            <TextBox Name="tbCoupon" Text="{Binding Coupon.PromoCode}" Style="{StaticResource tbStyle}" Grid.Row="3" Grid.Column="3" Width="450" LostFocus="tbCoupon_LostFocus" PreviewTextInput="tbCoupon_PreviewTextInput"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Name="btnSave" Content="Сохранить" Click="btnSave_Click" />
-            <!--Margin="0, 0, 30, 0"-->
-            <!--<Button Name="btnDelete" Content="Удалить" Click="btnDelete_Click" Margin="30, 0, 0, 0"/>-->
+        <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Стоимость:" Style="{StaticResource tbAddEdit}" Margin="0, 0, 25, 0" />
+            <TextBlock Name="tbCost" Text="{Binding SummaryCost}" Style="{StaticResource tbAll}" Width="450" Height="80"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="btnSave" Content="Сохранить" Click="btnSave_Click" Margin="0, 0, 30, 0"/>
+            <Button Name="btnCancel" Content="Отмена" Click="btnCancel_Click" Margin="30, 0, 0, 0"/>
         </StackPanel>
     </Grid>
 </Page>

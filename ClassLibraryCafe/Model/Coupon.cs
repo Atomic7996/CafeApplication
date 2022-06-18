@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibraryCafe.Model
+namespace ClassLibraryCafe
 {
-    internal class Coupon
+    public partial class Coupon
     {
+        public override string ToString()
+        {
+            return PromoCode;
+        }
     }
 }

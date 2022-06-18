@@ -99,6 +99,17 @@ namespace CafeApplication.Pages
             //Количество выведенных записей
             tbRecordsCount.Text = lvProducts.Items.Count.ToString();
             tbRecordsCountAll.Text = DB.db.Product.Count().ToString();
+
+            if (lvProducts.Items.Count == 0)
+            {
+                lvProducts.Visibility = Visibility.Hidden;
+                tbAvailable.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lvProducts.Visibility = Visibility.Visible;
+                tbAvailable.Visibility = Visibility.Hidden;
+            }
         }
 
         private void tbFinder_TextChanged(object sender, TextChangedEventArgs e)

@@ -10,38 +10,42 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="85"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70"/>
-            <ColumnDefinition Width="0.8*"/>
-            <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="0.8*"/>
-            <ColumnDefinition Width="1.5*"/>
-            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="480"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="480"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Column="1" Text="Редактор продукта" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
 
-        <TextBox Name="tbTitle" Text="{Binding Title}" Grid.Row="1" Grid.Column="2"/>
-        <TextBox Name="tbUnit" Text="{Binding Unit}" Grid.Row="2" Grid.Column="2"/>
-        <TextBox Name="tbMinCount" Text="{Binding MinCount}" Grid.Row="3" Grid.Column="2"/>
-        <TextBox Name="tbCountInStock" Text="{Binding CountInStock}" Grid.Row="1" Grid.Column="4"/>
-        <Image Name="imgLogo" Source="{Binding ValidImage}" Style="{DynamicResource imgEffect}" Grid.Row="2" Grid.Column="4" Width="200" Height="200" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown" Cursor="Hand"/>
-        <TextBox Name="tbDesc" Text="{Binding Description}" Grid.Row="3" Grid.Column="4" Margin="15" TextWrapping="Wrap"/>
+        <TextBox Name="tbTitle" Text="{Binding Title}" Style="{DynamicResource tbStyle}" Grid.Row="2" Grid.Column="2" PreviewTextInput="tbTitle_PreviewTextInput"/>
+        <TextBox Name="tbUnit" Text="{Binding Unit}" Style="{DynamicResource tbStyle}" Grid.Row="3" Grid.Column="2" PreviewTextInput="tbUnit_PreviewTextInput"/>
+        <TextBox Name="tbMinCount" Text="{Binding MinCount}" Style="{DynamicResource tbStyle}" Grid.Row="4" Grid.Column="2" PreviewTextInput="tbMinCount_PreviewTextInput"/>
+        <TextBox Name="tbCountInStock" Text="{Binding CountInStock}" Style="{DynamicResource tbStyle}" Grid.Row="2" Grid.Column="4" PreviewTextInput="tbMinCount_PreviewTextInput"/>
+        <Border Grid.Row="3" Style="{DynamicResource brdImage}" Grid.Column="4" Width="140" Height="140">
+            <Image Name="imgLogo" Source="{Binding ValidImage}" Style="{DynamicResource imgEffect}" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown" Cursor="Hand"/>
+        </Border>
+        <TextBox Name="tbDesc" Text="{Binding Description}" Style="{DynamicResource tbStyle}" Grid.Row="4" Grid.Column="4" Height="auto" Margin="15" TextWrapping="Wrap"/>
 
-        <TextBlock Text="Наименование" Grid.Row="1" Grid.Column="1" Style="{StaticResource tbAddEdit}"/>
-        <TextBlock Text="Ед. измерения" Grid.Row="2" Grid.Column="1" Style="{StaticResource tbAddEdit}"/>
-        <TextBlock Text="Мин. кол-во на складе" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Style="{StaticResource tbAddEdit}"/>
-        <TextBlock Text="Кол-во на складе" Grid.Row="1" Grid.Column="3" TextWrapping="Wrap" Style="{StaticResource tbAddEdit}"/>
-        <TextBlock Text="Изображение" Grid.Row="2" Grid.Column="3" Style="{StaticResource tbAddEdit}"/>
-        <TextBlock Text="Описание" Grid.Row="3" Grid.Column="3" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Наименование" Grid.Row="2" Grid.Column="1" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Ед. измерения" Grid.Row="3" Grid.Column="1" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Мин. кол-во на складе" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Кол-во на складе" Grid.Row="2" Grid.Column="3" TextWrapping="Wrap" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Изображение" Grid.Row="3" Grid.Column="3" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Описание" Grid.Row="4" Grid.Column="3" Style="{StaticResource tbAddEdit}"/>
 
-        <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="btnSave" Content="Сохранить" Click="btnSave_Click" Margin="0, 0, 30, 0"/>
             <Button Name="btnDelete" Content="Удалить" Click="btnDelete_Click" Margin="30, 0, 0, 0"/>
         </StackPanel>

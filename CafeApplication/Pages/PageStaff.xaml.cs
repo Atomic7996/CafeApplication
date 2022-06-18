@@ -80,6 +80,17 @@ namespace CafeApplication.Pages
 
             tbRecordsCount.Text = lvStaff.Items.Count.ToString();
             tbRecordsCountAll.Text = DB.db.Staff.Count().ToString();
+
+            if (lvStaff.Items.Count == 0)
+            {
+                lvStaff.Visibility = Visibility.Hidden;
+                tbAvailable.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lvStaff.Visibility = Visibility.Visible;
+                tbAvailable.Visibility = Visibility.Hidden;
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="85"/>
             <RowDefinition Height="110"/>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="85"/>
@@ -25,16 +25,18 @@
 
         <TextBlock Text="Блюда" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
 
-        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите название для поиска" TextChanged="tbFinder_TextChanged"/>
+        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" Style="{DynamicResource tbStyle}" ToolTip="Введите название для поиска" TextChanged="tbFinder_TextChanged"/>
         <ComboBox Name="cbFilter" Style="{StaticResource comboBox}" Grid.Row="1" Grid.Column="1" SelectionChanged="cbFilter_SelectionChanged"/>
         <ComboBox Name="cbSort" Style="{StaticResource comboBox}" Grid.Row="1" Grid.Column="2" SelectionChanged="cbSort_SelectionChanged"/>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" Margin="15" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Записей: "/>
-            <TextBlock Name="tbRecordsCount"/>
-            <TextBlock Text=" из "/>
-            <TextBlock Name="tbRecordsCountAll"/>
+            <TextBlock Text="Записей: " Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Name="tbRecordsCount" Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Text=" из " Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Name="tbRecordsCountAll" Style="{DynamicResource tbLvItem}"/>
         </StackPanel>
 
+        <TextBlock Name="tbAvailable" Text="Нет подходящих записей" Style="{DynamicResource tbAll}" VerticalAlignment="Top" Margin="0, 90, 0, 0" FontSize="32" Grid.Row="2" Grid.ColumnSpan="4" Visibility="Hidden"/>
+        
         <ListView Name="lvProducts" Grid.Row="2" Grid.ColumnSpan="4" 
                   IsVisibleChanged="lvProducts_IsVisibleChanged" 
                   MouseDoubleClick="lvProducts_MouseDoubleClick" 
@@ -44,41 +46,42 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.5*"/>
-                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="0.7*"/>
+                            <ColumnDefinition Width="110"/>
                             <ColumnDefinition Width="650"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding ValidImage}" 
-                               HorizontalAlignment="Right" 
-                               Stretch="UniformToFill" 
-                               Grid.Column="1"/>
+                        <Border Grid.Column="1" HorizontalAlignment="Right" Style="{DynamicResource brdImage}"  Width="100" Height="100">
+                            <Image Name="imgLogo" Source="{Binding ValidImage}"/>
+                        </Border>
 
                         <StackPanel Grid.Column="2" 
-                                    HorizontalAlignment="Left" 
+                                    Margin="50, 0, 0, 0"
                                     VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding ProductType}"/>
-                                <TextBlock Text=" | "/>
-                                <TextBlock Text="{Binding Title}"/>
+                                <TextBlock Text="{Binding ProductType}" Style="{DynamicResource tbLvItem}" FontWeight="Bold"/>
+                                <TextBlock Text=" | " Style="{DynamicResource tbLvItem}"/>
+                                <TextBlock Text="{Binding Title}" Style="{DynamicResource tbLvItem}" FontWeight="Bold"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Состав: "/>
-                                <TextBlock Text="{Binding FoodStaffList}" 
-                                           Width="650" 
-                                           TextWrapping="Wrap"/>
+                                <TextBlock Text="Состав: " Style="{DynamicResource tbLvItem}"/>
+                                <TextBlock Text="{Binding FoodStaffList}"  
+                                           TextWrapping="Wrap"
+                                           Style="{DynamicResource tbLvItem}"/>
                             </StackPanel>
                         </StackPanel>
 
-                        <StackPanel Grid.Column="3" 
-                                    Orientation="Horizontal" 
-                                    HorizontalAlignment="Left" >
-                            <TextBlock Text="Стоимость: "/>
-                            <TextBlock Text="{Binding Cost}"/>
-                            <TextBlock Text=" руб."/>
+                        <StackPanel Grid.Column="3"  
+                                    HorizontalAlignment="Left" 
+                                    VerticalAlignment="Center" 
+                                    Margin="50, 0, 0, 0">
+                            <TextBlock Text="Стоимость: " Style="{DynamicResource tbLvItem}"/>
+                            <TextBlock  Style="{DynamicResource tbLvItem}">
+                                <Run Text="{Binding Cost}"/>
+                                <Run Text="₽"/>
+                            </TextBlock>
                         </StackPanel>
-
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -14,11 +14,11 @@
 
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Старый пароль:" HorizontalAlignment="Left"/>
-                <PasswordBox Name="tbOldPass" Style="{StaticResource passwordBox}"/>
+                <TextBlock Text="Старый пароль:" Style="{StaticResource tbAll}" HorizontalAlignment="Left"/>
+                <PasswordBox Name="tbOldPass" Style="{StaticResource passwordBox}" Width="420" Height="80"/>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="Новый пароль:" HorizontalAlignment="Left"/>
+                <TextBlock Text="Новый пароль:" Style="{StaticResource tbAll}" HorizontalAlignment="Left"/>
                 <PasswordBox Name="tbNewPass" Style="{StaticResource passwordBox}"/>
             </StackPanel>
         </StackPanel>

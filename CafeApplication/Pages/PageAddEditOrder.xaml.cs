@@ -21,8 +21,6 @@ namespace CafeApplication.Pages
     public partial class PageAddEditOrder : Page
     {
         Order order = new Order();
-        OrderCombo orderCombo = new OrderCombo();
-        OrderProduct orderProduct = new OrderProduct();
         Coupon coupon;
 
         public PageAddEditOrder(Order selectedOrder)
@@ -45,7 +43,8 @@ namespace CafeApplication.Pages
 
                 if (coupon == null)
                 {
-                    MessageBox.Show("Такого купона не существует");
+                    MessageBox.Show("Купон недействителен", "Внимание", 
+                        MessageBoxButton.OK, MessageBoxImage.Information);
                     tbCoupon.Text = null;
                     return;
                 }
@@ -54,6 +53,13 @@ namespace CafeApplication.Pages
 
         private void Save()
         {
+            if (string.IsNullOrEmpty(order.ValidList))
+            {
+                MessageBox.Show(String.Format("Пустой заказ"), "Уведомление",
+                    MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (order.OrderID == 0)
             {
                 order.OrderDateTime = DateTime.Now;
@@ -72,7 +78,8 @@ namespace CafeApplication.Pages
             try
             {
                 DB.db.SaveChanges();
-                MessageBox.Show("Данные сохранены", "Уведомление");
+                MessageBox.Show(String.Format("Заказ сформирован, ваш номер - " + order.OrderID), "Уведомление", 
+                    MessageBoxButton.OK, MessageBoxImage.Information);
                 Manager.mainFrame.GoBack();
             }
             catch (Exception ex)
@@ -96,7 +103,7 @@ namespace CafeApplication.Pages
 
                     DB.db.Order.Remove(order);
                     DB.db.SaveChanges();
-                    MessageBox.Show("Запись удалена", "Уведомление");
+                    //MessageBox.Show("Запись удалена", "Уведомление");
                     Manager.mainFrame.GoBack();
                 }
                 catch (Exception ex)
@@ -122,7 +129,7 @@ namespace CafeApplication.Pages
             decimal? cost = order.SummaryCost;
             if (coupon != null)
             {
-                MessageBox.Show("Купон успешно применен");
+                //MessageBox.Show("Купон успешно применен");
                 cost -= cost * coupon.Sale / 100;
             }
                 
@@ -150,8 +157,20 @@ namespace CafeApplication.Pages
             catch (Exception)
             {
 
-            }
-            
+            }            
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.mainFrame.GoBack();
+        }
+
+        private void tbCoupon_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Char.IsControl(e.Text, 0))
+                e.Handled = true;
+            //var length = tbCoupon.Text.Length;
+            //tbCoupon.Text += e.Text.ToUpper();
         }
     }
 }

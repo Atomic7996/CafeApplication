@@ -9,6 +9,16 @@
       Title="PageRegistration">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="85"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="300"/>
@@ -18,35 +28,27 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition Height="110"/>
-        </Grid.RowDefinitions>
-
         <TextBlock Name="tbHeader" Text="Регистрация" Grid.Column="0" Grid.ColumnSpan="6" Style="{StaticResource Label}"/>
-        <TextBlock Text="Фамилия" Grid.Row="1" Grid.Column="1"/>
-        <TextBlock Text="Имя" Grid.Row="2" Grid.Column="1"/>
-        <TextBlock Text="Отчество" Grid.Row="3" Grid.Column="1"/>
-        <TextBlock Text="Логин" Grid.Row="1" Grid.Column="3"/>
-        <TextBlock Text="Роль" Grid.Row="2" Grid.Column="3"/>
-        <TextBlock Text="Почта" Grid.Row="3" Grid.Column="3"/>
 
-        <TextBox Name="tbLastName" Text="{Binding LastName}" Grid.Row="1" Grid.Column="2"/>
-        <TextBox Name="tbName" Text="{Binding FirstName}" Grid.Row="2" Grid.Column="2"/>
-        <TextBox Name="tbPatronymic" Text="{Binding Patronymic}" Grid.Row="3" Grid.Column="2"/>
-        <TextBox Name="tbLogin" Text="{Binding Login}" Grid.Row="1" Grid.Column="4"/>
-        <ComboBox Name="cbRole" SelectedItem="{Binding StaffRole}" Grid.Column="4" Grid.Row="2" Style="{StaticResource comboBox}"/>
-        <TextBox Name="tbEmail" Text="{Binding Email}" Grid.Row="3" Grid.Column="4"/>
-        <StackPanel Name="spPass" Orientation="Horizontal" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <TextBlock Text="Пароль"/>
-            <PasswordBox Name="tbPassword" Width="420"/>
+        <TextBlock Text="Фамилия" Grid.Row="2" Grid.Column="1" Style="{DynamicResource tbAddEdit}"/>
+        <TextBlock Text="Имя" Grid.Row="3" Grid.Column="1" Style="{DynamicResource tbAddEdit}"/>
+        <TextBlock Text="Отчество" Grid.Row="4" Grid.Column="1" Style="{DynamicResource tbAddEdit}"/>
+        <TextBlock Text="Логин" Grid.Row="2" Grid.Column="3" Style="{DynamicResource tbAddEdit}"/>
+        <TextBlock Text="Роль" Grid.Row="3" Grid.Column="3" Style="{DynamicResource tbAddEdit}"/>
+        <TextBlock Text="Почта" Grid.Row="4" Grid.Column="3" Style="{DynamicResource tbAddEdit}"/>
+
+        <TextBox Name="tbLastName" Text="{Binding LastName}" Grid.Row="2" Grid.Column="2" Style="{DynamicResource tbStyle}" PreviewTextInput="tbLastName_PreviewTextInput"/>
+        <TextBox Name="tbName" Text="{Binding FirstName}" Grid.Row="3" Grid.Column="2" Style="{DynamicResource tbStyle}" PreviewTextInput="tbLastName_PreviewTextInput"/>
+        <TextBox Name="tbPatronymic" Text="{Binding Patronymic}" Grid.Row="4" Grid.Column="2" Style="{DynamicResource tbStyle}" PreviewTextInput="tbLastName_PreviewTextInput"/>
+        <TextBox Name="tbLogin" Text="{Binding Login}" Grid.Row="2" Grid.Column="4" Style="{DynamicResource tbStyle}"/>
+        <ComboBox Name="cbRole" SelectedItem="{Binding StaffRole}" Grid.Column="4" Grid.Row="3" Style="{StaticResource comboBox}" IsEnabled="False"/>
+        <TextBox Name="tbEmail" Text="{Binding Email}" Grid.Row="4" Grid.Column="4" Style="{DynamicResource tbStyle}"/>
+        <StackPanel Name="spPass" Orientation="Horizontal" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="100, 0, 0, 0">
+            <TextBlock Text="Пароль" Style="{DynamicResource tbAddEdit}"/>
+            <PasswordBox Name="tbPassword" Style="{DynamicResource passwordBox}"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="8" Grid.ColumnSpan="6" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Name="spBtns" Grid.Row="8" Grid.ColumnSpan="6" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Name="btnSave" Content="Сохранить" Click="btnSave_Click" Margin="0, 0, 30, 0"/>
             <Button Name="btnDel" Content="Удалить" Click="btnDel_Click" Margin="30, 0, 30, 0"/>
             <Button Name="btnPassword" Content="Изменить пароль" Click="btnPassword_Click" Margin="30, 0, 0, 0"/>

@@ -8,9 +8,15 @@
       d:DesignHeight="900" d:DesignWidth="1920"
       Title="PageOrders">
 
+    <!--<Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24" />
+        </Style>
+    </Page.Resources>-->
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="85"/>
             <RowDefinition Height="110"/>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="85"/>
@@ -24,53 +30,20 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Заказы" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
-
-        <!--<TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите фамилию для поиска" TextChanged="tbFinder_TextChanged"/>-->
+        
+        <ComboBox Name="cbUsers"  Grid.Row="1" Grid.Column="0" Style="{StaticResource comboBox}" SelectionChanged="cbUsers_SelectionChanged"/>
         <ComboBox Name="cbStaff"  Grid.Row="1" Grid.Column="1" Style="{StaticResource comboBox}" SelectionChanged="cbStaff_SelectionChanged"/>
-        <DatePicker Name="calendar" Grid.Row="1" Grid.Column="2" SelectedDateChanged="calendar_SelectedDateChanged" FirstDayOfWeek="Monday" SelectedDateFormat="Long" />
+        <DatePicker Name="calendar" Grid.Row="1" Grid.Column="2" SelectedDateChanged="calendar_SelectedDateChanged" FirstDayOfWeek="Monday" SelectedDateFormat="Long" PreviewKeyDown="calendar_PreviewKeyDown" FontSize="28" />
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Записей: "/>
-            <TextBlock Name="tbRecordsCount"/>
-            <TextBlock Text=" из "/>
-            <TextBlock Name="tbRecordsCountAll"/>
+            <TextBlock Text="Записей: " Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Name="tbRecordsCount" Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Text=" из " Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Name="tbRecordsCountAll" Style="{DynamicResource tbLvItem}"/>
         </StackPanel>
 
-        <ListView Name="lvOrders" Grid.Row="2" Grid.ColumnSpan="4" IsVisibleChanged="lvOrders_IsVisibleChanged" MouseDoubleClick="lvOrders_MouseDoubleClick" ToolTip="Для просмотра нажмите дважды">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.25*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+        <TextBlock Name="tbAvailable" Text="Нет подходящих записей" Style="{DynamicResource tbAll}" FontSize="32" VerticalAlignment="Top" Margin="0, 90, 0, 0" Grid.Row="2" Grid.ColumnSpan="4" Visibility="Hidden"/>
 
-                        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                            <TextBlock Text="{Binding Staff}"/>
-
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Дата заказа: "/>
-                                <TextBlock Text="{Binding OrderDateTime}"/>
-                            </StackPanel>
-                        </StackPanel>
-
-                        <StackPanel Grid.Column="2" Orientation="Horizontal">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Состав: "/>
-                                <TextBlock Text="{Binding ValidList}" TextWrapping="Wrap" Width="650" />
-                            </StackPanel>
-                        </StackPanel>
-
-                        <StackPanel Grid.Column="3" Orientation="Horizontal">
-                            <TextBlock Text="Стоимость: "/>
-                            <TextBlock Text="{Binding SummaryCost}"/>
-                        </StackPanel>
-
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ListView Name="lvOrders" Grid.Row="2" Grid.ColumnSpan="4" IsVisibleChanged="lvOrders_IsVisibleChanged"/>
 
         <Button Name="btnAdd" Content="Добавить заказ" Grid.Row="3" Grid.ColumnSpan="4" Click="btnAdd_Click"/>
     </Grid>

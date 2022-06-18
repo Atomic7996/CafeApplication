@@ -45,7 +45,7 @@
       <PropertyRef Name="OrderID" />
     </Key>
     <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StaffID" Type="int" Nullable="false" />
+    <Property Name="StaffID" Type="int" />
     <Property Name="OrderDateTime" Type="datetime" Nullable="false" />
     <Property Name="UserID" Type="int" />
     <Property Name="CouponID" Type="int" />
@@ -133,12 +133,12 @@
     <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
     <Property Name="Phone" Type="nchar" MaxLength="11" />
-    <Property Name="UserCardID" Type="nvarchar" MaxLength="50" />
-    <Property Name="CardSale" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="UserCardID" Type="int" />
+    <Property Name="CardSale" Type="int" />
   </EntityType>
   <Association Name="FK_ComboProduct_Combo">
     <End Role="Combo" Type="Self.Combo" Multiplicity="1" />
@@ -189,7 +189,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Order_Staff">
-    <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+    <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
     <End Role="Order" Type="Self.Order" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Staff">

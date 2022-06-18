@@ -32,7 +32,7 @@ namespace CafeApplication.Windows
             {
                 DB.db.ProductType.Add(productType);
                 DB.db.SaveChanges();
-                MessageBox.Show("Данные сохранены", "Уведомление");
+                //MessageBox.Show("Данные сохранены", "Уведомление");
                 DialogResult = true;
                 Close();
                 
@@ -41,6 +41,12 @@ namespace CafeApplication.Windows
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void tbTitle_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+                e.Handled = true;
         }
     }
 }

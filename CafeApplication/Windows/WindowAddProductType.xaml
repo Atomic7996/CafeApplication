@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeApplication.Windows"
         mc:Ignorable="d"
-        Title="Добавление категории" Height="350" Width="470" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Добавление категории" Height="300" Width="450" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Введите название" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        
+        <TextBlock Text="Введите название" Grid.Row="0" Style="{DynamicResource tbAll}"/>
+        
         <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBox Name="tbTitle" Text="{Binding Title}"/>
+            <TextBox Name="tbTitle" Text="{Binding Title}" Style="{DynamicResource tbStyle}" PreviewTextInput="tbTitle_PreviewTextInput"/>
             <Button Name="btnAdd" Content="Добавить" VerticalAlignment="Bottom" Click="btnAdd_Click"/>
         </StackPanel>
         

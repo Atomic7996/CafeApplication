@@ -43,11 +43,11 @@ namespace CafeApplication.Pages
             if (!string.IsNullOrEmpty(tbFindFoodStaff.Text))
                 products = products.Where(p => p.Title.ToLower().Contains(tbFindFoodStaff.Text.ToLower())).ToList();
 
-            lbAllProducts.ItemsSource = products;
+            lvAllProducts.ItemsSource = products;
 
-            lbSelectedProducts.Items.Clear();
+            lvSelectedProducts.Items.Clear();
             foreach (var productItemTemplate in _productItemTemplates)
-                lbSelectedProducts.Items.Add(productItemTemplate.GridProductItemTemplate);
+                lvSelectedProducts.Items.Add(productItemTemplate.GridProductItemTemplate);
         }
 
         private void tbFindFoodStaff_TextChanged(object sender, TextChangedEventArgs e)
@@ -57,7 +57,7 @@ namespace CafeApplication.Pages
             if (!string.IsNullOrEmpty(tbFindFoodStaff.Text))
                 product = product.Where(fs => fs.Title.ToLower().Contains(tbFindFoodStaff.Text.ToLower())).ToList();
 
-            lbAllProducts.ItemsSource = product;
+            lvAllProducts.ItemsSource = product;
 
             
         }
@@ -83,7 +83,7 @@ namespace CafeApplication.Pages
 
         private void lbAllProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            btnGetProduct.IsEnabled = lbAllProducts.SelectedItem != null ? true : false;
+            //btnGetProduct.IsEnabled = lvAllProducts.SelectedItem != null ? true : false;
         }
 
         private void lbAllProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -93,7 +93,7 @@ namespace CafeApplication.Pages
 
         private void btnGetProduct_Click(object sender, RoutedEventArgs e)
         {
-            Product product = lbAllProducts.SelectedItem as Product;
+            Product product = lvAllProducts.SelectedItem as Product;
 
             if (product != null)
             {
@@ -107,7 +107,7 @@ namespace CafeApplication.Pages
 
         private void btnCancelProduct_Click(object sender, RoutedEventArgs e)
         {
-            Grid gridProductItemTemplate = lbSelectedProducts.SelectedItem as Grid;
+            Grid gridProductItemTemplate = lvSelectedProducts.SelectedItem as Grid;
 
             if (gridProductItemTemplate != null)
             {
@@ -128,7 +128,7 @@ namespace CafeApplication.Pages
 
         private void lbSelectedProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnCancelProduct.IsEnabled = lbSelectedProducts.SelectedItem != null ? true : false;
+            //btnCancelProduct.IsEnabled = lvSelectedProducts.SelectedItem != null ? true : false;
         }
 
         private bool CheckData()
@@ -161,7 +161,7 @@ namespace CafeApplication.Pages
                     order.OrderDateTime = DateTime.Now;
                     order.StaffID = Properties.Settings.Default.staffID;
                     DB.db.Order.Add(order);
-                }                    
+                }
 
                 foreach (var productItemTemplate in _productItemTemplates)
                 {
@@ -176,15 +176,13 @@ namespace CafeApplication.Pages
                 try
                 {
                     DB.db.SaveChanges();
-                    MessageBox.Show("Данные сохранены", "Уведомление",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
                     Manager.mainFrame.GoBack();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
-            }
+            }            
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

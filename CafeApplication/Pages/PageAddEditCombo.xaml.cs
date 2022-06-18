@@ -36,7 +36,10 @@ namespace CafeApplication.Pages
                 combo = selectedCombo;
 
             if (combo.ComboID == 0)
+            {
+                btnChange.IsEnabled = false;
                 btnDelete.Visibility = Visibility.Hidden;
+            }
 
             DataContext = combo;
         }
@@ -63,7 +66,7 @@ namespace CafeApplication.Pages
             try
             {
                 DB.db.SaveChanges();
-                MessageBox.Show("Данные сохранены", "Уведомление");
+                //MessageBox.Show("Данные сохранены", "Уведомление");
                 Manager.mainFrame.GoBack();
             }
             catch (Exception ex)
@@ -90,7 +93,7 @@ namespace CafeApplication.Pages
 
                         DB.db.Combo.Remove(combo);
                         DB.db.SaveChanges();
-                        MessageBox.Show("Запись удалена", "Уведомление");
+                        //MessageBox.Show("Запись удалена", "Уведомление");
                         Manager.mainFrame.GoBack();
                     }
                 }
@@ -134,13 +137,30 @@ namespace CafeApplication.Pages
             catch (Exception)
             {
 
-            }
-            
+            }            
         }
 
         private void btnChange_Click(object sender, RoutedEventArgs e)
         {
             Manager.mainFrame.Navigate(new PageAddEditComboStructure((sender as Button).DataContext as Combo));
+        }
+
+        private void tbTitle_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbTitle.Text))
+            {
+                btnChange.IsEnabled = false;
+            }
+            else
+            {
+                btnChange.IsEnabled = true;
+            }
+        }
+
+        private void tbCost_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Char.IsLetter(e.Text, 0))
+                e.Handled = true;
         }
     }
 }

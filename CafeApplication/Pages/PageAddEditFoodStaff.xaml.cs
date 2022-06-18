@@ -51,12 +51,14 @@ namespace CafeApplication.Pages
 
             if (string.IsNullOrWhiteSpace(foodStaff.Title))
                 errors.AppendLine("Укажите название");
-            if (string.IsNullOrWhiteSpace(foodStaff.CountInStock.ToString()))
+            if (string.IsNullOrWhiteSpace(foodStaff.CountInStock.ToString()) || foodStaff.CountInStock == 0)
                 errors.AppendLine("Укажите кол-во на складе");
-            if (string.IsNullOrWhiteSpace(foodStaff.MinCount.ToString()))
+            if (string.IsNullOrWhiteSpace(foodStaff.MinCount.ToString()) || foodStaff.MinCount == 0)
                 errors.AppendLine("Укажите мин. кол-во");
             if (string.IsNullOrWhiteSpace(foodStaff.Unit))
                 errors.AppendLine("Укажите ед. измерения");
+            if (string.IsNullOrWhiteSpace(foodStaff.Description))
+                errors.AppendLine("Укажите описание");
 
             if (errors.Length > 0)
             {
@@ -70,7 +72,7 @@ namespace CafeApplication.Pages
                     DB.db.FoodStaff.Add(foodStaff);
 
                 DB.db.SaveChanges();
-                MessageBox.Show("Данные сохранены", "Уведомление");
+                //MessageBox.Show("Данные сохранены", "Уведомление");
                 Manager.mainFrame.GoBack();
             }
             catch (Exception ex)
@@ -90,13 +92,14 @@ namespace CafeApplication.Pages
                 {
                     if ((DB.db.ProductFoodStuff.Where(x => x.FoodStaffID == foodStaff.FoodStuffID)).FirstOrDefault() != null)
                     {
-                        MessageBox.Show("Продукт используется в товарах, запись удалить невозможно", "Уведомление");
+                        MessageBox.Show("Продукт используется в товарах, запись удалить невозможно", "Уведомление", 
+                            MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else
                     {
                         DB.db.FoodStaff.Remove(foodStaff);
                         DB.db.SaveChanges();
-                        MessageBox.Show("Запись удалена", "Уведомление");
+                        //MessageBox.Show("Запись удалена", "Уведомление");
                         Manager.mainFrame.GoBack();
                     }
                 }
@@ -132,6 +135,24 @@ namespace CafeApplication.Pages
                 DataContext = null;
                 DataContext = foodStaff;
             }
+        }
+
+        private void tbTitle_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+                e.Handled = true;
+        }
+
+        private void tbUnit_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+                e.Handled = true;
+        }
+
+        private void tbMinCount_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (Char.IsLetter(e.Text, 0) || Char.IsControl(e.Text, 0))
+                e.Handled = true;
         }
     }
 }

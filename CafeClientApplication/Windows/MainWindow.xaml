@@ -1,0 +1,46 @@
+﻿<Window x:Class="CafeClientApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CafeClientApplication"
+        mc:Ignorable="d"
+        Title="Кафе" Height="1060" Width="1900" MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" WindowState="Maximized" MouseEnter="Window_MouseEnter" >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="1.3*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="15" />
+            </Grid.ColumnDefinitions>
+
+            <Border Background="#FF84A2FF" Grid.Column="1" CornerRadius="0,0,20,20" Grid.ColumnSpan="4"/>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5">
+                <Image Source="/Resources/cafe.png"/>
+                <TextBlock Text="Кафе" VerticalAlignment="Center" Style="{DynamicResource Label}" FontSize="60"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Здравствуйте, " Style="{DynamicResource tbAll}"/>
+                    <TextBlock Name="tbName" Style="{DynamicResource tbAll}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <Button Name="btnBack" Content="&lt;-" Grid.Column="1" Height="50" Width="50" FontSize="32" Click="btnBack_Click"/>
+            <Button Name="btnExit" Content="X" Grid.Column="4" Height="50" Width="50" FontSize="32" Click="btnExit_Click"/>
+
+        </Grid>
+
+        <Frame Name="windowFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Navigated="windowFrame_Navigated"/>
+    </Grid>
+</Window>

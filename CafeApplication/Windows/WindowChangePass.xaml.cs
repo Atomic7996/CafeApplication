@@ -27,6 +27,9 @@ namespace CafeApplication.Windows
 
             staff = selectedStaff;
         }
+
+        
+        
         /// <summary>
         /// Проверка старого пароля и смена на новый
         /// </summary>
@@ -34,18 +37,30 @@ namespace CafeApplication.Windows
         {
             if (staff.Password == tbOldPass.Password)
             {
-                try
+                if (PasswordCheck.IsStrong(tbNewPass.Password))
                 {
-                    staff.Password = tbNewPass.Password;
+                    try
+                    {
+                        staff.Password = tbNewPass.Password;
 
-                    DB.db.SaveChanges();
-                    MessageBox.Show("Пароль успешно изменен", "Уведомление");
-                    DialogResult = true;
-                    Close();
+                        DB.db.SaveChanges();
+                        MessageBox.Show("Пароль успешно изменен", "Уведомление",
+                            MessageBoxButton.OK, MessageBoxImage.Information);
+                        DialogResult = true;
+                        Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show("Пароль должен отвечать следующим требованиям:\nМинимум 6 символов\n" +
+                        "Минимум 1 прописная буква\n" +
+                        "Минимум 1 цифра\n" +
+                        "По крайней мере один из следующих символов: ! @ # $ % ^", "Внимание", 
+                        MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             else

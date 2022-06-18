@@ -1,0 +1,76 @@
+﻿<Page x:Class="CafeClientApplication.Pages.PageCombos"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CafeClientApplication.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1920"
+      Title="PageCombo">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="85"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Наборы" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
+
+        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" Style="{DynamicResource tbStyle}" ToolTip="Введите название для поиска" TextChanged="tbFinder_TextChanged" Tag=""/>
+        <ComboBox Name="cbSort"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Style="{StaticResource comboBox}" MaxWidth="450" SelectionChanged="cbSort_SelectionChanged"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Записей: " Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Name="tbRecordsCount" Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Text=" из " Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Name="tbRecordsCountAll" Style="{DynamicResource tbLvItem}"/>
+        </StackPanel>
+
+        <TextBlock Name="tbAvailable" Text="Нет подходящих записей" Style="{DynamicResource tbAll}" VerticalAlignment="Top" Margin="0, 90, 0, 0" FontSize="32" Grid.Row="2" Grid.ColumnSpan="4" Visibility="Hidden"/>
+
+        <ListView Name="lvCombos" Grid.Row="2" Grid.ColumnSpan="4" IsVisibleChanged="lvCombos_IsVisibleChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.7*"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="650"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="1" HorizontalAlignment="Right" Style="{DynamicResource brdImage}"  Width="100" Height="100">
+                            <Image Name="imgLogo" Source="{Binding ValidImage}"/>
+                        </Border>
+
+                        <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="50, 0, 0, 0">
+                            <TextBlock Text="{Binding Title}" Style="{DynamicResource tbLvItem}" FontWeight="Bold"/>
+
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Состав: " Style="{DynamicResource tbLvItem}"/>
+                                <TextBlock Text="{Binding ProductList}" Style="{DynamicResource tbLvItem}" Width="500" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center">
+                            <TextBlock Text="Стоимость: " Style="{DynamicResource tbLvItem}"/>
+                            <TextBlock Style="{DynamicResource tbLvItem}">
+                                <Run Text="{Binding Cost}"/>
+                                <Run Text="₽"/>
+                            </TextBlock>
+                        </StackPanel>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

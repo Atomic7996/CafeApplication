@@ -80,6 +80,17 @@ namespace CafeApplication.Pages
 
             tbRecordsCount.Text = lvCombos.Items.Count.ToString();
             tbRecordsCountAll.Text = DB.db.Combo.Count().ToString();
+
+            if (lvCombos.Items.Count == 0)
+            {
+                lvCombos.Visibility = Visibility.Hidden;
+                tbAvailable.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lvCombos.Visibility = Visibility.Visible;
+                tbAvailable.Visibility = Visibility.Hidden;
+            }
         }
 
         private void tbFinder_TextChanged(object sender, TextChangedEventArgs e)
@@ -99,7 +110,14 @@ namespace CafeApplication.Pages
 
         private void lvCombos_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
+            try
+            {
+                DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
+            }
+            catch (Exception)
+            {
+            }
+            
             lvCombos.ItemsSource = DB.db.Combo.ToList();
         }
 

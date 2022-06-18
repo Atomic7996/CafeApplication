@@ -185,5 +185,13 @@ namespace CafeApplication.Pages
         {
             UpdateList();
         }
+
+        private void calendar_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            var key = e.Key;
+
+            if (key == Key.Escape)
+                calendar.SelectedDate = null;
+        }
     }
 }

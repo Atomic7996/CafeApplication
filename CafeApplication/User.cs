@@ -27,8 +27,8 @@ namespace CafeApplication
         public string LastName { get; set; }
         public string Patronymic { get; set; }
         public string Phone { get; set; }
-        public string UserCardID { get; set; }
-        public Nullable<decimal> CardSale { get; set; }
+        public Nullable<int> UserCardID { get; set; }
+        public Nullable<int> CardSale { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }

@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="85"/>
             <RowDefinition Height="110"/>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="85"/>
@@ -26,52 +26,54 @@
         <TextBlock Text="Сотрудники" Grid.ColumnSpan="4" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource Label}"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Записей: "/>
-            <TextBlock Name="tbRecordsCount"/>
-            <TextBlock Text=" из "/>
-            <TextBlock Name="tbRecordsCountAll"/>
+            <TextBlock Text="Записей: " Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Name="tbRecordsCount" Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Text=" из " Style="{DynamicResource tbLvItem}"/>
+            <TextBlock Name="tbRecordsCountAll" Style="{DynamicResource tbLvItem}"/>
         </StackPanel>
 
-        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" ToolTip="Введите фамилию для поиска" TextChanged="tbFinder_TextChanged"/>
+        <TextBox Name="tbFinder" Grid.Row="1" Grid.Column="0" Style="{DynamicResource tbStyle}" ToolTip="Введите фамилию для поиска" TextChanged="tbFinder_TextChanged"/>
         <ComboBox Name="cbFilter"  Grid.Row="1" Grid.Column="1" Style="{StaticResource comboBox}" SelectionChanged="cbFilter_SelectionChanged"/>
         <ComboBox Name="cbSort"  Grid.Row="1" Grid.Column="2" Style="{StaticResource comboBox}" SelectionChanged="cbSort_SelectionChanged"/>
 
+        <TextBlock Name="tbAvailable" Text="Нет подходящих записей" Style="{DynamicResource tbAll}" FontSize="32" VerticalAlignment="Top" Margin="0, 90, 0, 0" Grid.Row="2" Grid.ColumnSpan="4" Visibility="Hidden"/>
+        
         <ListView Name="lvStaff" Grid.Row="2" Grid.ColumnSpan="4" IsVisibleChanged="lvStaff_IsVisibleChanged" MouseDoubleClick="lvStaff_MouseDoubleClick" ToolTip="Для просмотра нажмите дважды">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.25*"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="650"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="0.7*"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="400"/>
+                            <ColumnDefinition Width="400"/>
+                            <ColumnDefinition Width="0.5*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image Source="{Binding ValidImage}" HorizontalAlignment="Right" Stretch="UniformToFill" Grid.Column="1"/>
+                        <Border Grid.Column="1" HorizontalAlignment="Right" Style="{DynamicResource brdImage}"  Width="100" Height="100">
+                            <Image Name="imgLogo" Source="{Binding ValidImage}"/>
+                        </Border>
 
-                        <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
-                            <TextBlock Text="{Binding LastName}" HorizontalAlignment="Left"/>
-                            <TextBlock Text="{Binding FirstName}" HorizontalAlignment="Left"/>
-                            <TextBlock Text="{Binding Patronymic}" HorizontalAlignment="Left"/>
+                        <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50, 0, 0, 0">
+                            <TextBlock Text="{Binding LastName}" HorizontalAlignment="Left" Style="{DynamicResource tbLvItem}"/>
+                            <TextBlock Text="{Binding FirstName}" HorizontalAlignment="Left" Style="{DynamicResource tbLvItem}"/>
+                            <TextBlock Text="{Binding Patronymic}" HorizontalAlignment="Left" Style="{DynamicResource tbLvItem}"/>
                             </StackPanel>
 
-                        <StackPanel Grid.Column="3" HorizontalAlignment="Left">
-
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <TextBlock Text="Логин: "/>
-                                <TextBlock Text="{Binding Login}"/>
+                        <StackPanel Grid.Column="3" VerticalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Логин: " Style="{DynamicResource tbLvItem}"/>
+                                <TextBlock Text="{Binding Login}" Style="{DynamicResource tbLvItem}"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <TextBlock Text="Роль: "/>
-                                <TextBlock Text="{Binding StaffRole}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Роль: " Style="{DynamicResource tbLvItem}"/>
+                                <TextBlock Text="{Binding StaffRole}" Style="{DynamicResource tbLvItem}"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <TextBlock Text="Почта: "/>
-                                <TextBlock Text="{Binding Email}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Почта: " Style="{DynamicResource tbLvItem}"/>
+                                <TextBlock Text="{Binding Email}" Style="{DynamicResource tbLvItem}"/>
                             </StackPanel>
                         </StackPanel>
-
-
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

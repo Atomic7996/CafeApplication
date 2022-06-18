@@ -22,6 +22,7 @@ namespace CafeApplication
     /// </summary>
     public partial class MainWindow : Window
     {
+        Staff staff = new Staff();
         public MainWindow()
         {
             InitializeComponent();
@@ -42,9 +43,9 @@ namespace CafeApplication
                     break;
             }
 
-            Staff staff = DB.db.Staff.Where(s => s.StaffID == Properties.Settings.Default.staffID).FirstOrDefault();
+            staff = DB.db.Staff.Where(s => s.StaffID == Properties.Settings.Default.staffID).FirstOrDefault();
 
-            tbName.Text = staff.LastName + " " + staff.FirstName;
+            tbName.Text = staff.ToString();
             tbRole.Text = staff.StaffRole.ToString();
         }
 
@@ -62,6 +63,9 @@ namespace CafeApplication
 
         private void windowFrame_Navigated(object sender, NavigationEventArgs e)
         {
+            if (staff != null)
+                tbName.Text = staff.ToString();
+
             if (Manager.mainFrame.CanGoBack)
             {
                 btnBack.Visibility = Visibility.Visible;

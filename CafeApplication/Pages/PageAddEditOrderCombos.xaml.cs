@@ -43,11 +43,11 @@ namespace CafeApplication.Pages
             if (!string.IsNullOrEmpty(tbFindFoodStaff.Text))
                 combos = combos.Where(p => p.Title.ToLower().Contains(tbFindFoodStaff.Text.ToLower())).ToList();
 
-            lbAllCombos.ItemsSource = combos;
+            lvAllCombos.ItemsSource = combos;
 
-            lbSelectedCombos.Items.Clear();
+            lvSelectedCombos.Items.Clear();
             foreach (var comboItemTemplate in _comboItemTemplates)
-                lbSelectedCombos.Items.Add(comboItemTemplate.GridComboItemTemplate);
+                lvSelectedCombos.Items.Add(comboItemTemplate.GridComboItemTemplate);
         }
 
         private void tbFindCombos_TextChanged(object sender, TextChangedEventArgs e)
@@ -57,7 +57,7 @@ namespace CafeApplication.Pages
             if (!string.IsNullOrEmpty(tbFindFoodStaff.Text))
                 combo = combo.Where(c => c.Title.ToLower().Contains(tbFindFoodStaff.Text.ToLower())).ToList();
 
-            lbAllCombos.ItemsSource = combo;
+            lvAllCombos.ItemsSource = combo;
         }
 
         private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
@@ -81,7 +81,7 @@ namespace CafeApplication.Pages
 
         private void lbAllCombos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            btnGetCombo.IsEnabled = lbAllCombos.SelectedItem != null ? true : false;
+            //btnGetCombo.IsEnabled = lvAllCombos.SelectedItem != null ? true : false;
         }
 
         private void lbAllProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,7 +91,7 @@ namespace CafeApplication.Pages
 
         private void btnGetCombo_Click(object sender, RoutedEventArgs e)
         {
-            Combo combo = lbAllCombos.SelectedItem as Combo;
+            Combo combo = lvAllCombos.SelectedItem as Combo;
 
             if (combo != null)
             {
@@ -105,7 +105,7 @@ namespace CafeApplication.Pages
 
         private void btnCancelCombo_Click(object sender, RoutedEventArgs e)
         {
-            Grid gridCombosItemTemplate = lbSelectedCombos.SelectedItem as Grid;
+            Grid gridCombosItemTemplate = lvSelectedCombos.SelectedItem as Grid;
 
             if (gridCombosItemTemplate != null)
             {
@@ -126,7 +126,7 @@ namespace CafeApplication.Pages
 
         private void lbSelectedCombos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnCancelCombo.IsEnabled = lbSelectedCombos.SelectedItem != null ? true : false;
+            //btnCancelCombo.IsEnabled = lvSelectedCombos.SelectedItem != null ? true : false;
         }
 
         private bool CheckData()
@@ -174,15 +174,13 @@ namespace CafeApplication.Pages
                 try
                 {
                     DB.db.SaveChanges();
-                    MessageBox.Show("Данные сохранены", "Уведомление",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
                     Manager.mainFrame.GoBack();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
-            }
+            }            
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

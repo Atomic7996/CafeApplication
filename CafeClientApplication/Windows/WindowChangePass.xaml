@@ -1,0 +1,29 @@
+﻿<Window x:Class="CafeClientApplication.Windows.WindowChangePass"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CafeClientApplication.Windows"
+        mc:Ignorable="d"
+        Title="Изменение пароля" Height="450" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Старый пароль:" Style="{StaticResource tbAll}" HorizontalAlignment="Left"/>
+                <PasswordBox Name="tbOldPass" Style="{StaticResource passwordBox}" Width="420" Height="80"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Новый пароль:" Style="{StaticResource tbAll}" HorizontalAlignment="Left"/>
+                <PasswordBox Name="tbNewPass" Style="{StaticResource passwordBox}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Button Name="btnSave" Content="Сохранить" HorizontalAlignment="Center" Grid.Row="2" Click="btnSave_Click"/>
+
+    </Grid>
+</Window>

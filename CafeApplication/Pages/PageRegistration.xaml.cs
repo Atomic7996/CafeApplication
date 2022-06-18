@@ -32,7 +32,17 @@ namespace CafeApplication.Pages
         private void PageStartUp(Staff selectedStaff)
         {
             if (selectedStaff != null)
+            {
                 staff = selectedStaff;
+                if (selectedStaff.StaffID != Properties.Settings.Default.staffID)
+                {
+                    spBtns.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    cbRole.IsEnabled = true;
+                }
+            }                
 
             if (staff.StaffID == 0)
             {
@@ -40,6 +50,8 @@ namespace CafeApplication.Pages
                 tbHeader.Text = "Регистрация";
                 spPass.Visibility = Visibility.Visible;
                 btnPassword.Visibility = Visibility.Hidden;
+                cbRole.IsEnabled = true;
+                spBtns.Visibility = Visibility.Visible;
             }
             else
             {
@@ -65,8 +77,16 @@ namespace CafeApplication.Pages
                 errors.AppendLine("Укажите отчество");
             if (string.IsNullOrWhiteSpace(staff.Login))
                 errors.AppendLine("Укажите логин");
-            if (string.IsNullOrWhiteSpace(tbPassword.Password))
-                errors.AppendLine("Придумайте пароль");
+            if (staff.StaffID == 0)
+            {
+                if (string.IsNullOrWhiteSpace(tbPassword.Password))
+                    errors.AppendLine("Придумайте пароль");
+                if (!PasswordCheck.IsStrong(tbPassword.Password))
+                    errors.AppendLine("Пароль должен отвечать следующим требованиям:\nМинимум 6 символов\n" +
+                        "Минимум 1 прописная буква\n" +
+                        "Минимум 1 цифра\n" +
+                        "По крайней мере один из следующих символов: ! @ # $ % ^");
+            }
 
             if (checkStaff != null)
             {
@@ -76,9 +96,12 @@ namespace CafeApplication.Pages
 
             if (errors.Length > 0)
             {
-                MessageBox.Show(errors.ToString(), "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(errors.ToString(), "Внимание", 
+                    MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
-            }            
+            }
+
+            
 
             try
             {
@@ -89,7 +112,7 @@ namespace CafeApplication.Pages
                 }                    
 
                 DB.db.SaveChanges();
-                MessageBox.Show("Данные сохранены", "Уведомление");
+                //MessageBox.Show("Данные сохранены", "Уведомление");
                 Manager.mainFrame.GoBack();
             }
             catch (Exception ex)
@@ -107,7 +130,7 @@ namespace CafeApplication.Pages
                 {
                     DB.db.Staff.Remove(staff);
                     DB.db.SaveChanges();
-                    MessageBox.Show("Запись удалена", "Уведомление");
+                    //MessageBox.Show("Запись удалена", "Уведомление");
                     Manager.mainFrame.GoBack();
                 }
                 catch (Exception ex)
@@ -137,6 +160,12 @@ namespace CafeApplication.Pages
                 DataContext = null;
                 DataContext = staff;
             }
+        }
+
+        private void tbLastName_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsLetter(e.Text, 0))
+                e.Handled = true;
         }
     }
 }

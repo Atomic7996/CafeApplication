@@ -41,11 +41,11 @@ namespace CafeApplication.Pages
             if (!string.IsNullOrEmpty(tbFindFoodStaff.Text))
                 foodStaff = foodStaff.Where(fs => fs.Title.ToLower().Contains(tbFindFoodStaff.Text.ToLower())).ToList();
 
-            lbAllFoodStaff.ItemsSource = foodStaff;
+            lvAllFoodStaff.ItemsSource = foodStaff;
 
-            lbSelectedFoodStaff.Items.Clear();
+            lvSelectedFoodStaff.Items.Clear();
             foreach (var productItemTemplate in _foodStaffItemTemplates)
-                lbSelectedFoodStaff.Items.Add(productItemTemplate.GridFoodStaffItemTemplate);
+                lvSelectedFoodStaff.Items.Add(productItemTemplate.GridFoodStaffItemTemplate);
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -61,12 +61,12 @@ namespace CafeApplication.Pages
 
         private void lbAllProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnGetProduct.IsEnabled = lbAllFoodStaff.SelectedItem != null ? true : false;
+            //btnGetProduct.IsEnabled = lvAllFoodStaff.SelectedItem != null ? true : false;
         }
 
         private void btnGetProduct_Click(object sender, RoutedEventArgs e)
         {
-            FoodStaff foodStaff = lbAllFoodStaff.SelectedItem as FoodStaff;
+            FoodStaff foodStaff = lvAllFoodStaff.SelectedItem as FoodStaff;
 
             if (foodStaff != null)
             {
@@ -78,7 +78,7 @@ namespace CafeApplication.Pages
 
         private void btnCancelProduct_Click(object sender, RoutedEventArgs e)
         {
-            Grid gridFoodStaffItemTemplate = lbSelectedFoodStaff.SelectedItem as Grid;
+            Grid gridFoodStaffItemTemplate = lvSelectedFoodStaff.SelectedItem as Grid;
 
             if (gridFoodStaffItemTemplate != null)
             {
@@ -98,7 +98,7 @@ namespace CafeApplication.Pages
 
         private void lbSelectedProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnCancelProduct.IsEnabled = lbSelectedFoodStaff.SelectedItem != null ? true : false;
+            //btnCancelProduct.IsEnabled = lvSelectedFoodStaff.SelectedItem != null ? true : false;
         }
 
         private bool CheckData()
@@ -142,8 +142,7 @@ namespace CafeApplication.Pages
                 try
                 {
                     DB.db.SaveChanges();
-                    MessageBox.Show("Данные сохранены", "Уведомление",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    //MessageBox.Show("Данные сохранены", "Уведомление",MessageBoxButton.OK, MessageBoxImage.Information);
                     Manager.mainFrame.GoBack();
                 }
                 catch (Exception ex)
@@ -166,7 +165,7 @@ namespace CafeApplication.Pages
             if (!string.IsNullOrEmpty(tbFindFoodStaff.Text))
                 foodStaff = foodStaff.Where(fs => fs.Title.ToLower().Contains(tbFindFoodStaff.Text.ToLower())).ToList();
 
-            lbAllFoodStaff.ItemsSource = foodStaff;
+            lvAllFoodStaff.ItemsSource = foodStaff;
         }
     }
 }

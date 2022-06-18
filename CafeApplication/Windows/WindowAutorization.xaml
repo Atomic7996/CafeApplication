@@ -19,16 +19,17 @@
 
         <Border Background="#FF84A2FF" CornerRadius="40" VerticalAlignment="Center" HorizontalAlignment="Center" Width="600" Height="270" Grid.Row="1">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <TextBlock Text="Логин:" Width="90" HorizontalAlignment="Right"/>
-                    <TextBox Name="tbLogin" Text="cash" Width="420"/>
-                    <!---->
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="110">
+                    <TextBlock Text="Логин:" Width="100" HorizontalAlignment="Center" Style="{DynamicResource tbAll}"/>
+                    <TextBox Name="tbLogin" Text="adm" Width="420" Style="{DynamicResource tbStyle}"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Width="540" Height="100">
-                    <TextBlock Text="Пароль:" Width="90" HorizontalAlignment="Right"/>
-                    <PasswordBox Name="tbPass" Password="qwerty123" Style="{StaticResource passwordBox}" />
-                    <!---->
+                
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="110">
+                    <TextBlock Text="Пароль:" Width="100" Style="{DynamicResource tbAll}"/>
+                    <PasswordBox Name="tbPass" Password="Qwerty1!" Style="{StaticResource passwordBox}" Width="420" />
                 </StackPanel>
+                
             </StackPanel>
         </Border>
 

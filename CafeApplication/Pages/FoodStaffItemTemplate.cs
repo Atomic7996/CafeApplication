@@ -30,16 +30,22 @@ namespace CafeApplication
         private void CreateGridFoodStaffItemTemplate()
         {
             _gridFoodStafftItemTemplate = new Grid();
-            _gridFoodStafftItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(64) });
-            _gridFoodStafftItemTemplate.ColumnDefinitions.Add(new ColumnDefinition());
-            _gridFoodStafftItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(90) });
+            _gridFoodStafftItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(100) });
+            _gridFoodStafftItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(110) });
+            _gridFoodStafftItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(450) });
+            _gridFoodStafftItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(100) });
             _gridFoodStafftItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(200) });
 
             Border brdImage = new Border();
-            brdImage.Width = 64;
-            brdImage.Height = 64;
+            //brdImage.Style = Styles.brdImage;
+            brdImage.Width = 100;
+            brdImage.Height = 100;
+            brdImage.Margin = new Thickness(5);
+            brdImage.CornerRadius = new CornerRadius(5);
+            brdImage.BorderBrush = Brushes.Black;
+            brdImage.BorderThickness = new Thickness(2);
             brdImage.Background = GetImageBrush();
-            Grid.SetColumn(brdImage, 0);
+            Grid.SetColumn(brdImage, 1);
             _gridFoodStafftItemTemplate.Children.Add(brdImage);
 
             StackPanel spFoodStaff = new StackPanel();
@@ -48,16 +54,16 @@ namespace CafeApplication
             spFoodStaff.Orientation = Orientation.Vertical;
             {
                 TextBlock tblName = new TextBlock();
-                tblName.FontSize = 20;
+                //tblName.FontSize = 20;
                 tblName.Text = _foodStaff.Title;
                 spFoodStaff.Children.Add(tblName);
 
                 TextBlock tbDesc = new TextBlock();
-                tbDesc.FontSize = 14;
+                //tbDesc.FontSize = 14;
                 tbDesc.Text = _foodStaff.Description;
                 spFoodStaff.Children.Add(tbDesc);
             }
-            Grid.SetColumn(spFoodStaff, 1);
+            Grid.SetColumn(spFoodStaff, 2);
             _gridFoodStafftItemTemplate.Children.Add(spFoodStaff);
 
             Grid gridData = new Grid();
@@ -66,19 +72,19 @@ namespace CafeApplication
             {
                 TextBlock tblCount = new TextBlock();
                 tblCount.Text = "Кол-во";
-                tblCount.HorizontalAlignment = HorizontalAlignment.Center;
+                //tblCount.HorizontalAlignment = HorizontalAlignment.Center;
                 Grid.SetRow(tblCount, 0);
                 gridData.Children.Add(tblCount);
 
                 _tbCount = new TextBox();
                 _tbCount.MaxLength = 5;
                 _tbCount.Text = "1";
-                _tbCount.Height = 40;
+                //_tbCount.Height = 40;
                 _tbCount.PreviewTextInput += _tbCount_PreviewTextInput;
                 Grid.SetRow(_tbCount, 1);
                 gridData.Children.Add(_tbCount);
             }
-            Grid.SetColumn(gridData, 2);
+            Grid.SetColumn(gridData, 3);
             _gridFoodStafftItemTemplate.Children.Add(gridData);
 
             Grid gridUnit = new Grid();
@@ -87,17 +93,17 @@ namespace CafeApplication
             {
                 TextBlock tblUnit = new TextBlock();
                 tblUnit.Text = "Ед. измереня: ";
-                tblUnit.HorizontalAlignment = HorizontalAlignment.Center;
+               // tblUnit.HorizontalAlignment = HorizontalAlignment.Center;
                 Grid.SetRow(tblUnit, 0);
                 gridUnit.Children.Add(tblUnit);
 
                 TextBlock tblUnit1 = new TextBlock();
                 tblUnit1.Text = _foodStaff.Unit;
-                tblUnit1.HorizontalAlignment = HorizontalAlignment.Center;
+                //tblUnit1.HorizontalAlignment = HorizontalAlignment.Center;
                 Grid.SetRow(tblUnit1, 1);
                 gridUnit.Children.Add(tblUnit1);
             }
-            Grid.SetColumn(gridUnit, 3);
+            Grid.SetColumn(gridUnit, 4);
             _gridFoodStafftItemTemplate.Children.Add(gridUnit);
         }
 

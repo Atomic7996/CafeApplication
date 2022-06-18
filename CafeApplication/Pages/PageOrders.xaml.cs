@@ -20,6 +20,8 @@ namespace CafeApplication.Pages
     /// </summary>
     public partial class PageOrders : Page
     {
+        private List<OrderItemTemplate> _orderItemTemplates = new List<OrderItemTemplate>();
+
         public PageOrders()
         {
             InitializeComponent();
@@ -28,9 +30,9 @@ namespace CafeApplication.Pages
 
         private void PageStartUp()
         {
-            var currentOrders = DB.db.Order.ToList();
             var sort = new List<string>();
             var staff = DB.db.Staff.ToList();
+            var users = DB.db.User.ToList();
 
             sort.Add("Сортировка");
             sort.Add("По названию, от А до Я");
@@ -38,50 +40,78 @@ namespace CafeApplication.Pages
             sort.Add("По возрастанию стоимости"); ;
             sort.Add("По убыванию стоимости"); ;
 
-            lvOrders.ItemsSource = currentOrders;
-
             staff.Insert(0, new Staff
             {
                 LastName = "Все сотрудники"
+            });
+
+            users.Insert(0, new User
+            {
+                LastName = "Все пользователи"
             });
 
             cbStaff.SelectedValuePath = "StaffID";
             cbStaff.ItemsSource = staff;
             cbStaff.SelectedIndex = 0;
 
-            lvOrders.ToolTip = null;
-            lvOrders.MouseDoubleClick -= lvOrders_MouseDoubleClick;
+            cbUsers.SelectedValuePath = "UserID";
+            cbUsers.ItemsSource = users;
+            cbUsers.SelectedIndex = 0;
 
-            if (Properties.Settings.Default.globalRole != "manager")
-            {
-                lvOrders.ToolTip = null;
-                lvOrders.MouseDoubleClick -= lvOrders_MouseDoubleClick;
-            }
-            else
-            {
+
+            if (Properties.Settings.Default.globalRole == "manager")
                 btnAdd.Visibility = Visibility.Hidden;
-            }
+
+            //UpdateLvItems();
         }
 
         void UpdateLvItems()
         {
             var currentOrders = DB.db.Order.ToList();
 
-            if (cbStaff.SelectedIndex > 0)
-                currentOrders = currentOrders.Where(s => s.StaffID == int.Parse(cbStaff.SelectedValue.ToString())).ToList();
+            //if (cbStaff.SelectedIndex > 0)
+            //{
+            //    currentOrders = currentOrders.Where(o => o.StaffID == int.Parse(cbStaff.SelectedValue.ToString())).ToList();
+            //    cbUsers.SelectedIndex = 0;
+            //}                
+
+            //if (cbUsers.SelectedIndex > 0)
+            //{
+            //    currentOrders = currentOrders.Where(o => o.UserID == int.Parse(cbUsers.SelectedValue.ToString())).ToList();
+            //    cbStaff.SelectedIndex = 0;
+            //    calendar.SelectedDate = null;
+            //}
+                
 
             if (calendar.SelectedDate != null)
-                currentOrders = currentOrders.Where(s => s.OrderDateTime.Date.ToString().Contains(calendar.SelectedDate.ToString())).ToList();
+                currentOrders = currentOrders.Where(o => o.OrderDateTime.Date.ToString().Contains(calendar.SelectedDate.ToString())).ToList();
 
-            lvOrders.ItemsSource = currentOrders;
+            _orderItemTemplates.Clear();
+            lvOrders.ItemsSource = null;
+            lvOrders.Items.Clear();
+
+            foreach (var order in currentOrders)
+            {
+                OrderItemTemplate orderItemTemplate = new OrderItemTemplate(order);
+                _orderItemTemplates.Add(orderItemTemplate);
+            }
+
+            foreach (var orderItemTemplate in _orderItemTemplates)
+                lvOrders.Items.Add(orderItemTemplate.GridOrderItemTemplate);
 
             tbRecordsCount.Text = lvOrders.Items.Count.ToString();
             tbRecordsCountAll.Text = DB.db.Order.Count().ToString();
-        }
 
-        private void tbFinder_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateLvItems();
+            if (lvOrders.Items.Count == 0)
+            {
+                lvOrders.Visibility = Visibility.Hidden;
+                tbAvailable.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lvOrders.Visibility = Visibility.Visible;
+                tbAvailable.Visibility = Visibility.Hidden;
+            }
         }
 
         private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -92,7 +122,7 @@ namespace CafeApplication.Pages
         private void lvOrders_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
-            lvOrders.ItemsSource = DB.db.Order.ToList();
+            //lvOrders.ItemsSource = DB.db.Order.ToList();
         }
 
         private void cbStaff_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -110,9 +140,17 @@ namespace CafeApplication.Pages
             Manager.mainFrame.Navigate(new PageAddEditOrder(new Order()));
         }
 
-        private void lvOrders_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {            
-            Manager.mainFrame.Navigate(new PageAddEditOrder(lvOrders.SelectedItem as Order));            
+        private void cbUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateLvItems();
+        }
+
+        private void calendar_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            var key = e.Key;
+
+            if (key == Key.Escape)
+                calendar.SelectedDate = null;
         }
     }
 }
