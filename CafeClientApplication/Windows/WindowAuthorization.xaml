@@ -34,9 +34,9 @@
         </Border>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Name="btnEnter" Content="Войти"  Width="170" Click="btnEnter_Click"/>
-            <Button Name="btnRegister" Content="Регистрация"  Width="170" Click="btnRegister_Click"/>
-            <Button Name="btnGuest" Content="Гость" Width="170" Click="btnGuest_Click"/>
+            <Button Name="btnEnter" Content="Войти"  Width="200" Click="btnEnter_Click"/>
+            <Button Name="btnRegister" Content="Регистрация"  Width="200" Click="btnRegister_Click"/>
+            <Button Name="btnGuest" Content="Гость" Width="200" Click="btnGuest_Click"/>
         </StackPanel>
     </Grid>
 </Window>

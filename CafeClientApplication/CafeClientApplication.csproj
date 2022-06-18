@@ -184,21 +184,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\cafe.png" />
+    <Resource Include="Images\cafe.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\combo.png" />
+    <Resource Include="Images\combo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\foodstaff.png" />
+    <Resource Include="Images\foodstaff.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\product.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\product.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ClassLibraryCafe\ClassLibraryCafe.csproj">
       <Project>{4469d89f-9c70-47aa-87b2-624ca0b89425}</Project>
@@ -222,6 +224,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Products\smashedpotato.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cafe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\combo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\foodstaff.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

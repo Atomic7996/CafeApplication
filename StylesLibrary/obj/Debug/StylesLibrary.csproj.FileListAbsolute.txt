@@ -1,9 +1,0 @@
-C:\Users\sasha\source\repos\CafeApplication\StylesLibrary\bin\Debug\StylesLibrary.dll
-C:\Users\sasha\source\repos\CafeApplication\StylesLibrary\bin\Debug\StylesLibrary.pdb
-C:\Users\sasha\source\repos\CafeApplication\StylesLibrary\obj\Debug\StylesLibrary.csproj.AssemblyReference.cache
-C:\Users\sasha\source\repos\CafeApplication\StylesLibrary\obj\Debug\Styles\Styles.baml
-C:\Users\sasha\source\repos\CafeApplication\StylesLibrary\obj\Debug\StylesLibrary_MarkupCompile.cache
-C:\Users\sasha\source\repos\CafeApplication\StylesLibrary\obj\Debug\StylesLibrary.g.resources
-C:\Users\sasha\source\repos\CafeApplication\StylesLibrary\obj\Debug\StylesLibrary.csproj.CoreCompileInputs.cache
-C:\Users\sasha\source\repos\CafeApplication\StylesLibrary\obj\Debug\StylesLibrary.dll
-C:\Users\sasha\source\repos\CafeApplication\StylesLibrary\obj\Debug\StylesLibrary.pdb

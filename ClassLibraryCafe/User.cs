@@ -27,7 +27,7 @@ namespace ClassLibraryCafe
         public string LastName { get; set; }
         public string Patronymic { get; set; }
         public string Phone { get; set; }
-        public int UserCardID { get; set; }
+        public Nullable<int> UserCardID { get; set; }
         public Nullable<int> CardSale { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

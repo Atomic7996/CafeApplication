@@ -10,19 +10,21 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="150"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Меню" Style="{StaticResource Label}"/>
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Margin="0, 0, 0, 50">
+            <Button Name="btnUser" Content="Мой аккаунт" Margin="0, 0, 0, 50" Height="120" Click="btnUser_Click"/>
             <Button Name="btnProducts" Content="Блюда" Click="btnProducts_Click"/>
             <Button Name="btnCombo" Content="Наборы" Click="btnCombo_Click"/>
             <Button Name="btnOrders" Content="Мои заказы" Click="btnOrders_Click"/>
+            <Button Name="btnAddOrder" Content="Создать заказ" Margin="0, 50, 0, 0" Height="120" Click="btnAddOrder_Click"/>
         </StackPanel>
 
-        <Button Name="btnAddOrder" Content="Создать заказ" Click="btnAddOrder_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0, 500, 0, 0" Grid.Row="1" Height="120" />
-        <Button Name="btnUser" Content="Мой аккаунт" Click="btnUser_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0, 0, 0, 500" Grid.Row="1" Height="120" />
+        
+        
     </Grid>
 </Page>

@@ -21,6 +21,7 @@
             <Setter Property="Margin" Value="15" />
             <Setter Property="FontSize" Value="24" />
             <Setter Property="Height" Value="80" />
+            <Setter Property="MaxWidth" Value="450" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Style.Resources>
@@ -53,6 +54,12 @@
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
 
+        <Style x:Key="tbReport" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
         <Style x:Key="tbLvItem" TargetType="TextBlock">
             <Setter Property="FontSize" Value="28" />
             <Setter Property="HorizontalAlignment" Value="Left" />
@@ -67,6 +74,7 @@
             <Setter Property="Margin" Value="15" />
             <Setter Property="FontSize" Value="24" />
             <Setter Property="Height" Value="80" />
+            <Setter Property="MaxWidth" Value="450" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Style.Resources>
@@ -123,6 +131,7 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="1"/>
             <Setter Property="Width" Value="420" />
+            <Setter Property="MaxWidth" Value="450" />
             <Setter Property="Height" Value="65" />
             <Setter Property="Margin" Value="5"/>
             <Setter Property="FontSize" Value="26"/>
@@ -177,7 +186,6 @@
                                 <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
-
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -188,6 +196,7 @@
             <Setter Property="FontSize" Value="24" />
             <Setter Property="Height" Value="80" />
             <Setter Property="Width" Value="420" />
+            <Setter Property="MaxWidth" Value="450" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="Template">
@@ -229,6 +238,7 @@
             <Setter Property="Margin" Value="15" />
             <Setter Property="FontSize" Value="28" />
             <Setter Property="Height" Value="80" />
+            <Setter Property="MaxWidth" Value="450" />
             <Setter Property="HorizontalContentAlignment" Value="Left" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="Template">

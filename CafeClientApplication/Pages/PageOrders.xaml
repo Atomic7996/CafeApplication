@@ -56,13 +56,13 @@
 
                         <StackPanel Grid.Column="2" VerticalAlignment="Center">
                             <StackPanel>
-                                <TextBlock Text="Состав:" Style="{DynamicResource tbLvItem}"/>
+                                <TextBlock Text="Состав:" Style="{DynamicResource tbLvItem}" FontWeight="Bold"/>
                                 <TextBlock Text="{Binding ValidList}" TextWrapping="Wrap" Width="650" Style="{DynamicResource tbLvItem}"/>
                             </StackPanel>
                         </StackPanel>
 
                         <StackPanel Grid.Column="3" VerticalAlignment="Center">
-                            <TextBlock Text="Стоимость:" Style="{DynamicResource tbLvItem}"/>
+                            <TextBlock Text="Стоимость:" Style="{DynamicResource tbLvItem}" FontWeight="Bold"/>
                             <TextBlock Text="{Binding SummaryCost}" Style="{DynamicResource tbLvItem}">
                                 <Run Text="₽"/>
                             </TextBlock>

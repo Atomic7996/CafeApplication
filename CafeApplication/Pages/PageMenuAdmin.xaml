@@ -22,7 +22,7 @@
             <Button Name="btnCombo" Content="Наборы" Click="btnCombo_Click"/>
             <Button Name="btnOrders" Content="Заказы" Click="btnOrders_Click"/>
             <Button Name="btnStaff" Content="Сотрудники" Click="btnStaff_Click"/>
-            <Button Name="btnReports" Content="Отчеты по продажам" Height="120" Click="btnReports_Click"/>
+            <Button Name="btnReports" Content="Отчеты по продажам" Height="120" Margin="0, 50, 0, 0" Click="btnReports_Click"/>
         </StackPanel>
     </Grid>
 </Page>

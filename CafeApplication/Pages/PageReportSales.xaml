@@ -12,43 +12,64 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="85"/>
             <RowDefinition Height="110"/>
+            <RowDefinition Height="110"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.25*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.25*"/>
         </Grid.ColumnDefinitions>
 
         <TextBlock Text="Отчет по продажам" Grid.ColumnSpan="4" Style="{StaticResource Label}" />
 
-        <ComboBox Name="cbTypes"  Grid.Row="1" Grid.Column="0" Style="{StaticResource comboBox}" SelectionChanged="cbTypes_SelectionChanged"/>
-        <ComboBox Name="cbSort"  Grid.Row="1" Grid.Column="1" Style="{StaticResource comboBox}" SelectionChanged="cbSort_SelectionChanged"/>
-        <DatePicker Name="calendar" Grid.Row="1" Grid.Column="2" SelectedDateChanged="calendar_SelectedDateChanged" FirstDayOfWeek="Monday" SelectedDateFormat="Long" PreviewKeyDown="calendar_PreviewKeyDown"/>
+        <ComboBox Name="cbTypes"  Grid.Row="1" Grid.Column="2"  Style="{StaticResource comboBox}" SelectionChanged="cbTypes_SelectionChanged"/>
+        
+        <ComboBox Name="cbSort"  Grid.Row="2" Grid.Column="1" Style="{StaticResource comboBox}" SelectionChanged="cbSort_SelectionChanged"/>
+        <ComboBox Name="cbFilter"  Grid.Row="2" Grid.Column="2" Style="{StaticResource comboBox}" SelectionChanged="cbFilter_SelectionChanged"/>
+        <DatePicker Name="calendar" Grid.Row="2" Grid.Column="3" SelectedDateChanged="calendar_SelectedDateChanged" FirstDayOfWeek="Monday" SelectedDateFormat="Long" PreviewKeyDown="calendar_PreviewKeyDown"/>
 
-        <StackPanel Name="spProds" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden">
-            <TextBlock Text="Блюд продано: "/>
-            <TextBlock Name="tbProductsCount"/>
-            <TextBlock Text="На сумму: "/>
-            <TextBlock Name="tbProductsPrice"/>
-        </StackPanel>
-        <StackPanel Name="spCombos" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden">
-            <TextBlock Text="Наборов продано: "/>
-            <TextBlock Name="tbCombosCount"/>
-            <TextBlock Text="На сумму: "/>
-            <TextBlock Name="tbCombosPrice"/>
-        </StackPanel>
+        <Border Name="brdBack" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Style="{DynamicResource brdImage}" Margin="40" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Border.Background>
+                <SolidColorBrush Color="AliceBlue" Opacity="0.495"/>
+            </Border.Background>
+        </Border>
 
-        <StackPanel Name="spSelectedProduct" Grid.Row="2" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden">
-            
-            <TextBlock Name="tbTitle"/>
-            <TextBlock Text="продано в количестве: "/>
-            <TextBlock Name="tbCount"/>
-            <TextBlock Text="На сумму: "/>
-            <TextBlock Name="tbCost"/>
+        <StackPanel Name="spProds" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Всего блюд продано: " Style="{DynamicResource tbReport}" HorizontalAlignment="Left"/>
+            <TextBlock Name="tbProductsCount" Style="{DynamicResource tbReport}" HorizontalAlignment="Center"/>
+            <TextBlock Text="На общую стоимость: " Style="{DynamicResource tbReport}" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Name="tbProductsPrice" Style="{DynamicResource tbReport}" HorizontalAlignment="Center"/>
+                <TextBlock Text=" ₽" Style="{DynamicResource tbReport}"/>
+            </StackPanel>
+
         </StackPanel>
 
+        <StackPanel Name="spSelected" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Name="tbTitle" Style="{DynamicResource tbReport}"/>
+                <TextBlock Text=" продано " Style="{DynamicResource tbReport}"/>
+            </StackPanel>
+            <TextBlock Name="tbCount" Style="{DynamicResource tbReport}" />
+            <TextBlock Text="На общую стоимость: " Style="{DynamicResource tbReport}" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Name="tbCost" Style="{DynamicResource tbReport}"/>
+                <TextBlock Text=" ₽" Style="{DynamicResource tbReport}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Name="spCombos" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Всего наборов продано: " Style="{DynamicResource tbReport}" HorizontalAlignment="Left"/>
+            <TextBlock Name="tbCombosCount" Style="{DynamicResource tbReport}" HorizontalAlignment="Center"/>
+            <TextBlock Text="На общую стоимость: " Style="{DynamicResource tbReport}" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Name="tbCombosPrice" Style="{DynamicResource tbReport}" HorizontalAlignment="Center"/>
+                <TextBlock Text=" ₽" Style="{DynamicResource tbReport}"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

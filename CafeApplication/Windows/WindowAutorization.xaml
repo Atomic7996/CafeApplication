@@ -27,12 +27,12 @@
                 
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="110">
                     <TextBlock Text="Пароль:" Width="100" Style="{DynamicResource tbAll}"/>
-                    <PasswordBox Name="tbPass" Password="Qwerty1!" Style="{StaticResource passwordBox}" Width="420" />
+                    <PasswordBox Name="tbPass" Password="Qwerty!1" Style="{StaticResource passwordBox}" Width="420" />
                 </StackPanel>
                 
             </StackPanel>
         </Border>
 
-        <Button Name="btnEnter" Content="Войти" HorizontalAlignment="Center" Width="600" VerticalAlignment="Center" Grid.Row="2" Click="btnEnter_Click"/>
+        <Button Name="btnEnter" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Click="btnEnter_Click"/>
     </Grid>
 </Window>

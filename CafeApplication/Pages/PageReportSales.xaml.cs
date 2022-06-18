@@ -35,6 +35,7 @@ namespace CafeApplication.Pages
         {
             calendar.Visibility = Visibility.Hidden;
             cbSort.Visibility = Visibility.Hidden;
+            cbFilter.Visibility = Visibility.Hidden;
 
             var types = new List<string>();
             types.Add("Тип отчета");
@@ -45,6 +46,10 @@ namespace CafeApplication.Pages
 
             cbTypes.ItemsSource = types;
             cbTypes.SelectedIndex = 0;
+
+            cbSort.SelectedIndex = 0;
+
+            cbFilter.SelectedIndex = 0;
 
             mounths.Add("Все месяцы");
             mounths.Add("Январь");
@@ -70,26 +75,24 @@ namespace CafeApplication.Pages
             switch (cbTypes.SelectedIndex)
             {
                 case 1:
-                    calendar.IsEnabled = true;
                     calendar.Visibility = Visibility.Visible;
-                    cbSort.IsEnabled = true;
                     cbSort.Visibility = Visibility.Visible;
                     spProds.Visibility = Visibility.Visible;
                     spCombos.Visibility = Visibility.Visible;
-                    spSelectedProduct.Visibility = Visibility.Hidden;
+                    spSelected.Visibility = Visibility.Hidden;
+                    cbFilter.Visibility = Visibility.Hidden;
+                    brdBack.Visibility = Visibility.Visible;
                     cbSort.ItemsSource = mounths;
 
                     if (calendar.SelectedDate != null)
                     {
                         orderList = orderList.Where(s => s.OrderDateTime.Date.ToString().Contains(calendar.SelectedDate.ToString())).ToList();
                         cbSort.SelectedIndex = 0;
-                    }               
+                    }
 
                     if (cbSort.SelectedIndex > 0)
                     {
                         orderList = orderList.Where(s => s.OrderDateTime.Date.Month.ToString().Contains(cbSort.SelectedIndex.ToString())).ToList();
-                        calendar.Text = null;
-                        calendar.SelectedDate = null;
                     }
 
                     tbProductsCount.Text = OrderProduct.productsAmount(orderList, null);
@@ -101,29 +104,32 @@ namespace CafeApplication.Pages
                 case 2:
                     calendar.Visibility = Visibility.Hidden;
                     calendar.SelectedDate = null;
-                    cbSort.IsEnabled = true;
+                    cbSort.Visibility = Visibility.Hidden;
                     spProds.Visibility = Visibility.Hidden;
                     spCombos.Visibility = Visibility.Hidden;
-                    spSelectedProduct.Visibility = Visibility.Visible;
+                    spSelected.Visibility = Visibility.Visible;
+                    cbFilter.Visibility = Visibility.Visible;
+                    brdBack.Visibility = Visibility.Visible;
 
-                    cbSort.ItemsSource = productsList;
-                    cbSort.SelectedValuePath = "ProductID";
+                    cbFilter.ItemsSource = productsList;
+                    cbFilter.SelectedValuePath = "ProductID";
 
-                    if (cbSort.SelectedIndex > 0)
+                    if (cbFilter.SelectedIndex > 0)
                     {
-                        Product product = DB.db.Product.Where(p => p.ProductID.ToString() == cbSort.SelectedValue.ToString()).FirstOrDefault();
-                        spSelectedProduct.Visibility = Visibility.Visible;
+                        Product product = DB.db.Product.Where(p => p.ProductID.ToString() == cbFilter.SelectedValue.ToString()).FirstOrDefault();
+                        spSelected.Visibility = Visibility.Visible;
                         tbTitle.Text = product.Title;
                         tbCount.Text = OrderProduct.productsAmount(null, product);
                         tbCost.Text = OrderProduct.productsCost(null, product);
                     }
                     else
                     {
-                        cbSort.SelectedIndex = 0;
-                        spProds.Visibility = Visibility.Visible;
-                        spSelectedProduct.Visibility= Visibility.Hidden;
-                        tbProductsCount.Text = OrderProduct.productsAmount(orderList, null);
-                        tbProductsPrice.Text = OrderProduct.productsCost(orderList, null);
+                        cbFilter.SelectedIndex = 0;
+                        //spProds.Visibility = Visibility.Visible;
+                        //spSelected.Visibility= Visibility.Hidden;
+                        tbTitle.Text = "Всего блюд";
+                        tbCount.Text = OrderProduct.productsAmount(orderList, null);
+                        tbCost.Text = OrderProduct.productsCost(orderList, null);
                     } 
                     
                     break;
@@ -131,18 +137,20 @@ namespace CafeApplication.Pages
                 case 3:
                     calendar.Visibility = Visibility.Hidden;
                     calendar.SelectedDate = null;
-                    cbSort.IsEnabled = true;
+                    cbSort.Visibility = Visibility.Hidden;
                     spProds.Visibility = Visibility.Hidden;
                     spCombos.Visibility = Visibility.Hidden;
-                    spSelectedProduct.Visibility = Visibility.Visible;
+                    spSelected.Visibility = Visibility.Visible;
+                    cbFilter.Visibility = Visibility.Visible;
+                    brdBack.Visibility = Visibility.Visible;
 
-                    cbSort.ItemsSource = combosList;
-                    cbSort.SelectedValuePath = "ComboID";
+                    cbFilter.ItemsSource = combosList;
+                    cbFilter.SelectedValuePath = "ComboID";
 
-                    if (cbSort.SelectedIndex > 0)
+                    if (cbFilter.SelectedIndex > 0)
                     {
-                        Combo combo = DB.db.Combo.Where(p => p.ComboID.ToString() == cbSort.SelectedValue.ToString()).FirstOrDefault();
-                        spSelectedProduct.Visibility = Visibility.Visible;
+                        Combo combo = DB.db.Combo.Where(p => p.ComboID.ToString() == cbFilter.SelectedValue.ToString()).FirstOrDefault();
+                        spSelected.Visibility = Visibility.Visible;
                         tbTitle.Text = combo.Title;
                         tbCount.Text = OrderCombo.combosAmount(null, combo);
                         tbCost.Text = OrderCombo.combosCost(null, combo);
@@ -150,11 +158,12 @@ namespace CafeApplication.Pages
                     }
                     else
                     {
-                        cbSort.SelectedIndex = 0;
-                        spCombos.Visibility = Visibility.Visible;
-                        spSelectedProduct.Visibility = Visibility.Hidden;
-                        tbCombosCount.Text = OrderCombo.combosAmount(orderList, null);
-                        tbCombosPrice.Text = OrderCombo.combosCost(orderList, null);
+                        cbFilter.SelectedIndex = 0;
+                        //spCombos.Visibility = Visibility.Visible;
+                        //spSelected.Visibility = Visibility.Hidden;
+                        tbTitle.Text = "Всего наборов";
+                        tbCount.Text = OrderCombo.combosAmount(orderList, null);
+                        tbCost.Text = OrderCombo.combosCost(orderList, null);
                     }
 
                     break;
@@ -164,9 +173,12 @@ namespace CafeApplication.Pages
                     calendar.SelectedDate = null;
                     cbSort.Visibility = Visibility.Hidden;
                     cbSort.Text = null;
+                    cbFilter.Visibility = Visibility.Hidden;
+                    cbFilter.Text = null;
                     spProds.Visibility = Visibility.Hidden;
                     spCombos.Visibility = Visibility.Hidden;
-                    spSelectedProduct.Visibility = Visibility.Hidden;
+                    spSelected.Visibility = Visibility.Hidden;
+                    brdBack.Visibility = Visibility.Hidden;
                     break;
             }
         }
@@ -183,15 +195,19 @@ namespace CafeApplication.Pages
 
         private void cbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateList();
+            cbFilter.SelectedIndex = 0;
+            UpdateList();            
         }
 
         private void calendar_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            var key = e.Key;
-
-            if (key == Key.Escape)
+            if (e.Key == Key.Escape)
                 calendar.SelectedDate = null;
+        }
+
+        private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateList();
         }
     }
 }
