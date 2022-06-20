@@ -22,12 +22,12 @@
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="110">
                     <TextBlock Text="Логин:" Width="100" HorizontalAlignment="Center" Style="{DynamicResource tbAll}"/>
-                    <TextBox Name="tbLogin" Text="u1" Width="420" Style="{DynamicResource tbStyle}"/>
+                    <TextBox Name="tbLogin" Width="420" Style="{DynamicResource tbStyle}"/>
                 </StackPanel>
 
                 <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="110">
                     <TextBlock Text="Пароль:" Width="100" Style="{DynamicResource tbAll}"/>
-                    <PasswordBox Name="tbPass" Password="u1" Style="{StaticResource passwordBox}" Width="420" />
+                    <PasswordBox Name="tbPass" Style="{StaticResource passwordBox}" Width="420" />
                 </StackPanel>
 
             </StackPanel>
