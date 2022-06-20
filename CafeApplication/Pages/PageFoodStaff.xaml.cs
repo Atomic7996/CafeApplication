@@ -109,8 +109,16 @@ namespace CafeApplication.Pages
         
         private void lvFoodStaff_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
-            lvFoodStaff.ItemsSource = DB.db.FoodStaff.ToList();
+            try
+            {
+                DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
+                UpdateLvItems();
+            }
+            catch (Exception)
+            {
+
+            }
+            
         }
 
         private void lvFoodStaff_MouseDoubleClick(object sender, MouseButtonEventArgs e)

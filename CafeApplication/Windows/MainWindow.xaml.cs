@@ -26,7 +26,8 @@ namespace CafeApplication
         public MainWindow()
         {
             InitializeComponent();
-            WindowStartUp();                       
+            WindowStartUp();
+            Styles.SetStyles();
         }
 
         private void WindowStartUp()

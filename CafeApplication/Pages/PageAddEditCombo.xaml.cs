@@ -1,6 +1,7 @@
 ﻿using CafeApplication.Windows;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +51,7 @@ namespace CafeApplication.Pages
 
             if (string.IsNullOrWhiteSpace(combo.Title))
                 errors.AppendLine("Укажите название");
-            if (string.IsNullOrWhiteSpace(combo.Cost.ToString()))
+            if (string.IsNullOrWhiteSpace(combo.Cost.ToString()) || combo.Cost == 0)
                 errors.AppendLine("Укажите стоимость");
 
             if (errors.Length > 0)
@@ -66,7 +67,6 @@ namespace CafeApplication.Pages
             try
             {
                 DB.db.SaveChanges();
-                //MessageBox.Show("Данные сохранены", "Уведомление");
                 Manager.mainFrame.GoBack();
             }
             catch (Exception ex)
@@ -159,8 +159,16 @@ namespace CafeApplication.Pages
 
         private void tbCost_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (Char.IsLetter(e.Text, 0))
+            string chars = "1234567890.";
+
+            if (!chars.Contains(e.Text[0]))
                 e.Handled = true;
+
+            if (tbCost.Text.Contains("."))
+            {
+                if (e.Text == ".")
+                    e.Handled = true;
+            }
         }
     }
 }

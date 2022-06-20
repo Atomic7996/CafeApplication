@@ -31,18 +31,18 @@
 
         <TextBox Name="tbTitle" Text="{Binding Title}" Style="{DynamicResource tbStyle}" Grid.Row="2" Grid.Column="2" TextChanged="tbTitle_TextChanged" PreviewTextInput="tbTitle_PreviewTextInput"/>
         <ComboBox Name="cbTypes" SelectedItem="{Binding ProductType}" Style="{StaticResource comboBox}" Margin="15, 0, 70, 0" Grid.Row="3" Grid.Column="2"/>
-        <Button Name="btnAddType" Content="+" Grid.Row="3" Grid.Column="2" Width="50" Height="50" HorizontalAlignment="Right" Click="btnAddType_Click" FontSize="32"/>
+        <Button Name="btnAddType" Content="+" Grid.Row="3" Grid.Column="2" Width="50" FontWeight="Bold" Height="50" HorizontalAlignment="Right" Click="btnAddType_Click" FontSize="32"/>
         <TextBox Name="tbCost" Text="{Binding Cost}" Style="{DynamicResource tbStyle}" Grid.Row="2" Grid.Column="4" PreviewTextInput="tbCost_PreviewTextInput"/>
         <Border Grid.Row="3" Style="{DynamicResource brdImage}" Grid.Column="4" Width="140" Height="140">
             <Image Name="imgLogo" Source="{Binding ValidImage}" Style="{DynamicResource imgEffect}" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown" Cursor="Hand"/>
         </Border>
         <TextBox Name="tbDesc" Text="{Binding Description}"  Grid.Row="4" Grid.Column="4" Style="{DynamicResource tbStyle}" Height="auto" TextWrapping="Wrap"/>
-        <TextBlock Name="tbStructure" Text="{Binding FoodStaffList}" Grid.Row="4" Grid.Column="2" Style="{DynamicResource tbAll}" Margin="15,0,15,80" TextWrapping="Wrap" IsVisibleChanged="tbStructure_IsVisibleChanged" Width="450" Height="80"/>
+        <TextBlock Name="tbStructure" Text="{Binding FoodStaffList}" Grid.Row="4" Grid.Column="2" Style="{DynamicResource tbLvItem}" MaxWidth="450" Height="80" Margin="15, 0, 0, 50" TextWrapping="Wrap" IsVisibleChanged="tbStructure_IsVisibleChanged"/>
         <Button Name="btnChange" Content="Выбрать" Grid.Row="3" Grid.Column="2" Width="200" Height="50" VerticalAlignment="Bottom" Grid.RowSpan="2" Margin="0, 0, 0, 15" Click="btnChange_Click"/>
 
         <TextBlock Text="Наименование" Grid.Row="2" Grid.Column="1" Style="{StaticResource tbAddEdit}"/>
         <TextBlock Text="Категория" Grid.Row="3" Grid.Column="1" Style="{StaticResource tbAddEdit}"/>
-        <TextBlock Text="Состав" Grid.Row="4" Grid.Column="1" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Состав" Grid.Row="4" Grid.Column="1" Style="{StaticResource tbAddEdit}" Margin="0, 0, 20, 50" Height="80"/>
         <TextBlock Text="Стоимость" Grid.Row="2" Grid.Column="3" Style="{StaticResource tbAddEdit}"/>
         <TextBlock Text="Изображение" Grid.Row="3" Grid.Column="3" Style="{StaticResource tbAddEdit}"/>
         <TextBlock Text="Описание" Grid.Row="4" Grid.Column="3" Style="{StaticResource tbAddEdit}"/>

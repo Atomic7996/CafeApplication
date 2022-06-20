@@ -42,9 +42,10 @@
     <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CountInStock" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="MinCount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UnitID" Type="Int32" Nullable="false" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK_FoodStaff_Unit" FromRole="FoodStaff" ToRole="Unit" />
     <NavigationProperty Name="ProductFoodStuff" Relationship="Self.FK_ProductFoodStuff_FoodStaff" FromRole="FoodStaff" ToRole="ProductFoodStuff" />
   </EntityType>
   <EntityType Name="Order">
@@ -153,6 +154,14 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="UnitID" />
+    </Key>
+    <Property Name="UnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="FoodStaff" Relationship="Self.FK_FoodStaff_Unit" FromRole="Unit" ToRole="FoodStaff" />
+  </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="UserID" />
@@ -160,10 +169,10 @@
     <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="UserCardID" Type="Int32" />
     <Property Name="CardSale" Type="Int32" />
     <NavigationProperty Name="Order" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
@@ -225,6 +234,18 @@
       </Principal>
       <Dependent Role="Order">
         <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FoodStaff_Unit">
+    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+    <End Role="FoodStaff" Type="Self.FoodStaff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="UnitID" />
+      </Principal>
+      <Dependent Role="FoodStaff">
+        <PropertyRef Name="UnitID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -336,7 +357,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="CafeEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="CafeEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Combo" EntityType="Self.Combo" />
     <EntitySet Name="ComboProduct" EntityType="Self.ComboProduct" />
     <EntitySet Name="Coupon" EntityType="Self.Coupon" />
@@ -350,6 +371,7 @@
     <EntitySet Name="Staff" EntityType="Self.Staff" />
     <EntitySet Name="StaffRole" EntityType="Self.StaffRole" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Unit" EntityType="Self.Unit" />
     <EntitySet Name="User" EntityType="Self.User" />
     <AssociationSet Name="FK_ComboProduct_Combo" Association="Self.FK_ComboProduct_Combo">
       <End Role="Combo" EntitySet="Combo" />
@@ -370,6 +392,10 @@
     <AssociationSet Name="FK_Order_Coupon" Association="Self.FK_Order_Coupon">
       <End Role="Coupon" EntitySet="Coupon" />
       <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FoodStaff_Unit" Association="Self.FK_FoodStaff_Unit">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="FoodStaff" EntitySet="FoodStaff" />
     </AssociationSet>
     <AssociationSet Name="FK_ProductFoodStuff_FoodStaff" Association="Self.FK_ProductFoodStuff_FoodStaff">
       <End Role="FoodStaff" EntitySet="FoodStaff" />

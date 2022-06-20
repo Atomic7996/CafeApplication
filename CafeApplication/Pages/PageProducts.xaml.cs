@@ -51,7 +51,7 @@ namespace CafeApplication.Pages
 
             filter.Insert(0, new ProductType
             {
-                Title = "Все типы"
+                Title = "Категории"
             });
 
             cbFilter.DisplayMemberPath = "Title";
@@ -132,7 +132,7 @@ namespace CafeApplication.Pages
             try
             {
                 DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
-                lvProducts.ItemsSource = DB.db.Product.ToList();
+                UpdateLvItems();
             }
             catch (Exception)
             {

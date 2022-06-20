@@ -7,23 +7,21 @@
 
         <Style x:Key="brdImage" TargetType="Border">
             <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="2" />
             <Setter Property="CornerRadius" Value="5"/>
-            <Setter Property="BorderBrush" Value="CadetBlue"/>
+            <Setter Property="BorderBrush" Value="#FF84A2FF"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
-        <Style TargetType="Rectangle">
-            <Setter Property="Fill" Value="#FFFFF9" />
-        </Style>
-
         <Style x:Key="tbStyle" TargetType="TextBox">
             <Setter Property="Margin" Value="15" />
-            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontSize" Value="28" />
             <Setter Property="Height" Value="80" />
             <Setter Property="MaxWidth" Value="450" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10" />
@@ -39,6 +37,7 @@
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
         </Style>
 
         <Style x:Key="tbAddEdit" TargetType="TextBlock">
@@ -46,33 +45,40 @@
             <Setter Property="FontSize" Value="28" />
             <Setter Property="HorizontalAlignment" Value="Right" />
             <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
         </Style>
 
         <Style x:Key="tbAll" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontSize" Value="28" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
         </Style>
 
         <Style x:Key="tbReport" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="36" />
+            <Setter Property="FontSize" Value="32" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
         </Style>
 
         <Style x:Key="tbLvItem" TargetType="TextBlock">
             <Setter Property="FontSize" Value="28" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
         </Style>
 
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="28" />
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
         </Style>
 
         <Style TargetType="DatePicker">
             <Setter Property="Margin" Value="15" />
             <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
             <Setter Property="Height" Value="80" />
             <Setter Property="MaxWidth" Value="450" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -88,9 +94,10 @@
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <Setter Property="BorderThickness" Value="3" />
-            <Setter Property="BorderBrush" Value="CadetBlue" />
+            <Setter Property="BorderBrush" Value="#FF84A2FF" />
             <Setter Property="Margin" Value="4" />
             <Setter Property="FontSize" Value="28" />
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10" />
@@ -134,7 +141,9 @@
             <Setter Property="MaxWidth" Value="450" />
             <Setter Property="Height" Value="65" />
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -173,7 +182,7 @@
                                                 </TransformGroup>
                                             </RadialGradientBrush.RelativeTransform>
                                             <GradientStop Offset="0" Color="#4985E7"/>
-                                            <GradientStop Offset="1" Color="#96A9F1"/>
+                                            <GradientStop Offset="1" Color="#CDD1FA"/>
 
                                         </RadialGradientBrush>
                                     </Setter.Value>
@@ -194,6 +203,7 @@
         <Style x:Key="passwordBox" TargetType="PasswordBox">
             <Setter Property="Margin" Value="15" />
             <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
             <Setter Property="Height" Value="80" />
             <Setter Property="Width" Value="420" />
             <Setter Property="MaxWidth" Value="450" />
@@ -237,6 +247,7 @@
         <Style x:Key="comboBox" TargetType="{x:Type ComboBox}">
             <Setter Property="Margin" Value="15" />
             <Setter Property="FontSize" Value="28" />
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif" />
             <Setter Property="Height" Value="80" />
             <Setter Property="MaxWidth" Value="450" />
             <Setter Property="HorizontalContentAlignment" Value="Left" />

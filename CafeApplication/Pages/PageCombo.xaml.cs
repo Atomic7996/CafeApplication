@@ -113,12 +113,11 @@ namespace CafeApplication.Pages
             try
             {
                 DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
+                UpdateLvItems();
             }
             catch (Exception)
             {
             }
-            
-            lvCombos.ItemsSource = DB.db.Combo.ToList();
         }
 
         private void lvCombos_MouseDoubleClick(object sender, MouseButtonEventArgs e)

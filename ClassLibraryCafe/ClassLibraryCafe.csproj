@@ -114,6 +114,9 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
+    <Compile Include="Unit.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>

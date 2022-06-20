@@ -59,7 +59,7 @@ namespace CafeApplication.Pages
 
             if (string.IsNullOrWhiteSpace(product.Title))
                 errors.AppendLine("Укажите название");
-            if (string.IsNullOrWhiteSpace(product.Cost.ToString()))
+            if (string.IsNullOrWhiteSpace(product.Cost.ToString()) || product.Cost == 0)
                 errors.AppendLine("Укажите стоимость");
 
             if (errors.Length > 0)
@@ -189,8 +189,16 @@ namespace CafeApplication.Pages
 
         private void tbCost_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (Char.IsLetter(e.Text, 0) || Char.IsControl(e.Text, 0))
+            string chars = "1234567890.";
+
+            if (!chars.Contains(e.Text[0]))
                 e.Handled = true;
+
+            if (tbCost.Text.Contains("."))
+            {
+                if (e.Text == ".")
+                    e.Handled = true;
+            }
         }
     }
 }

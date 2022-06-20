@@ -31,7 +31,7 @@ namespace CafeApplication.Pages
         private void PageStartUp()
         {
             var sort = new List<string>();
-            var staff = DB.db.Staff.ToList();
+            var staff = DB.db.Staff.Where(s => s.RoleID == 2).ToList();
             var users = DB.db.User.ToList();
 
             sort.Add("Сортировка");
@@ -42,12 +42,12 @@ namespace CafeApplication.Pages
 
             staff.Insert(0, new Staff
             {
-                LastName = "Все сотрудники"
+                LastName = "Кассиры"
             });
 
             users.Insert(0, new User
             {
-                LastName = "Все пользователи"
+                LastName = "Пользователи"
             });
 
             cbStaff.SelectedValuePath = "StaffID";
@@ -61,30 +61,32 @@ namespace CafeApplication.Pages
 
             if (Properties.Settings.Default.globalRole == "manager")
                 btnAdd.Visibility = Visibility.Hidden;
-
-            //UpdateLvItems();
         }
 
         void UpdateLvItems()
         {
             var currentOrders = DB.db.Order.ToList();
 
-            //if (cbStaff.SelectedIndex > 0)
-            //{
-            //    currentOrders = currentOrders.Where(o => o.StaffID == int.Parse(cbStaff.SelectedValue.ToString())).ToList();
-            //    cbUsers.SelectedIndex = 0;
-            //}                
-
-            //if (cbUsers.SelectedIndex > 0)
-            //{
-            //    currentOrders = currentOrders.Where(o => o.UserID == int.Parse(cbUsers.SelectedValue.ToString())).ToList();
-            //    cbStaff.SelectedIndex = 0;
-            //    calendar.SelectedDate = null;
-            //}
-                
-
             if (calendar.SelectedDate != null)
                 currentOrders = currentOrders.Where(o => o.OrderDateTime.Date.ToString().Contains(calendar.SelectedDate.ToString())).ToList();
+
+            if (cbStaff.SelectedIndex > 0)
+            {
+                cbUsers.IsEnabled = false;
+                currentOrders = currentOrders.Where(s => s.StaffID == int.Parse(cbStaff.SelectedValue.ToString())).ToList();
+            }
+            else
+                cbUsers.IsEnabled = true;
+
+
+            if (cbUsers.SelectedIndex > 0)
+            {
+                cbStaff.IsEnabled = false;
+                currentOrders = currentOrders.Where(s => s.UserID == int.Parse(cbUsers.SelectedValue.ToString())).ToList();
+            }
+            else
+                cbStaff.IsEnabled = true;
+
 
             _orderItemTemplates.Clear();
             lvOrders.ItemsSource = null;
@@ -121,8 +123,15 @@ namespace CafeApplication.Pages
 
         private void lvOrders_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
-            //lvOrders.ItemsSource = DB.db.Order.ToList();
+            try
+            {
+                DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         private void cbStaff_SelectionChanged(object sender, SelectionChangedEventArgs e)

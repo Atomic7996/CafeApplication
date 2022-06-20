@@ -107,6 +107,7 @@
     <Compile Include="Model\ProductType.cs" />
     <Compile Include="Model\Staff.cs" />
     <Compile Include="Model\StaffRole.cs" />
+    <Compile Include="Model\Unit.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
@@ -187,6 +188,9 @@
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModelCafe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Unit.cs">
       <DependentUpon>ModelCafe.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">

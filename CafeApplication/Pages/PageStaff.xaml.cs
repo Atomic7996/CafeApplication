@@ -40,7 +40,7 @@ namespace CafeApplication.Pages
 
             filter.Insert(0, new StaffRole
             {
-                Title = "Все роли"
+                Title = "Роли"
             });
 
             cbFilter.DisplayMemberPath = "Title";
@@ -115,8 +115,14 @@ namespace CafeApplication.Pages
 
         private void lvStaff_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
-            lvStaff.ItemsSource = DB.db.Staff.ToList();
+            try
+            {
+                DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
+                UpdateLvItems();
+            }
+            catch (Exception)
+            {
+            }            
         }
 
         private void lvStaff_MouseDoubleClick(object sender, MouseButtonEventArgs e)

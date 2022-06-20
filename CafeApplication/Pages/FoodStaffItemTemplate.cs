@@ -37,29 +37,24 @@ namespace CafeApplication
             _gridFoodStafftItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(200) });
 
             Border brdImage = new Border();
-            //brdImage.Style = Styles.brdImage;
-            brdImage.Width = 100;
-            brdImage.Height = 100;
-            brdImage.Margin = new Thickness(5);
-            brdImage.CornerRadius = new CornerRadius(5);
-            brdImage.BorderBrush = Brushes.Black;
-            brdImage.BorderThickness = new Thickness(2);
+            brdImage.Style = Styles.brdImage;
             brdImage.Background = GetImageBrush();
             Grid.SetColumn(brdImage, 1);
             _gridFoodStafftItemTemplate.Children.Add(brdImage);
 
             StackPanel spFoodStaff = new StackPanel();
             spFoodStaff.VerticalAlignment = VerticalAlignment.Center;
-            spFoodStaff.HorizontalAlignment = HorizontalAlignment.Center;
+            spFoodStaff.HorizontalAlignment = HorizontalAlignment.Left;
             spFoodStaff.Orientation = Orientation.Vertical;
             {
                 TextBlock tblName = new TextBlock();
-                //tblName.FontSize = 20;
+                tblName.Style = Styles.tbAll;
+                tblName.FontWeight = FontWeights.Bold;
                 tblName.Text = _foodStaff.Title;
                 spFoodStaff.Children.Add(tblName);
 
                 TextBlock tbDesc = new TextBlock();
-                //tbDesc.FontSize = 14;
+                tbDesc.Style = Styles.tbAll;
                 tbDesc.Text = _foodStaff.Description;
                 spFoodStaff.Children.Add(tbDesc);
             }
@@ -72,14 +67,14 @@ namespace CafeApplication
             {
                 TextBlock tblCount = new TextBlock();
                 tblCount.Text = "Кол-во";
-                //tblCount.HorizontalAlignment = HorizontalAlignment.Center;
+                tblCount.Style = Styles.tbAll;
                 Grid.SetRow(tblCount, 0);
                 gridData.Children.Add(tblCount);
 
                 _tbCount = new TextBox();
                 _tbCount.MaxLength = 5;
                 _tbCount.Text = "1";
-                //_tbCount.Height = 40;
+                _tbCount.Style = Styles.tbStyle;
                 _tbCount.PreviewTextInput += _tbCount_PreviewTextInput;
                 Grid.SetRow(_tbCount, 1);
                 gridData.Children.Add(_tbCount);
@@ -93,13 +88,13 @@ namespace CafeApplication
             {
                 TextBlock tblUnit = new TextBlock();
                 tblUnit.Text = "Ед. измереня: ";
-               // tblUnit.HorizontalAlignment = HorizontalAlignment.Center;
+                tblUnit.Style = Styles.tbAll;
                 Grid.SetRow(tblUnit, 0);
                 gridUnit.Children.Add(tblUnit);
 
                 TextBlock tblUnit1 = new TextBlock();
-                tblUnit1.Text = _foodStaff.Unit;
-                //tblUnit1.HorizontalAlignment = HorizontalAlignment.Center;
+                tblUnit1.Text = _foodStaff.Unit.ToString();
+                tblUnit1.Style = Styles.tbAll;
                 Grid.SetRow(tblUnit1, 1);
                 gridUnit.Children.Add(tblUnit1);
             }
@@ -119,10 +114,10 @@ namespace CafeApplication
 
         private void _tbCount_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
-            char letter = e.Text[0];
+            string chars = "1234567890";
 
-            if (!char.IsDigit(letter))
-                    e.Handled = true;                
+            if (!chars.Contains(e.Text[0]))
+                e.Handled = true;
         }
     }
 }

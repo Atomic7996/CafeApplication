@@ -27,8 +27,6 @@ namespace CafeApplication.Windows
 
             staff = selectedStaff;
         }
-
-        
         
         /// <summary>
         /// Проверка старого пароля и смена на новый

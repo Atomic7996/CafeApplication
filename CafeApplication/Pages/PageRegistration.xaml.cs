@@ -31,12 +31,17 @@ namespace CafeApplication.Pages
 
         private void PageStartUp(Staff selectedStaff)
         {
+            Staff mainStaff = DB.db.Staff.Where(s => s.StaffID == Properties.Settings.Default.staffID).FirstOrDefault();
+
             if (selectedStaff != null)
             {
                 staff = selectedStaff;
-                if (selectedStaff.StaffID != Properties.Settings.Default.staffID)
+
+                if (selectedStaff.StaffID != mainStaff.StaffID)
                 {
                     spBtns.Visibility = Visibility.Hidden;
+                    if (mainStaff.RoleID == 1)
+                        cbRole.IsEnabled = true;
                 }
                 else
                 {

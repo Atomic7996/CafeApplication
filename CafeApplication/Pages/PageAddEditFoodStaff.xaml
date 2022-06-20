@@ -30,9 +30,9 @@
         <TextBlock Grid.Column="1" Text="Редактор продукта" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
 
         <TextBox Name="tbTitle" Text="{Binding Title}" Style="{DynamicResource tbStyle}" Grid.Row="2" Grid.Column="2" PreviewTextInput="tbTitle_PreviewTextInput"/>
-        <TextBox Name="tbUnit" Text="{Binding Unit}" Style="{DynamicResource tbStyle}" Grid.Row="3" Grid.Column="2" PreviewTextInput="tbUnit_PreviewTextInput"/>
+        <ComboBox Name="cbUnit" SelectedItem="{Binding Unit}" Style="{StaticResource comboBox}" Grid.Row="3" Grid.Column="2"/>
         <TextBox Name="tbMinCount" Text="{Binding MinCount}" Style="{DynamicResource tbStyle}" Grid.Row="4" Grid.Column="2" PreviewTextInput="tbMinCount_PreviewTextInput"/>
-        <TextBox Name="tbCountInStock" Text="{Binding CountInStock}" Style="{DynamicResource tbStyle}" Grid.Row="2" Grid.Column="4" PreviewTextInput="tbMinCount_PreviewTextInput"/>
+        <TextBox Name="tbCountInStock" Text="{Binding CountInStock}" Style="{DynamicResource tbStyle}" Grid.Row="2" Grid.Column="4" PreviewTextInput="tbCountInStock_PreviewTextInput"/>
         <Border Grid.Row="3" Style="{DynamicResource brdImage}" Grid.Column="4" Width="140" Height="140">
             <Image Name="imgLogo" Source="{Binding ValidImage}" Style="{DynamicResource imgEffect}" MouseLeftButtonDown="imgLogo_MouseLeftButtonDown" Cursor="Hand"/>
         </Border>

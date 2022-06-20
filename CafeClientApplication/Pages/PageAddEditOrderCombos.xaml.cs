@@ -49,6 +49,9 @@ namespace CafeClientApplication.Pages
             lvSelectedCombos.Items.Clear();
             foreach (var comboItemTemplate in _comboItemTemplates)
                 lvSelectedCombos.Items.Add(comboItemTemplate.GridComboItemTemplate);
+
+            foreach (var comboItemTemplate in _comboItemTemplates)
+                combos.Remove(comboItemTemplate.combo);
         }
 
         private void tbFindCombos_TextChanged(object sender, TextChangedEventArgs e)
@@ -59,11 +62,25 @@ namespace CafeClientApplication.Pages
                 combo = combo.Where(c => c.Title.ToLower().Contains(tbFindFoodStaff.Text.ToLower())).ToList();
 
             lvAllCombos.ItemsSource = combo;
+
+            if (lvAllCombos.Items.Count == 0)
+            {
+                lvAllCombos.Visibility = Visibility.Hidden;
+                tbAvailable.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lvAllCombos.Visibility = Visibility.Visible;
+                tbAvailable.Visibility = Visibility.Hidden;
+            }
+
+            ShowCombos();
         }
 
         private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
         {
             decimal fullPrice = 0;
+
             foreach (var cit in _comboItemTemplates)
             {
                 if (!string.IsNullOrEmpty(cit.TbCount.Text))
@@ -77,17 +94,19 @@ namespace CafeClientApplication.Pages
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            DB.db.Combo.ToList();
+            tbFindFoodStaff.Text = null;
+            ShowCombos();
         }
 
         private void lbAllCombos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //btnGetCombo.IsEnabled = lvAllCombos.SelectedItem != null ? true : false;
+            btnGetCombo_Click(null, null);
         }
 
         private void lbAllProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnGetCombo_Click(null, null);
+            
+            //btnGetCombo.IsEnabled = lvAllCombos.SelectedItem != null ? true : false;
         }
 
         private void btnGetCombo_Click(object sender, RoutedEventArgs e)
@@ -116,6 +135,7 @@ namespace CafeClientApplication.Pages
                     _comboItemTemplates.Remove(comboItemTemplate);
                     ShowCombos();
                     comboItemTemplate.TbCount.TextChanged += tbCount_TextChanged;
+                    tbCount_TextChanged(null, null);
                 }
             }
         }
@@ -139,6 +159,15 @@ namespace CafeClientApplication.Pages
             {
                 errorMessage += "Не выбран ни один товар\n";
                 trueData = false;
+            }
+
+            foreach (var comboItemTemplate in _comboItemTemplates)
+            {
+                if (comboItemTemplate.TbCount.Text == "0")
+                {
+                    errorMessage += "Количество не должно быть 0\n";
+                    trueData = false;
+                }
             }
 
             if (!trueData)

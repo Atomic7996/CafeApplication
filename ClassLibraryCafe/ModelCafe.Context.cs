@@ -38,6 +38,7 @@ namespace ClassLibraryCafe
         public virtual DbSet<Staff> Staff { get; set; }
         public virtual DbSet<StaffRole> StaffRole { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Unit> Unit { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

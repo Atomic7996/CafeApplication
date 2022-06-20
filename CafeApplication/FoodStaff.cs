@@ -24,10 +24,11 @@ namespace CafeApplication
         public string Title { get; set; }
         public decimal CountInStock { get; set; }
         public decimal MinCount { get; set; }
-        public string Unit { get; set; }
+        public int UnitID { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
     
+        public virtual Unit Unit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductFoodStuff> ProductFoodStuff { get; set; }
     }

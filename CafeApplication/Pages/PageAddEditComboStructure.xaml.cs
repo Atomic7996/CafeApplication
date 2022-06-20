@@ -46,6 +46,9 @@ namespace CafeApplication.Pages
             lvSelectedProducts.Items.Clear();
             foreach (var productItemTemplate in _productItemTemplates)
                 lvSelectedProducts.Items.Add(productItemTemplate.GridProductItemTemplate);
+
+            foreach (var productItemTemplate in _productItemTemplates)
+                products.Remove(productItemTemplate.product);
         }
 
         private void tbFindFoodStaff_TextChanged(object sender, TextChangedEventArgs e)
@@ -56,12 +59,25 @@ namespace CafeApplication.Pages
                 product = product.Where(fs => fs.Title.ToLower().Contains(tbFindProduct.Text.ToLower())).ToList();
 
             lvAllProducts.ItemsSource = product;
+
+            if (lvAllProducts.Items.Count == 0)
+            {
+                lvAllProducts.Visibility = Visibility.Hidden;
+                tbAvailable.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lvAllProducts.Visibility = Visibility.Visible;
+                tbAvailable.Visibility = Visibility.Hidden;
+            }
+
+            ShowProducts();
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            DB.db.Product.ToList();
             tbFindProduct.Text = null;
+            ShowProducts();
         }
 
         private void lbAllFoodStaff_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,7 +85,7 @@ namespace CafeApplication.Pages
             //btnGetProduct.IsEnabled = lvAllProducts.SelectedItem != null ? true : false;
         }
 
-        private void lbAllFoodStaff_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void lbAllProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             btnGetProduct_Click(null, null);
         }

@@ -130,7 +130,6 @@ namespace CafeClientApplication.Pages
             decimal? cost = order.SummaryCost;
             if (coupon != null)
             {
-                //MessageBox.Show("Купон успешно применен");
                 cost -= cost * coupon.Sale / 100;
             }
 
@@ -168,10 +167,24 @@ namespace CafeClientApplication.Pages
 
         private void tbCoupon_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (Char.IsControl(e.Text, 0))
+            
+            if (Char.IsLetter(e.Text, 0))
+            {
+                e.Handled = false;
+            }else if (Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = false;
+            }
+            else
+            {
                 e.Handled = true;
-            //var length = tbCoupon.Text.Length;
-            //tbCoupon.Text += e.Text.ToUpper();
+            }
+        }
+
+        private void tbCoupon_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tbCoupon.Text = tbCoupon.Text.ToUpper();
+            tbCoupon.CaretIndex = tbCoupon.Text.Length;
         }
     }
 }

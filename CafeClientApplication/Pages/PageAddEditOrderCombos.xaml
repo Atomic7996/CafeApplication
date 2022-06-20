@@ -46,6 +46,8 @@
                         <Button Name="btnClear" Grid.Column="1" Content="X" Width="50" Height="50" FontSize="32" Click="btnClear_Click"/>
                     </Grid>
 
+                    <TextBlock Name="tbAvailable" Text="Нет подходящих записей" Style="{DynamicResource tbAll}" VerticalAlignment="Top" Margin="0, 90, 0, 0" FontSize="32" Grid.Row="2" Grid.ColumnSpan="4" Visibility="Hidden"/>
+
                     <ListView Name="lvAllCombos" Grid.Row="2" MouseDoubleClick="lbAllCombos_MouseDoubleClick" SelectionChanged="lbAllProducts_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -61,14 +63,14 @@
                                         <Image Name="imgLogo" Source="{Binding ValidImage}"/>
                                     </Border>
 
-                                    <StackPanel Grid.Column="2" Orientation="Vertical">
-                                        <TextBlock Text="{Binding Title}" Style="{DynamicResource tbAll}" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding Description}" Style="{DynamicResource tbAll}"/>
+                                    <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Left">
+                                        <TextBlock Text="{Binding Title}" Style="{DynamicResource tbAll}" HorizontalAlignment="Left" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Description}" Style="{DynamicResource tbAll}" HorizontalAlignment="Left"/>
                                     </StackPanel>
 
-                                    <StackPanel Grid.Column="3">
-                                        <TextBlock Text="Стоимость:" Style="{DynamicResource tbAll}"/>
-                                        <TextBlock Style="{DynamicResource tbAll}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <StackPanel Grid.Column="3" HorizontalAlignment="Left">
+                                        <TextBlock Text="Стоимость:" Style="{DynamicResource tbAll}" HorizontalAlignment="Left"/>
+                                        <TextBlock Style="{DynamicResource tbAll}" VerticalAlignment="Center" HorizontalAlignment="Left">
                                             <Run Text="{Binding Cost}"/>
                                             <Run Text="₽"/>
                                         </TextBlock>

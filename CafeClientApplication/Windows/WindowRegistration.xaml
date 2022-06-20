@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeClientApplication.Windows"
+        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         d:DesignHeight="700" d:DesignWidth="1200"
         Title="Редактор аккаунта" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Width="1200" Height="700">
@@ -41,7 +42,12 @@
         <TextBox Name="tbName" Text="{Binding FirstName}" Grid.Row="3" Grid.Column="2" Style="{DynamicResource tbStyle}" PreviewTextInput="tbLastName_PreviewTextInput"/>
         <TextBox Name="tbPatronymic" Text="{Binding Patronymic}" Grid.Row="4" Grid.Column="2" Style="{DynamicResource tbStyle}" PreviewTextInput="tbLastName_PreviewTextInput"/>
         <TextBox Name="tbLogin" Text="{Binding Login}" Grid.Row="2" Grid.Column="4" Style="{DynamicResource tbStyle}"/>
-        <TextBox Name="tbPhone" Text="{Binding Phone}" Grid.Row="3" Grid.Column="4" Style="{DynamicResource tbStyle}" MaxLength="11" PreviewTextInput="tbPhone_PreviewTextInput"/>
+        <toolkit:MaskedTextBox Name="tbPhone" Grid.Row="3" Grid.Column="4" Style="{StaticResource tbStyle}"
+                     PreviewTextInput="tbPhone_PreviewTextInput"
+                     MaxLength="11"  Mask="+0 (000) 000 00 00"
+                     Text="{Binding Phone}"/>
+        
+        <!--<TextBox Name="bPhone" Text="{Binding Phone}" Grid.Row="3" Grid.Column="4" Style="{DynamicResource tbStyle}" MaxLength="11" PreviewTextInput="tbPhone_PreviewTextInput"/>-->
         <StackPanel Name="spPass" Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" HorizontalAlignment="Center" Margin="100, 0, 0, 0">
             <TextBlock Text="Пароль" Style="{DynamicResource tbAddEdit}"/>
             <PasswordBox Name="tbPassword" Style="{DynamicResource passwordBox}"/>

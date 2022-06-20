@@ -46,6 +46,8 @@
                         <Button Name="btnClear" Grid.Column="1" Content="X" Width="50" Height="50" FontSize="32" Click="btnClear_Click"/>
                     </Grid>
 
+                    <TextBlock Name="tbAvailable" Text="Нет подходящих записей" Style="{DynamicResource tbAll}" VerticalAlignment="Top" Margin="0, 90, 0, 0" FontSize="32" Grid.Row="2" Grid.ColumnSpan="4" Visibility="Hidden"/>
+
                     <ListView Name="lvAllFoodStaff" Grid.Row="2" MouseDoubleClick="lbAllProducts_MouseDoubleClick" SelectionChanged="lbAllProducts_SelectionChanged">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -61,14 +63,14 @@
                                         <Image Name="imgLogo" Source="{Binding ValidImage}"/>
                                     </Border>
 
-                                    <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding Title}" Style="{DynamicResource tbAll}" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding Description}" Style="{DynamicResource tbAll}"/>
+                                    <StackPanel Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Title}" Style="{DynamicResource tbAll}" HorizontalAlignment="Left" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Description}" Style="{DynamicResource tbAll}" HorizontalAlignment="Left"/>
                                     </StackPanel>
 
                                     <StackPanel Grid.Column="3" HorizontalAlignment="Left">
-                                        <TextBlock Text="Ед. измер:" Style="{DynamicResource tbAll}"/>
-                                        <TextBlock Text="{Binding Unit}" Style="{DynamicResource tbAll}"/>
+                                        <TextBlock Text="Ед. измер:" Style="{DynamicResource tbAll}" HorizontalAlignment="Left"/>
+                                        <TextBlock Text="{Binding Unit}" Style="{DynamicResource tbAll}" HorizontalAlignment="Left"/>
                                     </StackPanel>
 
                                 </Grid>

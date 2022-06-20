@@ -12,12 +12,12 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="85"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="#FF84A2FF" CornerRadius="0, 0, 20, 20">
+        <Border Grid.Row="0" Background="#FF99EAFF" CornerRadius="0, 0, 20, 20">
             <TextBlock Text="Авторизация" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource Label}"/>
 
         </Border>
 
-        <Border Background="#FF84A2FF" CornerRadius="40" VerticalAlignment="Center" HorizontalAlignment="Center" Width="600" Height="270" Grid.Row="1">
+        <Border Background="#FF99EAFF" CornerRadius="40" VerticalAlignment="Center" HorizontalAlignment="Center" Width="600" Height="270" Grid.Row="1">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="110">

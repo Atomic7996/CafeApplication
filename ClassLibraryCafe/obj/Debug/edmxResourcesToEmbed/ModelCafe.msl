@@ -39,7 +39,7 @@
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="CountInStock" ColumnName="CountInStock" />
           <ScalarProperty Name="MinCount" ColumnName="MinCount" />
-          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Image" ColumnName="Image" />
         </MappingFragment>
@@ -137,6 +137,14 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unit">
+      <EntityTypeMapping TypeName="CafeModel.Unit">
+        <MappingFragment StoreEntitySet="Unit">
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

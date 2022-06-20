@@ -25,11 +25,12 @@ namespace CafeApplication
         private void CreateOrderItemTemplate()
         {
             _gridOrderItemTemplate = new Grid();
+            _gridOrderItemTemplate.ColumnDefinitions.Add(new ColumnDefinition());
+            _gridOrderItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(450) });
+            _gridOrderItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(450) });
+            _gridOrderItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(150) });
             _gridOrderItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(150) });
             _gridOrderItemTemplate.ColumnDefinitions.Add(new ColumnDefinition());
-            _gridOrderItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(500) });
-            _gridOrderItemTemplate.ColumnDefinitions.Add(new ColumnDefinition());
-            _gridOrderItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(150) });
 
             Grid gridData = new Grid();
             gridData.ColumnDefinitions.Add(new ColumnDefinition());
@@ -38,11 +39,12 @@ namespace CafeApplication
             {
                 StackPanel spNameDate = new StackPanel();
                 spNameDate.VerticalAlignment = VerticalAlignment.Center;
-                spNameDate.HorizontalAlignment = HorizontalAlignment.Center;
+                spNameDate.HorizontalAlignment = HorizontalAlignment.Left;
                 spNameDate.Orientation = Orientation.Vertical;
                 {
                     TextBlock tbName = new TextBlock();
-                    //tbName.FontSize = 28;
+                    tbName.Style = Styles.tbAll;
+                    tbName.FontWeight = FontWeights.Bold;
                     if (_order.StaffID != null)
                         tbName.Text = _order.Staff.ToString();
                     if (_order.UserID != null)
@@ -51,7 +53,7 @@ namespace CafeApplication
                     spNameDate.Children.Add(tbName);
 
                     TextBlock tbDate = new TextBlock();
-                    //tbDate.FontSize = 28;
+                    tbDate.Style = Styles.tbAll;
                     tbDate.Text = _order.OrderDateTime.ToString();
                     spNameDate.Children.Add(tbDate);
                 }
@@ -60,17 +62,17 @@ namespace CafeApplication
 
                 StackPanel spStructure = new StackPanel();
                 spStructure.VerticalAlignment = VerticalAlignment.Center;
-                spStructure.HorizontalAlignment = HorizontalAlignment.Center;
+                spStructure.HorizontalAlignment = HorizontalAlignment.Left;
                 spStructure.Orientation = Orientation.Vertical;
                 {
                     TextBlock tbLabel = new TextBlock();
-                    //tbLabel.FontSize = 28;
+                    tbLabel.Style = Styles.tbAll;
+                    tbLabel.FontWeight = FontWeights.Bold;
                     tbLabel.Text = "Состав:";
                     spStructure.Children.Add(tbLabel);
 
                     TextBlock tbStructure = new TextBlock();
-                    //tbStructure.FontSize = 28;
-                    //tbStructure.TextWrapping = TextWrapping.Wrap;
+                    tbStructure.Style = Styles.tbAll;
                     tbStructure.Text = _order.ValidList;
                     spStructure.Children.Add(tbStructure);
                 }
@@ -79,28 +81,28 @@ namespace CafeApplication
 
                 StackPanel spCost = new StackPanel();
                 spCost.VerticalAlignment = VerticalAlignment.Center;
-                spCost.HorizontalAlignment = HorizontalAlignment.Center;
+                spCost.HorizontalAlignment = HorizontalAlignment.Left;
                 spCost.Orientation = Orientation.Vertical;
                 {
                     TextBlock tbLabelc = new TextBlock();
-                    //tbLabelc.FontSize = 28;
+                    tbLabelc.Style = Styles.tbAll;
+                    tbLabelc.FontWeight = FontWeights.Bold;
                     tbLabelc.Text = "Стоимость:";
                     spCost.Children.Add(tbLabelc);
 
                     StackPanel spInnerCost = new StackPanel();
                     spInnerCost.VerticalAlignment = VerticalAlignment.Center;
-                    spInnerCost.HorizontalAlignment = HorizontalAlignment.Center;
+                    spInnerCost.HorizontalAlignment = HorizontalAlignment.Left;
                     spInnerCost.Orientation = Orientation.Horizontal;
                     {
                         TextBlock tbCost = new TextBlock();
-                        //tbCost.FontSize = 28;
+                        tbCost.Style = Styles.tbAll;
                         tbCost.Text = _order.SummaryCost.ToString();
                         spInnerCost.Children.Add(tbCost);
 
                         TextBlock tbCost2 = new TextBlock();
-                        //tbCost2.FontSize = 28;
-                        tbCost2.Text = "₽";
-                        //tbCost2.HorizontalAlignment = HorizontalAlignment.Center;
+                        tbCost2.Style = Styles.tbAll;
+                        tbCost2.Text = " ₽";
                         spInnerCost.Children.Add(tbCost2);
                     }
                     spCost.Children.Add(spInnerCost);

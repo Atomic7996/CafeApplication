@@ -40,6 +40,8 @@ namespace CafeApplication.Pages
             if (foodStaff.FoodStuffID == 0)
                 btnDelete.Visibility = Visibility.Hidden;
 
+            cbUnit.ItemsSource = DB.db.Unit.ToList();
+
             DataContext = foodStaff;
         }
         /// <summary>
@@ -55,8 +57,8 @@ namespace CafeApplication.Pages
                 errors.AppendLine("Укажите кол-во на складе");
             if (string.IsNullOrWhiteSpace(foodStaff.MinCount.ToString()) || foodStaff.MinCount == 0)
                 errors.AppendLine("Укажите мин. кол-во");
-            if (string.IsNullOrWhiteSpace(foodStaff.Unit))
-                errors.AppendLine("Укажите ед. измерения");
+            if (cbUnit.SelectedItem == null)
+                errors.AppendLine("Выберите ед. измерения");
             if (string.IsNullOrWhiteSpace(foodStaff.Description))
                 errors.AppendLine("Укажите описание");
 
@@ -151,8 +153,30 @@ namespace CafeApplication.Pages
 
         private void tbMinCount_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (Char.IsLetter(e.Text, 0) || Char.IsControl(e.Text, 0))
+            string chars = "1234567890.";
+
+            if (!chars.Contains(e.Text[0]))
                 e.Handled = true;
+
+            if (tbMinCount.Text.Contains("."))
+            {
+                if (e.Text == ".")
+                    e.Handled = true;
+            }
+        }
+
+        private void tbCountInStock_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            string chars = "1234567890.";
+
+            if (!chars.Contains(e.Text[0]))
+                e.Handled = true;
+
+            if (tbCountInStock.Text.Contains("."))
+            {
+                if (e.Text == ".")
+                    e.Handled = true;
+            }
         }
     }
 }

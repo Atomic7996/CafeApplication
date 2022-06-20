@@ -64,10 +64,10 @@ namespace CafeClientApplication.Windows
                 errors.AppendLine("Укажите отчество");
             if (string.IsNullOrWhiteSpace(user.Login))
                 errors.AppendLine("Укажите логин");
-            if (string.IsNullOrWhiteSpace(tbPhone.Text))
-                errors.AppendLine("Укажите телефон");
-            if (tbPhone.Text.Length != 11)
-                errors.AppendLine("Телефон имеет неверный формат");
+            if (string.IsNullOrEmpty(tbPhone.Text) || string.IsNullOrWhiteSpace(tbPhone.Text))
+                errors.AppendLine("Не введен телефон\n");
+            else if (tbPhone.Text.Length < 18)
+                errors.AppendLine("Введите телефон полностью\n");
             if (user.UserID == 0)
             {
                 if (string.IsNullOrWhiteSpace(tbPassword.Password))

@@ -45,7 +45,7 @@ namespace CafeClientApplication.Pages
 
             filter.Insert(0, new ProductType
             {
-                Title = "Все типы"
+                Title = "Категории"
             });
 
             cbFilter.DisplayMemberPath = "Title";

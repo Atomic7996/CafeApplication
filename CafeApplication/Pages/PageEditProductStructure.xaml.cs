@@ -44,8 +44,11 @@ namespace CafeApplication.Pages
             lvAllFoodStaff.ItemsSource = foodStaff;
 
             lvSelectedFoodStaff.Items.Clear();
-            foreach (var productItemTemplate in _foodStaffItemTemplates)
-                lvSelectedFoodStaff.Items.Add(productItemTemplate.GridFoodStaffItemTemplate);
+            foreach (var foodStaffItemTemplate in _foodStaffItemTemplates)
+                lvSelectedFoodStaff.Items.Add(foodStaffItemTemplate.GridFoodStaffItemTemplate);
+
+            foreach (var foodStaffItemTemplate in _foodStaffItemTemplates)
+                foodStaff.Remove(foodStaffItemTemplate.foodStaff);
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -166,6 +169,19 @@ namespace CafeApplication.Pages
                 foodStaff = foodStaff.Where(fs => fs.Title.ToLower().Contains(tbFindFoodStaff.Text.ToLower())).ToList();
 
             lvAllFoodStaff.ItemsSource = foodStaff;
+
+            if (lvAllFoodStaff.Items.Count == 0)
+            {
+                lvAllFoodStaff.Visibility = Visibility.Hidden;
+                tbAvailable.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lvAllFoodStaff.Visibility = Visibility.Visible;
+                tbAvailable.Visibility = Visibility.Hidden;
+            }
+
+            ShowFoodStaff();
         }
     }
 }

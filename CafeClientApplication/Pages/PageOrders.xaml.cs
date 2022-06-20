@@ -21,27 +21,12 @@ namespace CafeClientApplication.Pages
     /// </summary>
     public partial class PageOrders : Page
     {
+        private List<OrderItemTemplate> _orderItemTemplates = new List<OrderItemTemplate>();
+
         public PageOrders()
         {
             InitializeComponent();
-            PageStartUp();
-        }
-
-        private void PageStartUp()
-        {
-            var currentOrders = DB.db.Order.Where(o => o.UserID == Properties.Settings.Default.userID).ToList();
-            var sort = new List<string>();
-
-            sort.Add("Сортировка");
-            sort.Add("По названию, от А до Я");
-            sort.Add("По названию, от Я до А"); ;
-            sort.Add("По возрастанию стоимости"); ;
-            sort.Add("По убыванию стоимости"); ;
-
-            lvOrders.ItemsSource = currentOrders;
-
-            tbRecordsCount.Text = lvOrders.Items.Count.ToString();
-            tbRecordsCountAll.Text = DB.db.Order.Where(o => o.UserID == Properties.Settings.Default.userID).Count().ToString();
+            UpdateLvItems();
         }
 
         void UpdateLvItems()
@@ -49,9 +34,20 @@ namespace CafeClientApplication.Pages
             var currentOrders = DB.db.Order.Where(o => o.UserID == Properties.Settings.Default.userID).ToList();
 
             if (calendar.SelectedDate != null)
-                currentOrders = currentOrders.Where(s => s.OrderDateTime.Date.ToString().Contains(calendar.SelectedDate.ToString())).ToList();
+                currentOrders = currentOrders.Where(o => o.OrderDateTime.Date.ToString().Contains(calendar.SelectedDate.ToString())).ToList();
 
-            lvOrders.ItemsSource = currentOrders;
+            _orderItemTemplates.Clear();
+            lvOrders.ItemsSource = null;
+            lvOrders.Items.Clear();
+
+            foreach (var order in currentOrders)
+            {
+                OrderItemTemplate orderItemTemplate = new OrderItemTemplate(order);
+                _orderItemTemplates.Add(orderItemTemplate);
+            }
+
+            foreach (var orderItemTemplate in _orderItemTemplates)
+                lvOrders.Items.Add(orderItemTemplate.GridOrderItemTemplate);
 
             tbRecordsCount.Text = lvOrders.Items.Count.ToString();
             tbRecordsCountAll.Text = DB.db.Order.Where(o => o.UserID == Properties.Settings.Default.userID).Count().ToString();
@@ -70,26 +66,18 @@ namespace CafeClientApplication.Pages
 
         private void lvOrders_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
-            lvOrders.ItemsSource = DB.db.Order.Where(o => o.UserID == Properties.Settings.Default.userID).ToList();
-        }
+            try
+            {
+                DB.db.ChangeTracker.Entries().ToList().ForEach(a => a.Reload());
+            }
+            catch (Exception)
+            {
 
-        private void cbStaff_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateLvItems();
+                throw;
+            }
         }
 
         private void calendar_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UpdateLvItems();
-        }
-
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.mainFrame.Navigate(new PageAddOrder(new Order()));
-        }
-
-        private void cbUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateLvItems();
         }

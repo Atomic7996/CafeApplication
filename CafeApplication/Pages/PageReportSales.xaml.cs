@@ -39,7 +39,7 @@ namespace CafeApplication.Pages
 
             var types = new List<string>();
             types.Add("Тип отчета");
-            types.Add("Все продажи");
+            types.Add("Продажи");
             types.Add("По блюдам");
             types.Add("По наборам");
             //types.Add("По сотрудникам");
@@ -51,7 +51,7 @@ namespace CafeApplication.Pages
 
             cbFilter.SelectedIndex = 0;
 
-            mounths.Add("Все месяцы");
+            mounths.Add("Месяца");
             mounths.Add("Январь");
             mounths.Add("Февраль");
             mounths.Add("Март");
@@ -64,8 +64,8 @@ namespace CafeApplication.Pages
             mounths.Add("Октябрь");
             mounths.Add("Декабрь");
 
-            productsList.Insert(0, new Product { Title = "Все блюда" });
-            combosList.Insert(0, new Combo { Title = "Все наборы" });
+            productsList.Insert(0, new Product { Title = "Блюда" });
+            combosList.Insert(0, new Combo { Title = "Наборы" });
         }
 
         private void UpdateList()
@@ -82,6 +82,7 @@ namespace CafeApplication.Pages
                     spSelected.Visibility = Visibility.Hidden;
                     cbFilter.Visibility = Visibility.Hidden;
                     brdBack.Visibility = Visibility.Visible;
+
                     cbSort.ItemsSource = mounths;
 
                     if (calendar.SelectedDate != null)
@@ -125,8 +126,6 @@ namespace CafeApplication.Pages
                     else
                     {
                         cbFilter.SelectedIndex = 0;
-                        //spProds.Visibility = Visibility.Visible;
-                        //spSelected.Visibility= Visibility.Hidden;
                         tbTitle.Text = "Всего блюд";
                         tbCount.Text = OrderProduct.productsAmount(orderList, null);
                         tbCost.Text = OrderProduct.productsCost(orderList, null);
@@ -154,13 +153,10 @@ namespace CafeApplication.Pages
                         tbTitle.Text = combo.Title;
                         tbCount.Text = OrderCombo.combosAmount(null, combo);
                         tbCost.Text = OrderCombo.combosCost(null, combo);
-                        
                     }
                     else
                     {
                         cbFilter.SelectedIndex = 0;
-                        //spCombos.Visibility = Visibility.Visible;
-                        //spSelected.Visibility = Visibility.Hidden;
                         tbTitle.Text = "Всего наборов";
                         tbCount.Text = OrderCombo.combosAmount(orderList, null);
                         tbCost.Text = OrderCombo.combosCost(orderList, null);

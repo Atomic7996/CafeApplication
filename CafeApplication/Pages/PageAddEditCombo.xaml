@@ -30,7 +30,7 @@
         <TextBlock Text="Редактор набора" Grid.Column="1" Grid.ColumnSpan="4" Style="{StaticResource Label}"/>
 
         <TextBox Name="tbTitle" Text="{Binding Title}" Style="{DynamicResource tbStyle}" Grid.Row="2" Grid.Column="2" TextChanged="tbTitle_TextChanged"/>
-        <TextBlock Name="tbStructure" Text="{Binding ProductList}" Style="{DynamicResource tbAll}" HorizontalAlignment="Center" Width="450" Height="80" Grid.Row="4" Grid.Column="2" Margin="0, 0, 0, 50" TextWrapping="Wrap" IsVisibleChanged="tbStructure_IsVisibleChanged"/>
+        <TextBlock Name="tbStructure" Text="{Binding ProductList}" Style="{DynamicResource tbLvItem}" MaxWidth="450" Height="80" Grid.Row="4" Grid.Column="2" Margin="15, 0, 0, 50" TextWrapping="Wrap" IsVisibleChanged="tbStructure_IsVisibleChanged"/>
         <Button Name="btnChange" Content="Выбрать" Grid.Row="4" Grid.Column="2" Width="200" Height="50" VerticalAlignment="Bottom" Margin="0, 0, 0, 15" Click="btnChange_Click"/>
         <TextBox Name="tbCost" Text="{Binding Cost}" Style="{DynamicResource tbStyle}" Grid.Row="2" Grid.Column="4" PreviewTextInput="tbCost_PreviewTextInput"/>
         <Border Grid.Row="3" Style="{DynamicResource brdImage}" Grid.Column="4" Width="140" Height="140">
@@ -39,7 +39,7 @@
         <TextBox Name="tbDesc" Text="{Binding Description}" Style="{DynamicResource tbStyle}" Grid.Row="4" Grid.Column="4" Height="auto" TextWrapping="Wrap"/>
 
         <TextBlock Text="Наименование" Grid.Row="2" Grid.Column="1" Style="{StaticResource tbAddEdit}"/>
-        <TextBlock Text="Состав" Grid.Row="4" Grid.Column="1" Style="{StaticResource tbAddEdit}"/>
+        <TextBlock Text="Состав" Grid.Row="4" Grid.Column="1" Style="{StaticResource tbAddEdit}" Margin="0, 0, 20, 50" Height="80"/>
         <TextBlock Text="Стоимость" Grid.Row="2" Grid.Column="3" Style="{StaticResource tbAddEdit}"/>
         <TextBlock Text="Изображение" Grid.Row="3" Grid.Column="3" Style="{StaticResource tbAddEdit}"/>
         <TextBlock Text="Описание" Grid.Row="4" Grid.Column="3" Style="{StaticResource tbAddEdit}"/>

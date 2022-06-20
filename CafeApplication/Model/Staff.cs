@@ -10,6 +10,19 @@ namespace CafeApplication
     {
         public string ValidImage => Image == null ? "../../Resources/staff.png" : Image;
 
+        public string ValidColor
+        {
+            get
+            {
+                if (StaffID == Properties.Settings.Default.staffID)
+                {
+                    return "LightGreen";
+                }
+                else
+                    return "";
+            }
+        }
+
         public override string ToString()
         {
             return String.Format(LastName + " " + FirstName + " " + Patronymic);

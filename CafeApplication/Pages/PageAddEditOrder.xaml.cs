@@ -165,12 +165,10 @@ namespace CafeApplication.Pages
             Manager.mainFrame.GoBack();
         }
 
-        private void tbCoupon_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void tbCoupon_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (Char.IsControl(e.Text, 0))
-                e.Handled = true;
-            //var length = tbCoupon.Text.Length;
-            //tbCoupon.Text += e.Text.ToUpper();
+            tbCoupon.Text = tbCoupon.Text.ToUpper();
+            tbCoupon.CaretIndex = tbCoupon.Text.Length;
         }
     }
 }

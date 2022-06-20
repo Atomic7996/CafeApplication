@@ -54,6 +54,22 @@ namespace CafeApplication.Windows
                 VerticalAlignment = VerticalAlignment.Center
             };
 
+            var column1 = new StackPanel
+            {
+                Orientation = Orientation.Vertical,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+
+            var column2 = new StackPanel
+            {
+                Orientation = Orientation.Vertical,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center
+            };
+
+            var len = imgs.Length;
+
             for (int i = 0; i <= imgs.Length / rowLength; i++)
             {
                 var row = new StackPanel
@@ -67,10 +83,15 @@ namespace CafeApplication.Windows
                     if (j == imgs.Length)
                         break;
 
+                    Border brdImage = new Border();
+                    brdImage.Style = Styles.brdImage;
+                    brdImage.Height = 160;
+                    brdImage.Width = 160;
+
                     var image = new Image
                     {
-                        Width = 150,
-                        Height = 150,
+                        Width = 140,
+                        Height = 140,
                         Margin = new Thickness(5, 5, 5, 5),
                         Source = new BitmapImage(new Uri(imgs[j], UriKind.Relative)),
                         Cursor = Cursors.Hand,
@@ -80,11 +101,15 @@ namespace CafeApplication.Windows
                     image.MouseLeftButtonDown += Image_MouseLeftButtonDown;
                     image.Style = imgStyle;
 
-                    row.Children.Add(image);
+                    brdImage.Child = image;
+
+                    row.Children.Add(brdImage);
                 }
                 gImages.Children.Add(row);
             }
             gImages.Children.Add(column);
+
+
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

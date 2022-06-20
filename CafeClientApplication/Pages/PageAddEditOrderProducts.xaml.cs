@@ -49,6 +49,9 @@ namespace CafeClientApplication.Pages
             lvSelectedProducts.Items.Clear();
             foreach (var productItemTemplate in _productItemTemplates)
                 lvSelectedProducts.Items.Add(productItemTemplate.GridProductItemTemplate);
+
+            foreach (var productItemTemplate in _productItemTemplates)
+                products.Remove(productItemTemplate.product);
         }
 
         private void tbFindFoodStaff_TextChanged(object sender, TextChangedEventArgs e)
@@ -60,7 +63,18 @@ namespace CafeClientApplication.Pages
 
             lvAllProducts.ItemsSource = product;
 
+            if (lvAllProducts.Items.Count == 0)
+            {
+                lvAllProducts.Visibility = Visibility.Hidden;
+                tbAvailable.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lvAllProducts.Visibility = Visibility.Visible;
+                tbAvailable.Visibility = Visibility.Hidden;
+            }
 
+            ShowProducts();
         }
 
         private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
@@ -79,17 +93,19 @@ namespace CafeClientApplication.Pages
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            DB.db.Product.ToList();
+            tbFindFoodStaff.Text = null;
+            ShowProducts();
         }
 
         private void lbAllProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //btnGetProduct.IsEnabled = lvAllProducts.SelectedItem != null ? true : false;
+            btnGetProduct_Click(null, null);
+            
         }
 
         private void lbAllProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnGetProduct_Click(null, null);
+            //btnGetProduct.IsEnabled = lvAllProducts.SelectedItem != null ? true : false;
         }
 
         private void btnGetProduct_Click(object sender, RoutedEventArgs e)
@@ -118,6 +134,7 @@ namespace CafeClientApplication.Pages
                     _productItemTemplates.Remove(productItemTemplate);
                     ShowProducts();
                     productItemTemplate.TbCount.TextChanged += tbCount_TextChanged;
+                    tbCount_TextChanged(null, null);
                 }
             }
         }
@@ -141,6 +158,15 @@ namespace CafeClientApplication.Pages
             {
                 errorMessage += "Не выбран ни один товар\n";
                 trueData = false;
+            }
+
+            foreach (var productItemTemplate in _productItemTemplates)
+            {
+                if (productItemTemplate.TbCount.Text == "0")
+                {
+                    errorMessage += "Количество не должно быть 0\n";
+                    trueData = false;
+                }
             }
 
             if (!trueData)

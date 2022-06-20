@@ -35,7 +35,7 @@
         <TextBlock Name="tbAvailable" Text="Нет подходящих записей" Style="{DynamicResource tbAll}" VerticalAlignment="Top" Margin="0, 90, 0, 0" FontSize="32" Grid.Row="2" Grid.ColumnSpan="4" Visibility="Hidden"/>
 
         <ListView Name="lvOrders" Grid.Row="2" Grid.ColumnSpan="4" IsVisibleChanged="lvOrders_IsVisibleChanged">
-            <ListView.ItemTemplate>
+            <!--<ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -46,12 +46,8 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock Text="{Binding User}" Style="{DynamicResource tbLvItem}"/>
-
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <TextBlock Text="Дата заказа: " Style="{DynamicResource tbLvItem}"/>
-                                <TextBlock Text="{Binding OrderDateTime}" Style="{DynamicResource tbLvItem}"/>
-                            </StackPanel>
+                            <TextBlock Text="Дата заказа: " Style="{DynamicResource tbLvItem}" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding OrderDateTime}" Style="{DynamicResource tbLvItem}"/>
                         </StackPanel>
 
                         <StackPanel Grid.Column="2" VerticalAlignment="Center">
@@ -64,13 +60,13 @@
                         <StackPanel Grid.Column="3" VerticalAlignment="Center">
                             <TextBlock Text="Стоимость:" Style="{DynamicResource tbLvItem}" FontWeight="Bold"/>
                             <TextBlock Text="{Binding SummaryCost}" Style="{DynamicResource tbLvItem}">
-                                <Run Text="₽"/>
+                                <Run Text=" ₽"/>
                             </TextBlock>
                         </StackPanel>
 
                     </Grid>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </ListView.ItemTemplate>-->
         </ListView>
     </Grid>
 </Page>

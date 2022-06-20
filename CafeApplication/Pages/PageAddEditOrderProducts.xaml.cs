@@ -48,9 +48,12 @@ namespace CafeApplication.Pages
             lvSelectedProducts.Items.Clear();
             foreach (var productItemTemplate in _productItemTemplates)
                 lvSelectedProducts.Items.Add(productItemTemplate.GridProductItemTemplate);
+
+            foreach (var productItemTemplate in _productItemTemplates)
+                products.Remove(productItemTemplate.product);
         }
 
-        private void tbFindFoodStaff_TextChanged(object sender, TextChangedEventArgs e)
+        private void tbFindProduct_TextChanged(object sender, TextChangedEventArgs e)
         {
             List<Product> product = DB.db.Product.ToList();
 
@@ -59,7 +62,18 @@ namespace CafeApplication.Pages
 
             lvAllProducts.ItemsSource = product;
 
-            
+            if (lvAllProducts.Items.Count == 0)
+            {
+                lvAllProducts.Visibility = Visibility.Hidden;
+                tbAvailable.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                lvAllProducts.Visibility = Visibility.Visible;
+                tbAvailable.Visibility = Visibility.Hidden;
+            }
+
+            ShowProducts();         
         }
 
         private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
@@ -78,17 +92,18 @@ namespace CafeApplication.Pages
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-            DB.db.Product.ToList();
+            tbFindFoodStaff.Text = null;
+            ShowProducts();
         }
 
         private void lbAllProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //btnGetProduct.IsEnabled = lvAllProducts.SelectedItem != null ? true : false;
+            btnGetProduct_Click(null, null);
         }
 
         private void lbAllProducts_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnGetProduct_Click(null, null);
+            //btnGetProduct.IsEnabled = lvAllProducts.SelectedItem != null ? true : false;
         }
 
         private void btnGetProduct_Click(object sender, RoutedEventArgs e)
@@ -117,6 +132,7 @@ namespace CafeApplication.Pages
                     _productItemTemplates.Remove(productItemTemplate);
                     ShowProducts();
                     productItemTemplate.TbCount.TextChanged += tbCount_TextChanged;
+                    tbCount_TextChanged(null, null);
                 }
             }
         }

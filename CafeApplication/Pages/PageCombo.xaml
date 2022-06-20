@@ -34,7 +34,7 @@
             <TextBlock Name="tbRecordsCountAll" Style="{DynamicResource tbLvItem}"/>
         </StackPanel>
 
-        <TextBlock Name="tbAvailable" Text="Нет подходящих записей" Style="{DynamicResource tbAll}" VerticalAlignment="Top" Margin="0, 0, 90, 0" FontSize="32" Grid.Row="2" Grid.ColumnSpan="4" Visibility="Hidden"/>
+        <TextBlock Name="tbAvailable" Text="Нет подходящих записей" Style="{DynamicResource tbAll}" VerticalAlignment="Top" Margin="0, 90, 0, 0" FontSize="32" Grid.Row="2" Grid.ColumnSpan="4" Visibility="Hidden"/>
 
         <ListView Name="lvCombos" Grid.Row="2" Grid.ColumnSpan="4" IsVisibleChanged="lvCombos_IsVisibleChanged" MouseDoubleClick="lvCombos_MouseDoubleClick" ToolTip="Для просмотра нажмите дважды">
             <ListView.ItemTemplate>

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CafeApplication.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1920"
-      Title="PageMenuCashier" RowDefinition.Height="85">
+      Title="PageMenuCashier">
 
     <Grid>
         <Grid.RowDefinitions>

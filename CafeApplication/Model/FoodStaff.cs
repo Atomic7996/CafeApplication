@@ -23,6 +23,14 @@ namespace CafeApplication
             }
         }
 
+        public string ValidUnit
+        {
+            get
+            {
+                return Unit.ToString();
+            }
+        }
+
         public override string ToString()
         {
             return Title;

@@ -37,29 +37,24 @@ namespace CafeClientApplication.Pages
             _gridComboItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(200) });
 
             Border brdImage = new Border();
-            //brdImage.Style = Styles.brdImage;
-            brdImage.Width = 100;
-            brdImage.Height = 100;
-            brdImage.Margin = new Thickness(5);
-            brdImage.CornerRadius = new CornerRadius(5);
-            brdImage.BorderBrush = Brushes.Black;
-            brdImage.BorderThickness = new Thickness(2);
+            brdImage.Style = Styles.brdImage;
             brdImage.Background = GetImageBrush();
             Grid.SetColumn(brdImage, 1);
             _gridComboItemTemplate.Children.Add(brdImage);
 
             StackPanel spCombo = new StackPanel();
             spCombo.VerticalAlignment = VerticalAlignment.Center;
-            spCombo.HorizontalAlignment = HorizontalAlignment.Center;
+            spCombo.HorizontalAlignment = HorizontalAlignment.Left;
             spCombo.Orientation = Orientation.Vertical;
             {
                 TextBlock tblName = new TextBlock();
-                //tblName.FontSize = 20;
+                tblName.Style = Styles.tbAll;
+                tblName.FontWeight = FontWeights.Bold;
                 tblName.Text = _combo.Title;
                 spCombo.Children.Add(tblName);
 
                 TextBlock tbDesc = new TextBlock();
-                //tbDesc.FontSize = 14;
+                tbDesc.Style = Styles.tbAll;
                 tbDesc.Text = _combo.Description;
                 spCombo.Children.Add(tbDesc);
             }
@@ -72,14 +67,14 @@ namespace CafeClientApplication.Pages
             {
                 TextBlock tblCount = new TextBlock();
                 tblCount.Text = "Кол-во";
-                //tblCount.HorizontalAlignment = HorizontalAlignment.Center;
+                tblCount.Style = Styles.tbAll;
                 Grid.SetRow(tblCount, 0);
                 gridData.Children.Add(tblCount);
 
                 _tbCount = new TextBox();
+                _tbCount.Style = Styles.tbStyle;
                 _tbCount.MaxLength = 5;
                 _tbCount.Text = "1";
-                //_tbCount.Height = 40;
                 _tbCount.PreviewTextInput += _tbCount_PreviewTextInput;
                 Grid.SetRow(_tbCount, 1);
                 gridData.Children.Add(_tbCount);
@@ -92,25 +87,25 @@ namespace CafeClientApplication.Pages
             gridCost.RowDefinitions.Add(new RowDefinition());
             {
                 TextBlock tblUnit = new TextBlock();
+                tblUnit.Style = Styles.tbAll;
                 tblUnit.Text = "Стоимость:";
-                //tblUnit.HorizontalAlignment = HorizontalAlignment.Center;
                 Grid.SetRow(tblUnit, 0);
                 gridCost.Children.Add(tblUnit);
 
                 StackPanel spCost = new StackPanel();
                 spCost.VerticalAlignment = VerticalAlignment.Center;
-                spCost.HorizontalAlignment = HorizontalAlignment.Center;
+                spCost.HorizontalAlignment = HorizontalAlignment.Left;
                 spCost.Orientation = Orientation.Horizontal;
                 {
                     TextBlock tblUnit1 = new TextBlock();
+                    tblUnit1.Style = Styles.tbAll;
                     tblUnit1.Text = _combo.Cost.ToString();
-                    //tblUnit1.HorizontalAlignment = HorizontalAlignment.Center;
                     Grid.SetRow(tblUnit1, 1);
                     spCost.Children.Add(tblUnit1);
 
                     TextBlock tblUnit2 = new TextBlock();
+                    tblUnit2.Style = Styles.tbAll;
                     tblUnit2.Text = "₽";
-                    //tblUnit2.HorizontalAlignment = HorizontalAlignment.Center;
                     spCost.Children.Add(tblUnit2);
                 }
                 Grid.SetRow(spCost, 1);

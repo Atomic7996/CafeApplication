@@ -41,17 +41,17 @@
 
         <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2">
             <TextBlock Text="Состав" Style="{StaticResource tbAddEdit}" HorizontalAlignment="Center"/>
-            <TextBlock Name="tbStructure" Text="{Binding ValidList}" Style="{DynamicResource tbAll}" Margin="0, 30, 0, 0" TextWrapping="Wrap" IsVisibleChanged="tbStructure_IsVisibleChanged"/>
+            <TextBlock Name="tbStructure" Text="{Binding ValidList}" Style="{DynamicResource tbLvItem}" HorizontalAlignment="Center" Margin="0, 30, 0, 0" TextWrapping="Wrap" IsVisibleChanged="tbStructure_IsVisibleChanged"/>
         </StackPanel>
         
         <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Купон:" Style="{StaticResource tbAddEdit}" Margin="0, 0, 25, 0" />
-            <TextBox Name="tbCoupon" Text="{Binding Coupon.PromoCode}" Style="{StaticResource tbStyle}" Grid.Row="3" Grid.Column="3" Width="450" LostFocus="tbCoupon_LostFocus" PreviewTextInput="tbCoupon_PreviewTextInput"/>
+            <TextBox Name="tbCoupon" Text="{Binding Coupon.PromoCode}" Style="{StaticResource tbStyle}" Grid.Row="3" Grid.Column="3" Width="450" LostFocus="tbCoupon_LostFocus" TextChanged="tbCoupon_TextChanged"/>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Стоимость:" Style="{StaticResource tbAddEdit}" Margin="0, 0, 25, 0" />
-            <TextBlock Name="tbCost" Text="{Binding SummaryCost}" Style="{StaticResource tbAll}" Width="450" Height="80"/>
+            <TextBlock Text="Стоимость:" Style="{StaticResource tbAddEdit}" Margin="0, 0, 20, 0" VerticalAlignment="Center"/>
+            <TextBlock Name="tbCost" Text="{Binding SummaryCost}" Style="{DynamicResource tbLvItem}" MaxWidth="450" Height="80" Margin="15, 50, 0, 0" VerticalAlignment="Center"/>
         </StackPanel>
 
         <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">

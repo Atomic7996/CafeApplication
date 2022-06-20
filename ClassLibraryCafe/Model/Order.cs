@@ -68,5 +68,10 @@ namespace ClassLibraryCafe
                 return price;
             }
         }
+
+        public override string ToString()
+        {
+            return OrderDateTime.ToString();
+        }
     }
 }
