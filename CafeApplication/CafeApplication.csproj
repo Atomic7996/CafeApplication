@@ -369,15 +369,15 @@
   <ItemGroup>
     <None Include="Resources\icon.ico" />
     <Resource Include="Images\FoodStaff\carrot.png" />
-    <Resource Include="Images\FoodStaff\cucamber.png" />
     <Resource Include="Images\FoodStaff\tomato.png" />
     <Resource Include="Images\Products\meet.png" />
     <Resource Include="Images\Products\salat.png" />
     <Resource Include="Images\Products\soup.png" />
     <Resource Include="Images\Combos\combo3.png" />
-    <Resource Include="Images\FoodStaff\meet1.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\FoodStaff\cucamber.png" />
+    <Resource Include="Images\FoodStaff\meet1.png" />
     <Content Include="ModelCafe.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelCafe.edmx</DependentUpon>

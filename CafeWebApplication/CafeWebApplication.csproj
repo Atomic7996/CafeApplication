@@ -111,6 +111,7 @@
   <ItemGroup>
     <Resource Include="Images\combo.png" />
     <Resource Include="Images\cafe.png" />
+    <Resource Include="Images\FoodStaff\meet1.png" />
     <Content Include="Products.aspx" />
     <Content Include="Combos.aspx" />
     <Content Include="Content\Site.css" />
@@ -127,7 +128,6 @@
     <Resource Include="Images\Combos\combo3.png" />
     <Resource Include="Images\FoodStaff\carrot.png" />
     <Resource Include="Images\FoodStaff\cucamber.png" />
-    <Resource Include="Images\FoodStaff\meet1.png" />
     <Resource Include="Images\FoodStaff\milk.png" />
     <Resource Include="Images\FoodStaff\potato.png" />
     <Resource Include="Images\FoodStaff\tomato.png" />

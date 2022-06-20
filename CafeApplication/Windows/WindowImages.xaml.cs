@@ -21,6 +21,7 @@ namespace CafeApplication.Windows
     public partial class WindowImages : Window
     {
         public string imageUrl { get; private set; }
+        private Grid _gridFoodStafftItemTemplate = null;
 
         public WindowImages(string type)
         {
@@ -30,7 +31,7 @@ namespace CafeApplication.Windows
 
         private void ShowImages(string type)
         {
-            const int rowLength = 5;
+            const int rowLength = 15;
             string[] imgs = null;
             Style imgStyle = Application.Current.FindResource("imgEffect") as Style;
 
@@ -46,6 +47,38 @@ namespace CafeApplication.Windows
                     imgs = Directory.GetFiles("../../Images/Combos");
                     break;
             }
+
+
+            //_gridFoodStafftItemTemplate = new Grid();
+            //_gridFoodStafftItemTemplate.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(100) });
+
+            //for (int i = 0; i <= imgs.Length - 1; i++)
+            //{
+            //    Border brdImage = new Border();
+            //    brdImage.Style = Styles.brdImage;
+            //    brdImage.Height = 160;
+            //    brdImage.Width = 160;
+
+            //    var image = new Image
+            //    {
+            //        Width = 140,
+            //        Height = 140,
+            //        Margin = new Thickness(5, 5, 5, 5),
+            //        Source = new BitmapImage(new Uri(imgs[i], UriKind.Relative)),
+            //        Cursor = Cursors.Hand,
+            //        Tag = imgs[i],
+            //    };
+
+            //    image.MouseLeftButtonDown += Image_MouseLeftButtonDown;
+            //    image.Style = imgStyle;
+
+            //    brdImage.Child = image;
+            //    Grid.SetColumn(brdImage, 0);
+            //    _gridFoodStafftItemTemplate.Children.Add(brdImage);
+            //}
+
+
+
 
             var column = new StackPanel
             {
@@ -108,7 +141,6 @@ namespace CafeApplication.Windows
                 gImages.Children.Add(row);
             }
             gImages.Children.Add(column);
-
 
         }
 
